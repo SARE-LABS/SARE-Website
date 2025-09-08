@@ -2,12 +2,12 @@ import Image from "next/image";
 import { ArrowSlant, Kennedy } from "../../../public/images/images";
 import Link from "next/link";
 
-function StatCard() {
+function Card() {
   return (
-    <div className="relative w-full ">
+    <div className="relative w-ful h-[160px]">
       <Link
         href={`/`}
-        className="group overflow-hidden flex justify-center items-center absolute w-[48px] h-[32px] rounded-[30px] hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-2.5 top-0 z-[100]"
+        className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-1 top-1 z-[100]"
       >
         <Image
           src={ArrowSlant}
@@ -17,7 +17,7 @@ function StatCard() {
           className="group-hover:grayscale-100 transition-all ease-in-out duration-300"
         />
       </Link>
-      <div className="relative w-[125px] h-[160px] rounded-2xl   overflow-hidden  flex justify-items-end items-end path">
+      <div className="relative w-[125px] h-[160px] rounded-2xl   overflow-hidden  flex justify-items-end items-end ">
         <Image
           src={Kennedy}
           alt="Training session"
@@ -40,4 +40,4 @@ function StatCard() {
   );
 }
 
-export default StatCard;
+export default Card;

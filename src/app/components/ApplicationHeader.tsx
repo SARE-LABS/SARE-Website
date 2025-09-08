@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import Time from "../UI/Time";
-import { Apply } from "../../../public/images/images";
+import { Apply, ArrowSlant, Kennedy } from "../../../public/images/images";
 import StatCard from "../UI/StatCard";
+import Card from "../UI/Card";
+import CardLarge from "../UI/CardLarge";
 
 function ApplicationHeader() {
   return (
@@ -30,17 +32,24 @@ function ApplicationHeader() {
         <p>Start Application</p>
       </Link>
 
-      <div className="w-full grid grid-cols-3 gap-4 ">
-        <div className="flex flex-row-reverse">
-          <div className="w-full h-[5rem] bg-red-400 path rounded-2xl"></div>
-          <div className="w-[50px] h-[20px] bg-red-400"></div>
+      <div className="w-full grid grid-cols-3 gap-2 ">
+       
+        <div className="relative flex">
+          <Card />
+        </div>
+        <div className="relative flex">
+          <Card />
+        </div>
+        <div className="relative flex">
+          <Card />
         </div>
 
-        {/* <StatCard /> */}
-        <div className="w-full h-[5rem] bg-red-400"></div>
-        <div className="w-full h-[5rem] bg-red-400"></div>
-        <div className="w-full h-[5rem] bg-red-400 col-span-3"></div>
-        <div className="w-full h-[5rem] bg-red-400 col-span-3"></div>
+        <div className="flex flex-row-reerse relative col-span-3 ">
+          <CardLarge />
+        </div>
+        <div className="flex flex-row-reerse relative col-span-3 ">
+          <CardLarge />
+        </div>
       </div>
     </div>
   );
