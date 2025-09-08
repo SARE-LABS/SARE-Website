@@ -13,7 +13,8 @@ function NavMarques() {
           </p>
           <span className="bg-white p-[5px] rounded-full"></span>
           <p className="text-white">
-            SARE membership applications are now open - and closes in {days} days
+            SARE membership applications are now open - and closes in {days} day
+            {days > 1 ? "s" : ""}
           </p>
           <span className="bg-white p-[5px] rounded-full"></span>
           <p className="text-white">
