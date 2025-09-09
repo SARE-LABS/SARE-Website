@@ -13,12 +13,12 @@ function Footer() {
           </p>
         </div>
 
-        <div className="flex items-center gap-[8px]">
+        <div className="flex items-center gap-[5px]">
           <div className="bg-primary-blue p-2 rounded-full cursor-pointer">
-            <Image src={Linkdln} alt="LinkedIn Logo" width={20} height={20} />
+            <Image src={Linkdln} alt="LinkedIn Logo" width={15} height={15} />
           </div>
           <div className="bg-primary-blue p-2 rounded-full cursor-pointer">
-            <Image src={Mail} alt="Mail Logo" width={20} height={20} />
+            <Image src={Mail} alt="Mail Logo" width={15} height={15} />
           </div>
         </div>
       </div>

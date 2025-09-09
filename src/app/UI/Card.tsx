@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Card() {
   return (
-    <div className="relative w-ful h-[160px]">
+    <div className="relative w-full h-[160px]">
       <Link
         href={`/`}
         className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-1 top-1 z-[100]"
@@ -17,12 +17,12 @@ function Card() {
           className="group-hover:grayscale-100 transition-all ease-in-out duration-300"
         />
       </Link>
-      <div className="relative w-[125px] h-[160px] rounded-2xl   overflow-hidden  flex justify-items-end items-end ">
+      <div className="relative w-full h-[160px] rounded-2xl   overflow-hidden  flex justify-items-end items-end ">
         <Image
           src={Kennedy}
           alt="Training session"
           fill
-          className="object-cover"
+          className="object-cover "
         />
 
         <div className="absolute inset-0 bg-black/40"></div>

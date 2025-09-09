@@ -10,15 +10,15 @@ function Newsletter() {
         </h1>
         <form
           action=""
-          className="overflow-hidden w-full flex  gap-[16px] rounded-full border border-border ring-0 bg-white justify-between"
+          className="w-full flex items-center gap-[16px] rounded-full border border-border ring-0 bg-white justify-between"
         >
           <input
             type="text"
             placeholder="Ask us anything…"
-            className="p-[12px] outline-none rounded-full"
+            className="p-[12px] outline-none rounded-full flex-1"
           />
-          <button className="cursor-pointer bg-primary-blue text-white py-[12px] px-[16px] rounded-full">
-            Get Involved
+          <button className="self-ed text-[14px] bg-primary-blue text-white py-[12px] px-[16px] rounded-full mr-[1px]">
+            Get Involved!
           </button>
         </form>
       </div>
