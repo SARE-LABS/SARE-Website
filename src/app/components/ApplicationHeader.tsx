@@ -8,7 +8,7 @@ import CardLarge from "../UI/CardLarge";
 
 function ApplicationHeader() {
   return (
-    <div className="p-[2rem] flex flex-col items-center justify-center text-center gap-4">
+    <div className="p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
       <h1 className="text-text-primary font-bold text-[48px] leading-[120%] ">
         Ready to Make an Impact?
       </h1>
@@ -32,7 +32,7 @@ function ApplicationHeader() {
         <p>Start Application</p>
       </Link>
 
-      <div className="w-full grid grid-cols-3 gap-2 ">
+      <div className="w-full grid grid-cols-3 gap-5 overflow-hidden">
        
         <div className="relative flex">
           <Card />

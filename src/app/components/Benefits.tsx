@@ -34,7 +34,7 @@ function Benefits() {
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-3 gap-[8px]">
+        <div className="w-full grid grid-cols-3 gap-5 overflow-hidden">
           <div className="col-span-3 relative">
             <CardLarge />
           </div>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Linkdln, logoTwo, Mail } from "../../public/images/images";
+import { Linkdln, logoTwo, Mail } from "../../../public/images/images";
 
 function Footer() {
   return (
@@ -7,7 +7,7 @@ function Footer() {
       <div className="flex items-end justify-between border-b border-border pb-[24px]">
         <div className="">
           <Image src={logoTwo} alt="SARE Logo" width={200} height={100} />
-          <p className="text-[14px] text-[#6B7280] max-w-[300px] ">
+          <p className="text-[12px] text-[#6B7280] max-w-[280px] ">
             Bringing together innovators in Agricultural & Environmental
             Engineering to create real-world impact
           </p>

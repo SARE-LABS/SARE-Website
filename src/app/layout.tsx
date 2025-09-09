@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { spaceGrotesk } from "../../public/fonts/fonts";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
 
 export const metadata: Metadata = {

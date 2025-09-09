@@ -5,7 +5,7 @@ import Image from "next/image";
 function Join() {
   return (
     <div className="py-[24px] px-[2rem] ">
-      <div className="w-[382px] flex flex-col gap-[16px] items-center justify-center text-center">
+      <div className="w-full flex flex-col gap-[16px] items-center justify-center text-center">
         <HighlightHead title="Join SARE" />
         <h1 className="text-[48px] font-medium text-text-primary leading-[120%]">
           Join the innovators who are creating real change.
