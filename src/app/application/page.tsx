@@ -4,6 +4,7 @@ import Benefits from "../components/Benefits";
 import FAQs from "../components/FAQs";
 import Join from "../components/Join";
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
 import WhyJoin from "../components/WhyJoin";
 
 function page() {
@@ -16,6 +17,7 @@ function page() {
       <AnimationBg />
       <Join />
       <FAQs />
+      <Newsletter />
     </div>
   );
 }

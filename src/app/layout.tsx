@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { spaceGrotesk } from "../../public/fonts/fonts";
+import Footer from "./Footer";
 
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
         className={`${spaceGrotesk.className}  antialiased`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

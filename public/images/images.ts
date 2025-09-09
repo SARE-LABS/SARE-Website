@@ -8,8 +8,12 @@ import ArrowSlant from "./arrowSlant.svg";
 import ExcosFrame from "./excos.png";
 import Ballon from "./ballon.svg";
 import Plus from "./plus.png";
+import Linkdln from "./linkedin.svg";
+import Mail from "./mail.svg";
 
 export {
+  Linkdln,
+  Mail,
   logoOne,
   logoTwo,
   logoThree,
