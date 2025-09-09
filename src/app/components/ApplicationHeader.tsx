@@ -32,8 +32,7 @@ function ApplicationHeader() {
         <p>Start Application</p>
       </Link>
 
-      <div className="w-full grid grid-cols-3 gap-5 overflow-hidden">
-       
+      <div className="w-full grid grid-cols-3 gap-5 overflow-dden">
         <div className="relative flex">
           <Card />
         </div>
