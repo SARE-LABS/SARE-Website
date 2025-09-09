@@ -43,3 +43,69 @@ export const Benefit = [
     img: Ballon,
   },
 ];
+
+export const FAQDataGeneral = [
+  {
+    id: 1,
+    question: "How can I stay updated on SARE events?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+  {
+    id: 2,
+    question: "How can I get involved with SARE?",
+    answer:
+      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+  },
+  {
+    id: 3,
+    question: "How can I stay updated on SARE events?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+ 
+];
+
+export const FAQDataProjects = [
+  {
+    id: 1,
+    question: "How can I know about the ongoing projects?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+  {
+    id: 2,
+    question: "How can I get involved with SARE?",
+    answer:
+      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+  },
+  {
+    id: 3,
+    question: "How can I stay updated on SARE events?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+ 
+];
+
+export const FAQDataCTRL = [
+  {
+    id: 1,
+    question: "What is CTRL Labs all about?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+  {
+    id: 2,
+    question: "How can I get involved with SARE?",
+    answer:
+      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+  },
+  {
+    id: 3,
+    question: "How can I stay updated on SARE events?",
+    answer:
+      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+  },
+ 
+];

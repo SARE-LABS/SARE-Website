@@ -1,6 +1,7 @@
 import AnimationBg from "../components/AnimationBg";
 import Header from "../components/ApplicationHeader";
 import Benefits from "../components/Benefits";
+import FAQs from "../components/FAQs";
 import Join from "../components/Join";
 import Navbar from "../components/Navbar";
 import WhyJoin from "../components/WhyJoin";
@@ -14,6 +15,7 @@ function page() {
       <Benefits />
       <AnimationBg />
       <Join />
+      <FAQs />
     </div>
   );
 }
