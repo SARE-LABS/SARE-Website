@@ -83,7 +83,7 @@ function FAQs() {
                 }  text-text-primary w-full rounded-[16px] gap-[8px] p-[16px] flex items-start flex-col justify-between`}
               >
                 <div
-                  className="w-full flex items-center justify-between cursor-pointer "
+                  className="w-full flex items-center justify-between cursor-pointer gap-[10px]"
                   onClick={() => toggleFAQ(faq.id)}
                 >
                   <h3 className="font-medium text-[18px] leading-[120%]">
@@ -92,7 +92,7 @@ function FAQs() {
                   <motion.div
                     animate={{ rotate: openFAQ === faq.id ? 45 : 0 }}
                     transition={{ duration: 0.2 }}
-                    className="w-[40px] h-[40px] rounded-full bg-primary-blue flex items-center justify-center"
+                    className="p-[10px]  rounded-full bg-primary-blue flex items-center justify-center"
                   >
                     <Image src={Plus} alt="plus" width={13} height={13} />
                   </motion.div>
