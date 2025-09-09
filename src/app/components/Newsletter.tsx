@@ -13,12 +13,13 @@ function Newsletter() {
           className="w-full flex items-center gap-[16px] rounded-full border border-border ring-0 bg-white justify-between"
         >
           <input
-            type="text"
+            type="email"
+            name="email"
             placeholder="Ask us anything…"
-            className="p-[12px] outline-none rounded-full flex-1"
+            className="p-[12px] outline-none rounded-full "
           />
-          <button className="self-ed text-[14px] bg-primary-blue text-white py-[12px] px-[16px] rounded-full mr-[1px]">
-            Get Involved!
+          <button className="self-ed cursor-pointer text-[14px] bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 text-white py-[12px] px-[16px] rounded-full mr-[1px]">
+            Get Involved
           </button>
         </form>
       </div>

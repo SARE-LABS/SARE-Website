@@ -8,7 +8,7 @@ function Benefits() {
   return (
     <div className="py-[24px] px-[2rem] overflow-hidden">
       <div className="flex items-start justify-start gap-[24px] flex-col">
-        <div className="flex flex-col gap-[16px] w-[382px]">
+        <div className="flex flex-col gap-[16px]">
           <div className="mb-[16px]">
             <HighlightHead title="Benefits of Joining" />
           </div>
@@ -34,7 +34,7 @@ function Benefits() {
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-3 gap-5 overflow-hidden">
+        <div className="w-full grid grid-cols-3 gap-3 ">
           <div className="col-span-3 relative">
             <CardLarge />
           </div>

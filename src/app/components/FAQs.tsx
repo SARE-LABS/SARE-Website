@@ -135,7 +135,7 @@ function FAQs() {
               placeholder="Ask us anything…"
               className="p-[12px] outline-none rounded-full flex-1"
             />
-            <button className="self-end bg-primary-blue text-white py-[12px] px-[16px] rounded-full">
+            <button className="self-end cursor-pointer bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 text-white py-[12px] px-[16px] rounded-full">
               Submit
             </button>
           </form>

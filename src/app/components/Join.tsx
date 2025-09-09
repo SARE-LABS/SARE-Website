@@ -16,7 +16,7 @@ function Join() {
         </p>
         <Link
           href={"/"}
-          className="w-[80%] flex items-center justify-center gap-2 bg-primary-blue font-bold text-[16px] text-white px-[10px] py-[14px] rounded-[35px]"
+          className="w-[80%] flex items-center justify-center gap-2 bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 font-bold text-[16px] text-white px-[10px] py-[14px] rounded-[35px]"
         >
           <Image src={Apply} width={15} height={15} alt="Logo" />
           <p>Start Application</p>
