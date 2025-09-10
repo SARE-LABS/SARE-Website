@@ -11,13 +11,12 @@ function Navbar() {
           <Image src={logoOne} width={54} height={48} alt="Logo" className="md:hidden" />
           <Image src={logoTwo} width={200} height={48} alt="Logo" className="hidden md:block bg-ed-400"/>
         </Link>
-        <Link
-          href={"/"}
-          className="md:w-[20%] flex items-center justify-center gap-2 bg-primary-blue font-bold text-[16px] text-white p-[10px] rounded-[35px]"
+        <button
+          className="cursor-pointer md:w-[20%] flex items-center justify-center gap-2 bg-primary-blue font-bold text-[16px] text-white p-[10px] rounded-[35px]"
         >
           <Image src={Apply} width={15} height={15} alt="Logo" />
           <p>Apply now</p>
-        </Link>
+        </button>
       </div>
       <NavMarques />
     </nav>

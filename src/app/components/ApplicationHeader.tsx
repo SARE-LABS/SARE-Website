@@ -78,12 +78,12 @@ function ApplicationHeader() {
               onClick={handleClose}
             >
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                onClick={(e) => e.stopPropagation()}
-                className="w-full flex justify-center"
+                initial={{ y: 100, opacity: 0 }} // Start below
+                animate={{ y: 0, opacity: 1 }} // Slide up
+                exit={{ y: 100, opacity: 0 }} // Slide down on close
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                onClick={(e) => e.stopPropagation()} // Prevent backdrop click
+                className="w-full max-w-[700px] mx-4"
               >
                 <ApplicationInfo onClose={handleClose} />
               </motion.div>

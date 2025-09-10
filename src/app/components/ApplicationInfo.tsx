@@ -124,7 +124,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       onClick={onClose} //  background click closes modal
     >
       <div
-        className="w-[90%] md:w-[50%] h-fit md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
+        className="w-[90%] md:w-[50%] h-[500px] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
         onClick={(e) => e.stopPropagation()} //  prevent closing when clicking inside
       >
         {/* Header */}
@@ -139,7 +139,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
               height={25}
               alt="close"
               onClick={onClose}
-              className="p-1 cursor-pointer rotate-45 bg-red-300 rounded-full flex items-center justify-center"
+              className="p-1 cursor-pointer rotate-45 bg-red-300/40 rounded-full flex items-center justify-center"
             />
           </div>
 
@@ -162,7 +162,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 md:py-[24px] text-left no-scrollbr md:px-[96px]">
+        <div className="flex-1 overflow-y-auto px-4 py-3 md:py-[24px] text-left no-scrollr md:px-[96px]">
           {/* Personal Info */}
           {activeStep === "personal" && (
             <form className="flex flex-col gap-2">
@@ -178,7 +178,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="Full name"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
               {/* Email */}
@@ -193,7 +193,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   inputMode="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
               {/* WhatsApp */}
@@ -216,7 +216,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                       handleChange(e);
                     }
                   }}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
 
@@ -232,7 +232,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="Department"
                   value={formData.department}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
             </form>
@@ -252,7 +252,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="Do you have any skills currently? Yes / No"
                   value={formData.currentSkills}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
               <span className="flex flex-col">
@@ -266,7 +266,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="If yes..."
                   value={formData.response}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
               <span className="flex flex-col">
@@ -280,7 +280,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="Skill 1, Skill 2"
                   value={formData.skills}
                   onChange={handleChange}
-                  className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
             </form>
@@ -300,7 +300,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="Tell us about a time you collaborated in a team"
                   value={formData.teamworkExperience}
                   onChange={handleChange}
-                  className="resize-none w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="resize-none w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
               <span className="flex flex-col">
@@ -314,7 +314,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   placeholder="How do you usually contribute to teamwork?"
                   value={formData.teamworkContribution}
                   onChange={handleChange}
-                  className="resize-none w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                  className="resize-none w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
             </form>
