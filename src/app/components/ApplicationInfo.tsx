@@ -1,10 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ALeft, ARIght, Plus } from "../../../public/images/images";
 
-function ApplicationInfo() {
+interface ApplicationInfoProps {
+  onClose: () => void;
+}
+
+function ApplicationInfo({ onClose }: ApplicationInfoProps) {
   const steps = [
     { key: "personal", label: "Personal Information" },
     { key: "skill", label: "Skills & Interests" },
@@ -25,6 +29,20 @@ function ApplicationInfo() {
     teamworkExperience: "",
     teamworkContribution: "",
   });
+
+  const isFormValid = () => {
+    return (
+      formData.fullName.trim() &&
+      formData.email.trim() &&
+      formData.currentSkills.trim() &&
+      formData.department.trim() &&
+      formData.response.trim() &&
+      formData.skills.trim() &&
+      formData.teamworkContribution.trim() &&
+      formData.teamworkExperience.trim() &&
+      formData.whatsapp.trim()
+    );
+  };
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -80,6 +98,8 @@ function ApplicationInfo() {
         teamworkContribution: "",
       });
       setActiveStep("personal");
+
+      onClose(); // ✅ close modal after submit
     } catch (error: any) {
       setMessage(`❌ ${error.message}`);
     } finally {
@@ -87,20 +107,40 @@ function ApplicationInfo() {
     }
   };
 
+  // ✅ Close on ESC key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
   return (
-    <div className="absolute top-0 left-0 w-full  h-[50%] flex items-center justify-center black/40 z-[100] md:top-[30%] shadow-sm">
-      <div className="w-[80%] md:w-[50%] h-[80%] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col">
+    <div
+      className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/40 z-50 shadow-sm"
+      onClick={onClose} //  background click closes modal
+    >
+      <div
+        className="w-[90%] md:w-[50%] h-[80%] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
+        onClick={(e) => e.stopPropagation()} //  prevent closing when clicking inside
+      >
         {/* Header */}
-        <div className="bg-background-card p-4 md:px-[48px]  rounded-t-[16px] flex flex-col items-center justify-center gap-2">
+        <div className="bg-background-card p-4 md:px-[48px] rounded-t-[16px] flex flex-col items-center justify-center gap-2">
           <div className="w-full flex items-center justify-between mb-1.5">
-            <p className="font-medium md:text-[30px]">Become a Part of Something Bigger</p>
-            {/* <Image
+            <p className="font-medium md:text-[30px]">
+              Become a Part of Something Bigger
+            </p>
+            <Image
               src={Plus}
               width={25}
               height={25}
               alt="close"
+              onClick={onClose}
               className="p-1 cursor-pointer rotate-45 bg-red-300 rounded-full flex items-center justify-center"
-            /> */}
+            />
           </div>
 
           <div className="overflow-x-auto no-scrollbar flex items-center justify-start w-full gap-2">
@@ -123,12 +163,13 @@ function ApplicationInfo() {
 
         {/* Body */}
         <div className="flex-1 overflow-y-auto px-4 py-3 md:py-[24px] text-left no-scrollbar md:px-[96px]">
+          {/* Personal Info */}
           {activeStep === "personal" && (
             <form className="flex flex-col gap-2">
+              {/* Full name */}
               <span className="flex flex-col">
                 <small className="text-[16px] text-text-primary">
-                  {" "}
-                  Full name{" "}
+                  Full name
                 </small>
                 <input
                   type="text"
@@ -140,6 +181,7 @@ function ApplicationInfo() {
                   className="w-full rounded-[16px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
+              {/* Email */}
               <span className="flex flex-col">
                 <small className="text-[16px] text-text-primary"> Email </small>
                 <input
@@ -147,11 +189,14 @@ function ApplicationInfo() {
                   name="email"
                   required
                   placeholder="Email"
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" // Valid email with @
+                  inputMode="email"
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
+              {/* WhatsApp */}
               <span className="flex flex-col">
                 <small className="text-[16px] text-text-primary">
                   WhatsApp Number
@@ -161,11 +206,21 @@ function ApplicationInfo() {
                   name="whatsapp"
                   required
                   placeholder="WhatsApp Number"
+                  inputMode="tel" // Better for phone numbers
+                  pattern="^\+?[0-9]*$" // Allows optional "+" followed by digits
                   value={formData.whatsapp}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    // Allow only digits and "+"
+                    if (/^\+?\d*$/.test(value)) {
+                      handleChange(e);
+                    }
+                  }}
                   className="w-full rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
                 />
               </span>
+
+              {/* Department */}
               <span className="flex flex-col">
                 <small className="text-[16px] text-text-primary">
                   Department
@@ -183,6 +238,7 @@ function ApplicationInfo() {
             </form>
           )}
 
+          {/* Skills Step */}
           {activeStep === "skill" && (
             <form className="flex flex-col gap-2">
               <span className="flex flex-col">
@@ -230,6 +286,7 @@ function ApplicationInfo() {
             </form>
           )}
 
+          {/* Teamwork Step */}
           {activeStep === "teamwork" && (
             <form className="flex flex-col gap-2">
               <span className="flex flex-col">
@@ -278,27 +335,22 @@ function ApplicationInfo() {
           {activeStep === "teamwork" ? (
             <button
               onClick={handleSubmit}
-              disabled={loading}
-              className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all disabled:opacity-50"
+              disabled={loading || !isFormValid()}
+              className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <small>{loading ? "Submitting..." : "Submit"}</small>
             </button>
           ) : (
             <button
               onClick={goNext}
-              className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary-blue text-white hover:bg-primary-blue-hover transition-all"
+              className={`cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary-blue text-white hover:bg-primary-blue-hover transition-all
+                `}
             >
               <small>Next</small>
               <Image src={ARIght} width={15} height={15} alt="next" />
             </button>
           )}
         </div>
-
-        {/* {message && (
-          <div className="p-2 text-sm text-center">
-            <p>{message}</p>
-          </div>
-        )} */}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   FAQDataCTRL,
   FAQDataGeneral,
@@ -34,22 +34,43 @@ function FAQs() {
     setOpenFAQ((prev) => (prev === id ? null : id));
   };
 
+  // Animate when section comes into view
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="py-[24px] md:py-[48px] px-[2rem] md:px-[96px]">
-      <div className="flex flex-col gap-[48px] items-center justify-center">
+    <div
+      ref={ref}
+      className="py-[24px] md:py-[48px] px-[2rem] md:px-[96px] overflow-hidden"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col gap-[48px] items-center justify-center"
+      >
         <div className="w-[382px] md:w-full flex flex-col gap-[16px] items-center text-center">
           <HighlightHead title="FAQs" />
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             <h1 className="text-[32px] font-medium text-text-primary leading-[120%]">
               Your Questions, Answered
             </h1>
             <p className="text-text-primary text-[16px] leading-[148%]">
               Get quick answers to what you need to know about SARE.
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[32px] w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-[32px] w-full"
+        >
           <div className="flex flex-col md:flex-row gap-[16px] w-full md:col-span-2">
             {/* Category Tabs */}
             <div className="flex w-fit items-start justify-ceter gap-[8px] md:flex-col">
@@ -57,7 +78,7 @@ function FAQs() {
                 <span
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key)}
-                  className={`md:w-[160px] cursor-pointer border-0 border-border py-[8px] px-[16px] text-[16px] rounded-full  transition ${
+                  className={`md:w-[160px] cursor-pointer border-0 border-border py-[8px] px-[16px] text-[16px] rounded-full transition ${
                     activeCategory === cat.key
                       ? "bg-highlight text-primary-blue"
                       : "bg-background-disabled text-text-secondary"
@@ -69,7 +90,7 @@ function FAQs() {
             </div>
 
             {/* FAQ Items */}
-            <div className="flex flex-col gap-[16px] w-full ">
+            <div className="flex flex-col gap-[16px] w-full">
               <AnimatePresence mode="wait">
                 {activeData.map((faq) => (
                   <motion.div
@@ -79,10 +100,8 @@ function FAQs() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
                     className={`${
-                      openFAQ === faq.id
-                        ? "bg-highlight "
-                        : "bg-background-disabled"
-                    }  text-text-primary w-full rounded-[16px] gap-[8px] p-[16px] flex items-start flex-col justify-between`}
+                      openFAQ === faq.id ? "bg-highlight " : "bg-background-disabled"
+                    } text-text-primary w-full rounded-[16px] gap-[8px] p-[16px] flex items-start flex-col justify-between`}
                   >
                     <div
                       className="w-full flex items-center justify-between cursor-pointer gap-[10px]"
@@ -94,7 +113,7 @@ function FAQs() {
                       <motion.div
                         animate={{ rotate: openFAQ === faq.id ? 45 : 0 }}
                         transition={{ duration: 0.2 }}
-                        className="p-[10px]  rounded-full bg-primary-blue flex items-center justify-center"
+                        className="p-[10px] rounded-full bg-primary-blue flex items-center justify-center"
                       >
                         <Image src={Plus} alt="plus" width={13} height={13} />
                       </motion.div>
@@ -120,8 +139,14 @@ function FAQs() {
             </div>
           </div>
 
-          <div className="text-black text-left p-[24px] rounded-[24px] bg-background-disabled flex flex-col items-start justify- gap-[16px]">
-            <h1 className="text-[24px] font-medium  leading-[120%]">
+          {/* Right box */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="text-black text-left p-[24px] rounded-[24px] bg-background-disabled flex flex-col items-start gap-[16px]"
+          >
+            <h1 className="text-[24px] font-medium leading-[120%]">
               Have a Question for SARE?
             </h1>
             <p className="text-[16px] leading-[148%] font-normal">
@@ -131,7 +156,7 @@ function FAQs() {
 
             <form
               action=""
-              className="w-full flex  gap-[16px] rounded-full border border-border ring-0 bg-white justify-between"
+              className="w-full flex gap-[16px] rounded-full border border-border ring-0 bg-white justify-between"
             >
               <input
                 type="text"
@@ -142,9 +167,9 @@ function FAQs() {
                 Submit
               </button>
             </form>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
