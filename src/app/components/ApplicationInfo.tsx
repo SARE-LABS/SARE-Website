@@ -124,7 +124,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       onClick={onClose} //  background click closes modal
     >
       <div
-        className="w-[90%] md:w-[50%] h-[80%] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
+        className="w-[90%] md:w-[50%] h-fit md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
         onClick={(e) => e.stopPropagation()} //  prevent closing when clicking inside
       >
         {/* Header */}
@@ -162,7 +162,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 md:py-[24px] text-left no-scrollbar md:px-[96px]">
+        <div className="flex-1 overflow-y-auto px-4 py-3 md:py-[24px] text-left no-scrollbr md:px-[96px]">
           {/* Personal Info */}
           {activeStep === "personal" && (
             <form className="flex flex-col gap-2">

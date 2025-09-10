@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+
     const {
       fullName,
       email,
@@ -14,6 +15,7 @@ export async function POST(req: Request) {
       currentSkills,
       teamworkExperience,
       teamworkContribution,
+      question, 
     } = body;
 
     const auth = new google.auth.GoogleAuth({
@@ -29,10 +31,44 @@ export async function POST(req: Request) {
     });
 
     const sheets = google.sheets({ version: "v4", auth });
-
     const spreadsheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = "ApplicationResponse!A:F";
 
+    // 🟢 Newsletter submission (only email provided)
+    if (email && !fullName && !whatsapp && !department && !question) {
+      const range = "Newsletter!A:B"; // Newsletter tab
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range,
+        valueInputOption: "RAW",
+        requestBody: {
+          values: [[email, new Date().toISOString()]],
+        },
+      });
+      return NextResponse.json({
+        success: true,
+        message: "✅ Newsletter signup successful!",
+      });
+    }
+
+    // 🟢 FAQ submission (only question provided)
+    if (question && !fullName && !whatsapp && !department) {
+      const range = "FAQs!A:B"; // FAQs tab
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range,
+        valueInputOption: "RAW",
+        requestBody: {
+          values: [[question, new Date().toISOString()]],
+        },
+      });
+      return NextResponse.json({
+        success: true,
+        message: "✅ FAQ submitted successfully!",
+      });
+    }
+
+    // 🟢 Application submission (full form)
+    const range = "ApplicationResponse!A:J"; // Application tab
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range,
@@ -54,9 +90,10 @@ export async function POST(req: Request) {
         ],
       },
     });
+
     return NextResponse.json({
       success: true,
-      message: "✅ Submitted successfully! ",
+      message: "✅ Application submitted successfully!",
     });
   } catch (error: any) {
     return NextResponse.json(
