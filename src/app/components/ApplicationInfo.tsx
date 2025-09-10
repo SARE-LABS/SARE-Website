@@ -88,7 +88,7 @@ function ApplicationInfo() {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full  h-[50%] flex items-center justify-center black/40 z-[100] md:top-[20%]">
+    <div className="absolute top-0 left-0 w-full  h-[50%] flex items-center justify-center black/40 z-[100] md:top-[30%] shadow-sm">
       <div className="w-[80%] md:w-[50%] h-[80%] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col">
         {/* Header */}
         <div className="bg-background-card p-4 md:px-[48px]  rounded-t-[16px] flex flex-col items-center justify-center gap-2">
