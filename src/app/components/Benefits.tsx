@@ -6,8 +6,8 @@ import CardLarge from "../UI/CardLarge";
 
 function Benefits() {
   return (
-    <div className="py-[24px] px-[2rem] overflow-hidden">
-      <div className="flex items-start justify-start gap-[24px] flex-col">
+    <div className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px]">
+      <div className="flex items-start justify-start gap-[24px] flex-col md:flex-row">
         <div className="flex flex-col gap-[16px]">
           <div className="mb-[16px]">
             <HighlightHead title="Benefits of Joining" />

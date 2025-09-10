@@ -10,6 +10,8 @@ import Ballon from "./ballon.svg";
 import Plus from "./plus.png";
 import Linkdln from "./linkedin.svg";
 import Mail from "./mail.svg";
+import ALeft from "./ALeft.svg";
+import ARIght from "./ARight.svg";
 
 export {
   Linkdln,
@@ -24,4 +26,6 @@ export {
   ExcosFrame,
   Ballon,
   Plus,
+  ALeft,
+  ARIght
 };

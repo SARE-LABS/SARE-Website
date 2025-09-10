@@ -4,19 +4,19 @@ import HighlightHead from "../UI/props/HighlightHead";
 import Image from "next/image";
 function Join() {
   return (
-    <div className="py-[24px] px-[2rem] ">
-      <div className=" flex flex-col gap-[16px] items-center justify-center text-center">
+    <div className="py-[24px] px-[2rem] md:py-[48px] md:px-[96px]">
+      <div className=" flex flex-col gap-[16px] md:gap-[24px] items-center justify-center text-center">
         <HighlightHead title="Join SARE" />
-        <h1 className="text-[48px] font-medium text-text-primary leading-[120%]">
+        <h1 className="text-[48px] font-medium text-text-primary md:w-[90%] leading-[120%]">
           Join the innovators who are creating real change.
         </h1>
-        <p className="text-[16px] text-text-primary leading-[120%]">
+        <p className="text-[16px] text-text-primary leading-[120%] x">
           SARE members are building skills, creating opportunities, and driving
           impact—join SARE today to shape the future you envision.
         </p>
         <Link
           href={"/"}
-          className="w-[80%] flex items-center justify-center gap-2 bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 font-bold text-[16px] text-white px-[10px] py-[14px] rounded-[35px]"
+          className="w-[80%] md:w-[50%] flex items-center justify-center gap-2 bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 font-bold text-[16px] text-white px-[10px] py-[14px] rounded-[35px]"
         >
           <Image src={Apply} width={15} height={15} alt="Logo" />
           <p>Start Application</p>

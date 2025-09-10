@@ -85,3 +85,12 @@
   );
   border-radius: 1rem; /* if you want rounded edges */
 }
+
+/* Hide scrollbar but still allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

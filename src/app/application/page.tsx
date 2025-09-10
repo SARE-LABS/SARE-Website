@@ -1,5 +1,6 @@
 import AnimationBg from "../components/AnimationBg";
 import Header from "../components/ApplicationHeader";
+import ApplicationHeaderTwo from "../components/ApplicationHeaderTwo";
 import Benefits from "../components/Benefits";
 import FAQs from "../components/FAQs";
 import Join from "../components/Join";
@@ -12,6 +13,7 @@ function page() {
     <div className="w-full overflow-hidden">
       <Navbar />
       <Header />
+      {/* <ApplicationHeaderTwo /> */}
       <WhyJoin />
       <Benefits />
       <AnimationBg />

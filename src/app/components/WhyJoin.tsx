@@ -6,22 +6,22 @@ import HighlightHead from "../UI/props/HighlightHead";
 
 function WhyJoin() {
   return (
-    <div className="py-[24px] px-[2rem] ">
-      <div className="flex flex-col items-center justify-center text-center gap-[16px]">
+    <div className="py-[24px] px-[2rem] md:px-[96px]">
+      <div className="flex flex-col items-center justify-center text-center gap-[16px] md:py-[48px]">
         <HighlightHead title="Why Join SARE?" />
 
-        <h1 className="text-[36px] text-text-primary font-bold leading-[120%] w-[382px]">
+        <h1 className="text-[36px] text-text-primary font-bold leading-[120%] w-[382px] md:w-full">
           For Visionaries, Innovators, and Problem Solvers
         </h1>
 
-        <p className="text-[16px] text-text-primary leading-[148%] w-[382px]">
+        <p className="text-[16px] text-text-primary leading-[148%] w-[382px] md:w-full">
           SARE is more than a community—it&apos;s a movement to transform
           agriculture through tech. If you&apos;re passionate about robotics,
           automation, and solving real challenges, this is where your ideas come
           to life.
         </p>
 
-        <div className="w-full flex flex-col items-center justify-center gap-[16px]">
+        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-[16px]">
           {Why.map((item) => (
             <div className="relative bg-highlight p-[16px] w-[382px] h-[364px] rounded-[16px] gap-[8px] flex flex-col items-center justify-center ">
               <Link

@@ -7,7 +7,7 @@ function Card() {
     <div className="relative w-full h-[160px]">
       <Link
         href={`/`}
-        className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-1 top-1 z-[100]"
+        className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-1 top-1 z-40"
       >
         <Image
           src={ArrowSlant}
