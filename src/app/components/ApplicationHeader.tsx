@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Time from "../UI/Time";
+import Time, { countdownDate } from "../UI/Time";
 import { Apply } from "../../../public/images/images";
 import Card from "../UI/Card";
 import CardLarge from "../UI/CardLarge";
@@ -12,9 +12,8 @@ import useCountdown from "../utils/useCountdown";
 
 function ApplicationHeader() {
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
-  const { days, hours, minutes, seconds, expired } = useCountdown(
-    "2025-09-10T23:59:59"
-  );
+  const { days, hours, minutes, seconds, expired } =
+    useCountdown(countdownDate);
   const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   const handleCardClick = () => setShowApplicationInfo(true);
@@ -104,7 +103,11 @@ function ApplicationHeader() {
           transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
           className="w-full flex flex-col items-center justify-center gap-4 mt-8"
         >
-          <p className={`text-[16px] ${expired ? "text-status-error" : "text-text-primary"}  leading-[148%]`}>
+          <p
+            className={`text-[16px] ${
+              expired ? "text-status-error" : "text-text-primary"
+            }  leading-[148%]`}
+          >
             {`${
               expired
                 ? "The membership application period has ended."

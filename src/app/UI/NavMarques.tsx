@@ -1,9 +1,10 @@
 "use client";
 
 import useCountdown from "../utils/useCountdown";
+import { countdownDate } from "./Time";
 
 function NavMarques() {
-  const { days, hours, minutes, seconds } = useCountdown("2025-09-10T23:59:59");
+  const { days, hours, minutes, seconds } = useCountdown(countdownDate);
 
   const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
   return (

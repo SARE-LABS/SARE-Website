@@ -1,10 +1,11 @@
 "use client";
 import useCountdown from "../utils/useCountdown";
 
+export const countdownDate = "2025-09-11T08:47:59";
+
 function Time() {
-  const { days, hours, minutes, seconds, expired } = useCountdown(
-    "2025-09-10T23:59:59"
-  );
+  const { days, hours, minutes, seconds, expired } =
+    useCountdown(countdownDate);
 
   // if (expired) {
   //   return <p className="text-red-600 font-medium">SARE Application Closes!</p>;
