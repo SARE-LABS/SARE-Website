@@ -19,7 +19,7 @@ function NavMarques() {
             {`${
               zeroLeft
                 ? "The membership application period has ended."
-                : `SARE membership applications are now open - and closes in{" "}
+                : `SARE membership applications are now open - and closes in
                 ${days > 0 ? days : "less than a"} day
                 ${days > 1 ? "s" : ""}`
             } `}
@@ -45,7 +45,7 @@ function NavMarques() {
             {`${
               zeroLeft
                 ? "The membership application period has ended."
-                : `SARE membership applications are now open - and closes in{" "}
+                : `SARE membership applications are now open - and closes in
                 ${days > 0 ? days : "less than a"} day
                 ${days > 1 ? "s" : ""}`
             } `}

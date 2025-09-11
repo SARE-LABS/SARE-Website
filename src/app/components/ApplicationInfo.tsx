@@ -3,12 +3,18 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ALeft, ARIght, Plus } from "../../../public/images/images";
+import useCountdown from "../utils/useCountdown";
+import { countdownDate } from "../UI/Time";
 
 interface ApplicationInfoProps {
   onClose: () => void;
 }
 
 function ApplicationInfo({ onClose }: ApplicationInfoProps) {
+  const { days, hours, minutes, seconds, expired } =
+    useCountdown(countdownDate);
+  const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
+
   const steps = [
     { key: "personal", label: "Personal Information" },
     { key: "skill", label: "Skills & Interests" },
@@ -335,7 +341,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
           {activeStep === "teamwork" ? (
             <button
               onClick={handleSubmit}
-              disabled={loading || !isFormValid()}
+              disabled={loading || !isFormValid() || zeroLeft}
               className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <small>{loading ? "Submitting..." : "Submit"}</small>
