@@ -8,31 +8,75 @@ import CardLarge from "../UI/CardLarge";
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
+import useCountdown from "../utils/useCountdown";
 
 function ApplicationHeader() {
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
+  const { days, hours, minutes, seconds, expired } = useCountdown(
+    "2025-09-10T23:59:59"
+  );
+  const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
-  const handleCardClick = () => {
-    setShowApplicationInfo(true);
-  };
+  const handleCardClick = () => setShowApplicationInfo(true);
+  const handleClose = () => setShowApplicationInfo(false);
 
-  const handleClose = () => {
-    setShowApplicationInfo(false);
-  };
-
-  // ✅ Close on ESC
+  // Close on ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setShowApplicationInfo(false);
-      }
+      if (e.key === "Escape") setShowApplicationInfo(false);
     };
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
+  /** Button (i am avoiding re-mounting heres) */
+  const ApplicationButton = (
+    <motion.button
+      // disabled={zeroLeft}
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+      onClick={handleCardClick}
+      className={`w-[80%] flex items-center justify-center gap-2 
+        bg-primary-blue hover:bg-primary-blue-hover 
+        transition-all ease-in-out duration-300 font-bold text-[16px] text-white 
+        px-[10px] py-[15px] rounded-[35px]
+        ${
+          zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""
+        }`}
+    >
+      <Image src={Apply} width={15} height={15} alt="Logo" />
+      <p>Start Application</p>
+    </motion.button>
+  );
+
   return (
     <>
+      {/* this form stays at root, not tied to layout */}
+      <AnimatePresence>
+        {showApplicationInfo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className=" fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            onClick={handleClose}
+          >
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-[700px] mx-4 flex justify-center"
+            >
+              <ApplicationInfo onClose={handleClose} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Mobile layout */}
       <div className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
         <motion.h1
@@ -60,56 +104,24 @@ function ApplicationHeader() {
           transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
           className="w-full flex flex-col items-center justify-center gap-4 mt-8"
         >
-          <p className="text-[16px] text-text-primary leading-[148%]">
-            Applications end in:
+          <p className={`text-[16px] ${expired ? "text-status-error" : "text-text-primary"}  leading-[148%]`}>
+            {`${
+              expired
+                ? "The membership application period has ended."
+                : `Applications end in:`
+            }`}
           </p>
           <Time />
         </motion.div>
 
-        {/* Application Info with backdrop */}
-        <AnimatePresence>
-          {showApplicationInfo && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-              onClick={handleClose}
-            >
-              <motion.div
-                initial={{ y: 100, opacity: 0 }} // Start below
-                animate={{ y: 0, opacity: 1 }} // Slide up
-                exit={{ y: 100, opacity: 0 }} // Slide down on close
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                onClick={(e) => e.stopPropagation()} // Prevent backdrop click
-                className="w-full max-w-[700px] mx-4"
-              >
-                <ApplicationInfo onClose={handleClose} />
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <motion.button
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-          onClick={handleCardClick}
-          className="w-[80%] outline-none cursor-pointer flex items-center justify-center gap-2 bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 font-bold text-[16px] text-white px-[10px] py-[15px] rounded-[35px]"
-        >
-          <Image src={Apply} width={15} height={15} alt="Logo" />
-          <p>Start Application</p>
-        </motion.button>
+        {ApplicationButton}
 
         <motion.div
           initial="hidden"
           animate="show"
           variants={{
             hidden: {},
-            show: {
-              transition: { staggerChildren: 0.15 },
-            },
+            show: { transition: { staggerChildren: 0.15 } },
           }}
           className="w-full grid grid-cols-3 gap-5 overflow-hidden"
         >
@@ -189,41 +201,7 @@ function ApplicationHeader() {
               <Time />
             </div>
 
-            {/* Application Info with backdrop */}
-            <AnimatePresence>
-              {showApplicationInfo && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-                  onClick={handleClose}
-                >
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    onClick={(e) => e.stopPropagation()}
-                    className="w-full flex justify-center"
-                  >
-                    <ApplicationInfo onClose={handleClose} />
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <motion.button
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
-              onClick={handleCardClick}
-              className="w-[80%] flex items-center justify-center gap-2 bg-primary-blue hover:bg-primary-blue-hover transition-all ease-in-out duration-300 font-bold text-[16px] text-white px-[10px] py-[15px] rounded-[35px]"
-            >
-              <Image src={Apply} width={15} height={15} alt="Logo" />
-              <p>Start Application</p>
-            </motion.button>
+            {ApplicationButton}
 
             <motion.div
               initial="hidden"

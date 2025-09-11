@@ -6,9 +6,9 @@ function Time() {
     "2025-09-10T23:59:59"
   );
 
-  if (expired) {
-    return <p className="text-red-600 font-medium">SARE Application Closes!</p>;
-  }
+  // if (expired) {
+  //   return <p className="text-red-600 font-medium">SARE Application Closes!</p>;
+  // }
 
   return (
     <div className="flex gap-2 text-lg font-bold text-primary-blue">
