@@ -14,6 +14,7 @@ import {
 } from "../../../public/images/images";
 import { Navigations } from "../../../public/data";
 import NavMarques from "../UI/NavMarques";
+import NavMobile from "../UI/NavMobile";
 
 function Navbar() {
   const pathname = usePathname();
@@ -91,6 +92,7 @@ function Navbar() {
       </div>
 
       <NavMarques />
+      <NavMobile />
     </nav>
   );
 }
