@@ -16,8 +16,14 @@ import ARIghtBlue from "./ArrowR-blue.svg";
 import ARIghtUp from "./Arrow-Right-Up.svg";
 import ArrowDown from "./Arrow-Down.svg";
 import User from "./User.svg";
+import HomeBg from "./HomeBg.jpg";
+import Folder from "./Folder.svg";
+import Music from "./Music.svg";
 
 export {
+  Music,
+  Folder,
+  HomeBg,
   ARIghtBlue,
   ARIghtUp,
   ArrowDown,
