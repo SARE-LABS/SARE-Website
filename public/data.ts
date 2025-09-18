@@ -1,4 +1,4 @@
-import { Ballon, ExcosFrame } from "./images/images";
+import { ARIghtBlue, Ballon, ExcosFrame } from "./images/images";
 
 export const Why = [
   {
@@ -63,7 +63,6 @@ export const FAQDataGeneral = [
     answer:
       "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
   },
- 
 ];
 
 export const FAQDataProjects = [
@@ -85,7 +84,6 @@ export const FAQDataProjects = [
     answer:
       "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
   },
- 
 ];
 
 export const FAQDataCTRL = [
@@ -107,5 +105,12 @@ export const FAQDataCTRL = [
     answer:
       "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
   },
- 
+];
+
+export const Navigations = [
+  { id: 1, name: "Home", link: "/" , icon: ARIghtBlue},
+  { id: 2, name: "About Us", link: "/about", icon: ARIghtBlue },
+  { id: 3, name: "Projects", link: "/projects" , icon: ARIghtBlue},
+  { id: 4, name: "CTRL LABS", link: "/ctrl-labs", icon: ARIghtBlue },
+  { id: 5, name: "Explore", link: "/explore", icon: ARIghtBlue },
 ];

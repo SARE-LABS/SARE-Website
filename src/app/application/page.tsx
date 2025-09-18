@@ -11,7 +11,7 @@ import WhyJoin from "../components/WhyJoin";
 function page() {
   return (
     <div className="w-full overflow-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
       <Header />
       {/* <ApplicationHeaderTwo /> */}
       <WhyJoin />

@@ -12,8 +12,16 @@ import Linkdln from "./linkedin.svg";
 import Mail from "./mail.svg";
 import ALeft from "./ALeft.svg";
 import ARIght from "./ARight.svg";
+import ARIghtBlue from "./ArrowR-blue.svg";
+import ARIghtUp from "./Arrow-Right-Up.svg";
+import ArrowDown from "./Arrow-Down.svg";
+import User from "./User.svg";
 
 export {
+  ARIghtBlue,
+  ARIghtUp,
+  ArrowDown,
+  User,
   Linkdln,
   Mail,
   logoOne,

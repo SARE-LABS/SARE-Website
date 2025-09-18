@@ -34,6 +34,13 @@
   );
 }
 
+.sare-text {
+  background: var(--color-sare-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -69,8 +76,6 @@
   );
 }
 
-
-
 .pathtwo {
   position: relative;
 }
@@ -80,7 +85,7 @@
   position: absolute;
   inset: 0;
   background: inherit;
-    clip-path: path(
+  clip-path: path(
     "M 140,40 L 80,40 A 10,10 0,0,1 70,30 L 70,10 A 10,10 0,0,0 60,0 L 10,0 A 10,10 0,0,0 0,10 L 0,190 A 10,10 0,0,0 10,200 L 140,200 A 10,10 0,0,0 150,190 L 150,50 A 10,10 0,0,0 140,40  Z"
   );
   border-radius: 1rem; /* if you want rounded edges */

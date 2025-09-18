@@ -5,11 +5,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: '/',
-        destination: '/application',
-        permanent: true, 
-      },
+      // {
+      //   source: '/',
+      //   destination: '/application',
+      //   permanent: true, 
+      // },
+      // {
+      //   source: '/contact',
+      //   destination: '/application',
+      //   permanent: true,
+      // }
     ]
   },
 }
