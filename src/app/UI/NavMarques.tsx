@@ -8,7 +8,7 @@ function NavMarques() {
 
   const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
   return (
-    <div className="w-full p-4 max-h-[50px] bg-primary-blue overflow-hidden">
+    <div className="w-full p-4 max-h-[50px] bg-primary-blue overflow-hidden ">
       <div className="flex whitespace-nowrap animate-marquee">
         <div className="flex items-center gap-4 ml-4">
           <p className="text-white">

@@ -24,7 +24,7 @@ function Navbar() {
     isActive(link) && [1, 2, 3, 5].includes(id);
 
   return (
-    <nav>
+    <nav className="fixed top-0 left-0 right-0 z-[100]">
       <div className="flex items-center justify-between py-[.2rem] px-[.5rem] md:px-[76px] bg-white md:min-w-[81px]">
         <Link href="/">
           <Image
@@ -57,7 +57,7 @@ function Navbar() {
                 <Image src={nav.icon} alt={nav.name} className="mr-2" />
               )}
 
-              <span className="flex items-center">
+              <span className="flex items-center flex-shrink-0 whitespace-nowrap ">
                 <p className={isActive(nav.link) ? "text-primary-blue" : ""}>
                   {nav.name}
                 </p>
@@ -80,7 +80,7 @@ function Navbar() {
           ))}
         </div>
 
-        <button className="flex items-center justify-center gap-2 bg-primary-blue font-bold text-[16px] text-white p-[10px] rounded-[35px] cursor-pointer md:w-fit">
+        <button className="flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2 bg-primary-blue font-bold text-[16px] text-white p-[10px] rounded-[35px] cursor-pointer md:w-fit">
           <Image
             src={pathname !== "/application" ? User : Apply}
             width={15}

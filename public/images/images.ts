@@ -19,10 +19,14 @@ import User from "./User.svg";
 import HomeBg from "./HomeBg.jpg";
 import Folder from "./Folder.svg";
 import Music from "./Music.svg";
+import Tractor from "./tractor.png";
+import Glances from "./glance.png";
 
 export {
+  Tractor,
   Music,
   Folder,
+  Glances,
   HomeBg,
   ARIghtBlue,
   ARIghtUp,
