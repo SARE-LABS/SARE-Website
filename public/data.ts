@@ -108,9 +108,32 @@ export const FAQDataCTRL = [
 ];
 
 export const Navigations = [
-  { id: 1, name: "Home", link: "/" , icon: ARIghtBlue},
+  { id: 1, name: "Home", link: "/", icon: ARIghtBlue },
   { id: 2, name: "About Us", link: "/about", icon: ARIghtBlue },
-  { id: 3, name: "Projects", link: "/projects" , icon: ARIghtBlue},
+  { id: 3, name: "Projects", link: "/projects", icon: ARIghtBlue },
   { id: 4, name: "CTRL LABS", link: "/ctrl-labs", icon: ARIghtBlue },
   { id: 5, name: "Explore", link: "/explore", icon: ARIghtBlue },
+];
+
+export const ProblemDiscovery = [
+  {
+    id: 1,
+    description: "Farm Scouting.",
+    img: Ballon,
+  },
+  {
+    id: 2,
+    description: "Surveys & Interviews.",
+    img: Ballon,
+  },
+  {
+    id: 3,
+    description: "Data Analysis.",
+    img: Ballon,
+  },
+  {
+    id: 4,
+    description: "Trend Monitoring",
+    img: Ballon,
+  },
 ];
