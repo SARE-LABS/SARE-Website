@@ -5,7 +5,7 @@ import Link from "next/link";
 function Glance() {
   return (
     <div className="">
-      <div className="relative overflow-hidden py-[24px] px-[2rem] gap-[24px] flex flex-col md:flex-row items-center md:items-start justify-center md:py-[48px] md:px-[96px] bg-white">
+      <div className="relative overflow-hidden py-[48px] px-[2rem] gap-[24px] flex flex-col md:flex-row items-center md:items-start justify-center md:py-[96px] md:px-[96px] bg-background-page">
         <div className="flex items-start gap-5  flex-col -[] m">
           <span className="w-fit flex-shrink-0 whitespace-nowrap  flex items-center text-primary-blue rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 bg-highlight gap-3">
             <Image src={ARIghtBlue} alt=""></Image>

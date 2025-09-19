@@ -3,7 +3,7 @@ import { Linkdln, logoTwo, Mail } from "../../../public/images/images";
 
 function Footer() {
   return (
-    <div className="py-[24px] md:py-[48px] px-[2rem] md:px-[96px]">
+    <div className="py-[24px] md:py-[48px] px-[2rem] md:px-[96px] bg-white">
       <div className="flex items-end justify-between border-b border-border pb-[24px]">
         <div className="">
           <Image src={logoTwo} alt="SARE Logo" width={200} height={100} />

@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { ProblemDiscovery } from "../../../public/data";
 import { ARIghtBlue } from "../../../public/images/images";
-import NormalCard from "../UI/NormalCard";
+import Card from "../UI/Card";
 import CardLarge from "../UI/CardLarge";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView, Variants } from "framer-motion";
 
-function Discovery() {
+function FieldTesting() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -51,16 +51,16 @@ function Discovery() {
         >
           <span className="w-fit flex-shrink-0 whitespace-nowrap  flex items-center text-primary-blue rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 bg-highlight gap-3">
             <Image src={ARIghtBlue} alt=""></Image>
-            <p>Problem Discovery</p>
+            <p>Field Testing</p>
           </span>
           <h1 className="text-[36px] text-text-primary font-medium  leading-[120%]">
-            We spot challenges before they turn into crises
+            The farm is our ultimate proving ground
           </h1>
           <p className="text-[16px] text-text-primary leading-[148%]">
-            At SARE, we start by identifying the real issues farmers face—manual
-            labor inefficiencies, water waste, low yields, and more. We engage
-            with farmers, analyze field data, and explore pain points to ensure
-            we&apos;re solving the right problems
+            We take our robots to real farms for testing. This allows us to
+            gather performance data under real agricultural conditions—soil,
+            weather, and crop variations—so we can fine-tune our systems for
+            reliability and scalability.
           </p>
           <motion.div
             variants={containerVariants}
@@ -84,26 +84,18 @@ function Discovery() {
         {/* Right Column (Cards) */}
         <motion.div
           variants={containerVariants}
-          className="w-full grid grid-cols-1 md:grid-cols-2 gap-3"
+          className="w-full grid grid-cols-3 gap-3"
         >
-          {/* Left big card */}
-          <motion.div variants={itemVariants} className="relative">
-            <NormalCard dimen="h-[100%]" />
+          <motion.div variants={itemVariants} className="col-span-3 relative ">
+            <CardLarge />
           </motion.div>
-
-          {/* Right column with two stacked cards */}
-          <div className="grid grid-rows-2 gap-3">
-            <motion.div variants={itemVariants} className="relative">
-              <NormalCard dimen="h-[100%]"/>
-            </motion.div>
-            <motion.div variants={itemVariants} className="relative">
-              <NormalCard dimen="h-[50%]"/>
-            </motion.div>
-          </div>
+          <motion.div variants={itemVariants} className="col-span-3 relative">
+            <CardLarge />
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>
   );
 }
 
-export default Discovery;
+export default FieldTesting;
