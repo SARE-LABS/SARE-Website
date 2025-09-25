@@ -1,4 +1,5 @@
 import {
+  Adruino,
   ARIghtBlue,
   Ballon,
   BuildSession,
@@ -6,6 +7,7 @@ import {
   ExcosFrame,
   HomeBg,
   Kennedy,
+  Member,
   Mentorship,
 } from "./images/images";
 
@@ -165,6 +167,27 @@ export const ApplicationKeyPoints = [
     figure: "3+",
     description: "Project Built.",
     img: BuildSession,
+  },
+];
+
+export const BenefitsKeyPoints = [
+  {
+    id: 1,
+    figure: "30+",
+    description: "Active Members.",
+    img: Adruino,
+  },
+  {
+    id: 2,
+    figure: "10+",
+    description: "Successful Training Sessions.",
+    img: Member,
+  },
+  {
+    id: 3,
+    figure: "3+",
+    description: "Project Built.",
+    img: Member,
   },
 ];
 

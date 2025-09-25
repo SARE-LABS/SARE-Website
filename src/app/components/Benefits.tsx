@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { ApplicationKeyPoints, Benefit } from "../../../public/data";
+import { ApplicationKeyPoints, Benefit, BenefitsKeyPoints } from "../../../public/data";
 import HighlightHead from "../UI/props/HighlightHead";
 import Card from "../UI/Card";
 import CardLarge from "../UI/CardLarge";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView, Variants } from "framer-motion";
-import { Kennedy } from "../../../public/images/images";
+import { CAD, Kennedy } from "../../../public/images/images";
 
 function Benefits() {
   const ref = useRef(null);
@@ -88,7 +88,7 @@ function Benefits() {
             <div
               className="relative w-full h-[160px] md:h-full  rounded-md"
               style={{
-                backgroundImage: `url(${Kennedy.src})`,
+                backgroundImage: `url(${CAD.src})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -96,19 +96,19 @@ function Benefits() {
               <div className="relative w-[100%] h-[160px] md:h-full   overflow-hidden  flex justify-items-end items-end ">
                 <div className="absolute inset-0 bg-black/40 rounded-md"></div>
 
-                <div className="relative inset-0 flex flex-col justify-between -4">
+                {/* <div className="relative inset-0 flex flex-col justify-between -4">
                   <div className="flex flex-col items-center justify-center">
                     <p className="text-white p-3  text-left text-sm">
                       Interviewing farmers at Egundungun lagos about a new type
                       of farm machinery and irrigation methods
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>
           <motion.div variants={itemVariants} className="relative grid grid-cols-2 md:grid-cols-1 gap-3">
-            {ApplicationKeyPoints.slice(0, 2).map((points) => (
+            {BenefitsKeyPoints.slice(0, 2).map((points) => (
               <div
                 key={points.id}
                 className="relative w-full h-[160px] md:h-fit"
@@ -121,7 +121,7 @@ function Benefits() {
                 <div className="relative w-full h-[160px] rounded-md overflow-hidden flex justify-items-end items-end">
                   <div className="absolute inset-0 bg-black/40 rounded-md"></div>
 
-                  <div className="relative inset-0 flex flex-col justify-between p-4">
+                  {/* <div className="relative inset-0 flex flex-col justify-between p-4">
                     <div className="flex flex-col items-start justify-center">
                       <p className="text-white text-sm leading-3">
                         {points.description}
@@ -130,7 +130,7 @@ function Benefits() {
                         {points.figure}
                       </h2>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

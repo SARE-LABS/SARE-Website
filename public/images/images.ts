@@ -24,8 +24,14 @@ import Glances from "./glance.png";
 import Mentorship from "./Mentorship.jpg";
 import BuildSession from "./b.jpg";
 import Excos from "./IMG_3939.jpg";
+import Adruino from "./CTRL_LABS125.jpg";
+import CAD from "./IMG-20250614-WA0061.jpg";
+import Member from "./IMG_3790.jpg";
 
 export {
+  Member,
+  CAD,
+  Adruino,
   Excos,
   BuildSession,
   Mentorship,

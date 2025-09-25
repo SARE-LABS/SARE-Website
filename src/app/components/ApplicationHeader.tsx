@@ -86,7 +86,7 @@ function ApplicationHeader() {
       </AnimatePresence>
 
       {/* Mobile layout */}
-      <div className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
+      <div id="apply-section" className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -197,7 +197,7 @@ function ApplicationHeader() {
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
+      <div id="apply-section" className="scroll-smooth hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

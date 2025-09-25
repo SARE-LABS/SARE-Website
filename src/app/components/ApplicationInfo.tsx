@@ -135,7 +135,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
         height={25}
         alt="close"
         onClick={onClose}
-        className="p-1 cursor-pointer rotate-45 bg-gray-300/40 hover:bg-gray-500/80 transition-all duration-300 ease-in-out rounded-full flex items-center justify-center absolute top-7 md:top-10 md:right-70"
+        className="p-1 cursor-pointer rotate-45 bg-gray-300/40 hover:bg-gray-500/80 transition-all duration-300 ease-in-out rounded-full flex items-center justify-center absolute top-10 md:top-10 md:right-70"
       />
       <div
         className="w-[90%] md:w-[50%] h-[500px] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
@@ -338,6 +338,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
             <small>Previous</small>
           </button>
 
+          {/* <p>hjk</p> */}
           {activeStep === "teamwork" ? (
             <button
               onClick={handleSubmit}

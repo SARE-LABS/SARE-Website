@@ -49,9 +49,10 @@ function Navbar() {
               key={nav.id}
               href={nav.link}
               className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
-                text-text-primary hover:text-primary-blue  ${pathname === '/application' ? "hidden" : ""}
+                text-text-primary hover:text-primary-blue  ${
+                  pathname === "/application" ? "hidden" : ""
+                }
                 ${isActive(nav.link) ? "bg-highlight" : ""}`}
-                
             >
               {/* Navigation Icon (only on specific IDs when active) */}
               {showIcon(nav.id, nav.link) && (
@@ -81,7 +82,8 @@ function Navbar() {
           ))}
         </div>
 
-        <button
+        <Link
+          href="#apply-section"
           className="flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2  bg-primary-blue hover:bg-primary-blue-hover 
         transition-all ease-in-out duration-300 font-bold text-[16px] text-white p-[10px] rounded-[35px] cursor-pointer md:w-fit"
         >
@@ -92,7 +94,7 @@ function Navbar() {
             alt="Action icon"
           />
           <p>{pathname !== "/application" ? "Get involved" : "Apply now"}</p>
-        </button>
+        </Link>
       </div>
 
       <NavMarques />
