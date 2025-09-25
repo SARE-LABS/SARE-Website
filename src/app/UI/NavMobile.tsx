@@ -14,7 +14,10 @@ function NavMobile() {
     isActive(link) && [1, 2, 3, 5].includes(id);
 
   return (
-    <div className="md:hidden w-full p-4 max-h-[50px] flex items-center bg-white overflow-x-scroll no-scrollbar flex-nowrap">
+    <div
+      className={`md:hidden w-full p-4 max-h-[50px] flex items-center bg-white overflow-x-scroll no-scrollbar flex-nowrap 
+    ${pathname === "/application" ? "hidden" : ""}`}
+    >
       {Navigations.map((nav) => (
         <Link
           key={nav.id}

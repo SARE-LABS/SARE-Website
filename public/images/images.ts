@@ -21,8 +21,14 @@ import Folder from "./Folder.svg";
 import Music from "./Music.svg";
 import Tractor from "./tractor.png";
 import Glances from "./glance.png";
+import Mentorship from "./Mentorship.jpg";
+import BuildSession from "./b.jpg";
+import Excos from "./IMG_3939.jpg";
 
 export {
+  Excos,
+  BuildSession,
+  Mentorship,
   Tractor,
   Music,
   Folder,

@@ -2,13 +2,22 @@
 
 import Image from "next/image";
 import Time, { countdownDate } from "../UI/Time";
-import { Apply } from "../../../public/images/images";
+import {
+  Apply,
+  ArrowSlant,
+  Excos,
+  HomeBg,
+  Kennedy,
+} from "../../../public/images/images";
 import Card from "../UI/Card";
 import CardLarge from "../UI/CardLarge";
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
 import useCountdown from "../utils/useCountdown";
+import { ApplicationKeyPoints, Imagess } from "../../../public/data";
+import Link from "next/link";
+import SmallApplicationCards from "../UI/SmallApplicationCards";
 
 function ApplicationHeader() {
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
@@ -77,7 +86,7 @@ function ApplicationHeader() {
       </AnimatePresence>
 
       {/* Mobile layout */}
-      <div className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden">
+      <div className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -126,11 +135,11 @@ function ApplicationHeader() {
             hidden: {},
             show: { transition: { staggerChildren: 0.15 } },
           }}
-          className="w-full grid grid-cols-3 gap-5 overflow-hidden"
+          className="w-full grid grid-cols-3 gap-3 overflow-hidden"
         >
-          {[...Array(3)].map((_, i) => (
+          {ApplicationKeyPoints.map((point) => (
             <motion.div
-              key={i}
+              key={point.id}
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 show: { opacity: 1, y: 0 },
@@ -138,11 +147,33 @@ function ApplicationHeader() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="relative flex"
             >
-              <Card />
+              <div className="relative w-full h-[160px]">
+                <div className="relative w-full h-[160px] rounded-md p-3   overflow-hidden  flex justify-items-end items-end ">
+                  <Image
+                    src={point.img}
+                    alt={point.description}
+                    fill
+                    className="object-cover "
+                  />
+
+                  <div className="absolute inset-0 bg-black/40"></div>
+
+                  <div className="relative inset-0 flex flex-col justify-between text-left ">
+                    <div className="flex flex-col items-start justify-center">
+                      <p className="text-white text-sm leading-3">
+                        {point.description}
+                      </p>
+                      <h2 className="text-white text-3xl font-bold">
+                        {point.figure}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
 
-          {[...Array(2)].map((_, i) => (
+          {Imagess.map((i, index) => (
             <motion.div
               key={`large-${i}`}
               variants={{
@@ -152,14 +183,21 @@ function ApplicationHeader() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex relative col-span-3"
             >
-              <CardLarge />
+              <div
+                className="relative w-full h-[160px] rounded-md"
+                style={{
+                  backgroundImage: `url(${i.img.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
       {/* Desktop layout */}
-      <div className="hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden">
+      <div className="hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -185,9 +223,14 @@ function ApplicationHeader() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative w-[280px] h-[405px] rounded-[16px]"
+            className="flex relative rounded-md"
+            style={{
+              backgroundImage: `url(${HomeBg.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            <CardLarge />
+            {/* <div className="absolute inset-0 bg-black/40"></div> */}
           </motion.div>
 
           {/* Center section */}
@@ -195,40 +238,27 @@ function ApplicationHeader() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
-            className="flex flex-col items-center justify-between w-full col-span-2"
+            className="flex flex-col items-center justify-between w-full col-span-2 gap-2"
           >
             <div className="w-full flex flex-col items-center justify-center gap-4">
-              <p className="text-[16px] text-text-primary leading-[148%]">
-                Applications end in:
+              <p
+                className={`text-[18px]  ${
+                  expired ? "text-status-error" : "text-text-primary"
+                }  leading-[148%]`}
+              >
+                {`${
+                  expired
+                    ? "The membership application period has ended."
+                    : `Applications end in:`
+                }`}
               </p>
+
               <Time />
             </div>
 
             {ApplicationButton}
 
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: 0.15 } },
-              }}
-              className="w-full grid grid-cols-3 gap-5 mt-6"
-            >
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    show: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="relative flex"
-                >
-                  <Card />
-                </motion.div>
-              ))}
-            </motion.div>
+            <SmallApplicationCards styles="w-full grid grid-cols-3 gap-3 mt-6" />
           </motion.div>
 
           {/* Right big card */}
@@ -236,9 +266,14 @@ function ApplicationHeader() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative w-[280px] h-[405px] rounded-[16px]"
+            className="flex relative rounded-md"
+            style={{
+              backgroundImage: `url(${Excos.src})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            <CardLarge />
+            {/* <div className="absolute inset-0 bg-black/40"></div> */}
           </motion.div>
         </div>
       </div>

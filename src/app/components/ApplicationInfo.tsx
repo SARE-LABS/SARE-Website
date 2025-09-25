@@ -126,7 +126,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
 
   return (
     <div
-      className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/40 z-50 shadow-sm"
+      className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/40 z-[100] shadow-sm"
       onClick={onClose} //  background click closes modal
     >
       <div

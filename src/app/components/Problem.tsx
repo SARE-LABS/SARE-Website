@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ARIghtBlue, Tractor } from "../../../public/images/images";
+import Glance from "./Glance";
 
 function Problem() {
   return (
@@ -23,6 +24,8 @@ function Problem() {
           className="absolute left-[60%] bottom-[-1%]"
         /> */}
       </div>
+
+      {/* <Glance /> */}
     </div>
   );
 }

@@ -16,7 +16,11 @@ const categories = [
   { key: "ctrl", label: "CTRL LAB", data: FAQDataCTRL },
 ];
 
-function FAQs() {
+interface BackgroundColour {
+  colour?: string;
+}
+
+function FAQs({ colour }: BackgroundColour) {
   const [activeCategory, setActiveCategory] = useState("general");
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
@@ -41,7 +45,9 @@ function FAQs() {
   return (
     <div
       ref={ref}
-      className="py-[24px] md:py-[48px] px-[2rem] md:px-[96px] overflow-hidden"
+      className={`py-[24px] md:py-[48px] px-[2rem] md:px-[96px] overflow-hidden ${
+        colour ?? ""
+      }`}
     >
       <motion.div
         initial={{ opacity: 0, y: 80 }}
@@ -73,7 +79,7 @@ function FAQs() {
         >
           <div className="flex flex-col md:flex-row gap-[16px] w-full md:col-span-2">
             {/* Category Tabs */}
-            <div className="flex w-fit items-start justify-ceter gap-[8px] md:flex-col">
+            <div className="flex w-fit items-start gap-[8px] md:flex-col">
               {categories.map((cat) => (
                 <span
                   key={cat.key}
@@ -100,7 +106,9 @@ function FAQs() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}
                     className={`${
-                      openFAQ === faq.id ? "bg-highlight " : "bg-background-disabled"
+                      openFAQ === faq.id
+                        ? "bg-highlight "
+                        : "bg-background-disabled"
                     } text-text-primary w-full rounded-[16px] gap-[8px] p-[16px] flex items-start flex-col justify-between`}
                   >
                     <div

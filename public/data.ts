@@ -1,4 +1,13 @@
-import { ARIghtBlue, Ballon, ExcosFrame } from "./images/images";
+import {
+  ARIghtBlue,
+  Ballon,
+  BuildSession,
+  Excos,
+  ExcosFrame,
+  HomeBg,
+  Kennedy,
+  Mentorship,
+} from "./images/images";
 
 export const Why = [
   {
@@ -135,5 +144,37 @@ export const ProblemDiscovery = [
     id: 4,
     description: "Trend Monitoring",
     img: Ballon,
+  },
+];
+
+export const ApplicationKeyPoints = [
+  {
+    id: 1,
+    figure: "30+",
+    description: "Active Members.",
+    img: Mentorship,
+  },
+  {
+    id: 2,
+    figure: "10+",
+    description: "Successful Training Sessions.",
+    img: Kennedy,
+  },
+  {
+    id: 3,
+    figure: "3+",
+    description: "Project Built.",
+    img: BuildSession,
+  },
+];
+
+export const Imagess = [
+  {
+    id: 1,
+    img: HomeBg,
+  },
+  {
+    id: 2,
+    img: Excos,
   },
 ];

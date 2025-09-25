@@ -36,7 +36,7 @@ function Discovery() {
   return (
     <div
       ref={ref}
-      className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] bg-background-page"
+      className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] bg-background-page "
     >
       <motion.div
         variants={containerVariants}

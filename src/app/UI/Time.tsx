@@ -1,7 +1,7 @@
 "use client";
 import useCountdown from "../utils/useCountdown";
 
-export const countdownDate = "2025-09-11T15:04:59";
+export const countdownDate = "2025-09-25T15:04:59";
 
 function Time() {
   const { days, hours, minutes, seconds, expired } =
@@ -16,7 +16,7 @@ function Time() {
       <div className=" flex items-start justify-center gap-2">
         <span className="flex flex-col items-center">
           <p className="timebox">{days < 10 ? `0${days}` : days}</p>
-          <p className="text-[12px] font-medium text-text-secondary">Days</p>
+          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Days</p>
         </span>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
@@ -24,7 +24,7 @@ function Time() {
       <div className=" flex items-start justify-center gap-2">
         <span className="flex flex-col items-center">
           <p className="timebox">{hours < 10 ? `0${hours}` : hours}</p>
-          <p className="text-[12px] font-medium text-text-secondary">Hours</p>
+          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Hours</p>
         </span>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
@@ -32,7 +32,7 @@ function Time() {
       <div className=" flex items-start justify-center gap-2">
         <span className="flex flex-col items-center">
           <p className="timebox">{minutes < 10 ? `0${minutes}` : minutes}</p>
-          <p className="text-[12px] font-medium text-text-secondary">Minutes</p>
+          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Minutes</p>
         </span>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
@@ -40,7 +40,7 @@ function Time() {
       <div className=" flex items-start justify-center gap-2">
         <span className="flex flex-col items-center">
           <p className="timebox">{seconds < 10 ? `0${seconds}` : seconds}</p>
-          <p className="text-[12px] font-medium text-text-secondary">Seconds</p>
+          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Seconds</p>
         </span>
       </div>
     </div>
