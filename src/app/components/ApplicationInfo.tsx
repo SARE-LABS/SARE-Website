@@ -129,24 +129,24 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/40 z-[100] shadow-sm"
       onClick={onClose} //  background click closes modal
     >
+      <Image
+        src={Plus}
+        width={25}
+        height={25}
+        alt="close"
+        onClick={onClose}
+        className="p-1 cursor-pointer rotate-45 bg-gray-300/40 hover:bg-gray-500/80 transition-all duration-300 ease-in-out rounded-full flex items-center justify-center absolute top-7 md:top-10 md:right-70"
+      />
       <div
         className="w-[90%] md:w-[50%] h-[500px] md:h-[500px] max-w-g bg-background-disabled rounded-[16px] text-center shadow-lg flex flex-col"
         onClick={(e) => e.stopPropagation()} //  prevent closing when clicking inside
       >
         {/* Header */}
         <div className="bg-background-card p-4 md:px-[48px] rounded-t-[16px] flex flex-col items-center justify-center gap-2">
-          <div className="w-full flex items-center justify-between mb-1.5">
-            <p className="font-medium md:text-[30px]">
+          <div className="w-full flex shrink-0 items-center justify-center mb-1.5">
+            <p className="font-medium text-[20px] md:text-[30px]">
               Become a Part of Something Bigger
             </p>
-            <Image
-              src={Plus}
-              width={25}
-              height={25}
-              alt="close"
-              onClick={onClose}
-              className="p-1 cursor-pointer rotate-45 bg-red-300/40 rounded-full flex items-center justify-center"
-            />
           </div>
 
           <div className="overflow-x-auto no-scrollbar flex items-center justify-start w-full gap-2">

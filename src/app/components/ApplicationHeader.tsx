@@ -47,7 +47,7 @@ function ApplicationHeader() {
       onClick={handleCardClick}
       className={`w-[80%] flex items-center justify-center gap-2 
         bg-primary-blue hover:bg-primary-blue-hover 
-        transition-all ease-in-out duration-300 font-bold text-[16px] text-white 
+        transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
         px-[10px] py-[15px] rounded-[35px]
         ${
           zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""
@@ -72,12 +72,12 @@ function ApplicationHeader() {
             onClick={handleClose}
           >
             <motion.div
-              initial={{ y: 100, opacity: 0 }}
+              // initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[700px] mx-4 flex justify-center"
+              className="w-full max-w-ft mx-4 flex justify-center"
             >
               <ApplicationInfo onClose={handleClose} />
             </motion.div>

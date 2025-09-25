@@ -31,11 +31,9 @@ function WhyJoin() {
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
+  const disabled = true;
   return (
-    <div
-      ref={ref}
-      className="py-[24px] px-[2rem] md:px-[96px] overflow-hidden"
-    >
+    <div ref={ref} className="py-[24px] px-[2rem] md:px-[96px] overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -73,9 +71,10 @@ function WhyJoin() {
               variants={cardVariants}
               className="relative bg-highlight p-[16px] w-[382px] h-[364px] rounded-[16px] gap-[8px] flex flex-col items-center justify-center"
             >
-              <Link
+              {/* <Link
                 href={item.link}
-                className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-highlight right-5 top-6 z-[100]"
+                onClick={(e) => disabled && e.preventDefault()}
+                className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-ble transition-all ease-in-out duration-300 bg-text-disabled right-5 top-6 z-[10]"
               >
                 <Image
                   src={ArrowSlant}
@@ -84,7 +83,7 @@ function WhyJoin() {
                   alt="Logo"
                   className="group-hover:grayscale-100 transition-all ease-in-out duration-300"
                 />
-              </Link>
+              </Link> */}
               <div className="w-full h-[280px] rounded-[16px] overflow-hidden">
                 <Image
                   src={item.img}

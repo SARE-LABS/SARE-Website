@@ -49,8 +49,9 @@ function Navbar() {
               key={nav.id}
               href={nav.link}
               className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
-                text-text-primary hover:text-primary-blue 
+                text-text-primary hover:text-primary-blue  ${pathname === '/application' ? "hidden" : ""}
                 ${isActive(nav.link) ? "bg-highlight" : ""}`}
+                
             >
               {/* Navigation Icon (only on specific IDs when active) */}
               {showIcon(nav.id, nav.link) && (
