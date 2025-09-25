@@ -9,14 +9,11 @@ import {
   HomeBg,
   Kennedy,
 } from "../../../public/images/images";
-import Card from "../UI/Card";
-import CardLarge from "../UI/CardLarge";
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
 import useCountdown from "../utils/useCountdown";
 import { ApplicationKeyPoints, Imagess } from "../../../public/data";
-import Link from "next/link";
 import SmallApplicationCards from "../UI/SmallApplicationCards";
 
 function ApplicationHeader() {

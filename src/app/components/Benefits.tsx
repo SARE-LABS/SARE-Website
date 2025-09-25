@@ -1,7 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { ApplicationKeyPoints, Benefit, BenefitsKeyPoints } from "../../../public/data";
+import {
+  ApplicationKeyPoints,
+  Benefit,
+  BenefitsKeyPoints,
+} from "../../../public/data";
 import HighlightHead from "../UI/props/HighlightHead";
 import Card from "../UI/Card";
 import CardLarge from "../UI/CardLarge";
@@ -84,7 +88,10 @@ function Benefits() {
           variants={containerVariants}
           className="w-full md:w-[55%] grid md:grid-cols-2 grid-row-2 gap-3 "
         >
-          <motion.div variants={itemVariants} className="row-span-2 md:row-span-1 relative">
+          <motion.div
+            variants={itemVariants}
+            className="row-span-2 md:row-span-1 relative"
+          >
             <div
               className="relative w-full h-[160px] md:h-full  rounded-md"
               style={{
@@ -107,11 +114,14 @@ function Benefits() {
               </div>
             </div>
           </motion.div>
-          <motion.div variants={itemVariants} className="relative grid grid-cols-2 md:grid-cols-1 gap-3">
+          <motion.div
+            variants={itemVariants}
+            className="relative grid grid-cols-2 md:grid-cols-1 gap-3"
+          >
             {BenefitsKeyPoints.slice(0, 2).map((points) => (
               <div
                 key={points.id}
-                className="relative w-full h-[160px] md:h-fit"
+                className="relative w-full h-[160px] md:h-fit rounded-md"
                 style={{
                   backgroundImage: `url(${points.img.src})`,
                   backgroundSize: "cover",
@@ -120,17 +130,6 @@ function Benefits() {
               >
                 <div className="relative w-full h-[160px] rounded-md overflow-hidden flex justify-items-end items-end">
                   <div className="absolute inset-0 bg-black/40 rounded-md"></div>
-
-                  {/* <div className="relative inset-0 flex flex-col justify-between p-4">
-                    <div className="flex flex-col items-start justify-center">
-                      <p className="text-white text-sm leading-3">
-                        {points.description}
-                      </p>
-                      <h2 className="text-white text-3xl font-bold">
-                        {points.figure}
-                      </h2>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             ))}

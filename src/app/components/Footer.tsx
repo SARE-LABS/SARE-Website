@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Linkdln, logoTwo, Mail } from "../../../public/images/images";
 
 function Footer() {
@@ -14,12 +15,22 @@ function Footer() {
         </div>
 
         <div className="flex items-center gap-[5px]">
-          <div className="bg-primary-blue p-2 rounded-full cursor-pointer">
-            <Image src={Linkdln} alt="LinkedIn Logo" width={15} height={15} />
-          </div>
-          <div className="bg-primary-blue p-2 rounded-full cursor-pointer">
-            <Image src={Mail} alt="Mail Logo" width={15} height={15} />
-          </div>
+          <Link
+            href="https://www.linkedin.com/company/society-of-agricultural-robotics-engineers/"
+            target="_blank"
+            className="group bg-primary-blue p-2 rounded-full cursor-pointer"
+          >
+            <Image
+              src={Linkdln}
+              alt="LinkedIn Logo"
+              width={15}
+              height={15}
+              className="group-hover:invert-50 transition-all ease-in-out duration-300"
+            />
+          </Link>
+          <Link href={`mailto:sagriculturalroboticsengineers@gmail.com`} className="group bg-primary-blue p-2 rounded-full cursor-pointer">
+            <Image src={Mail} alt="Mail Logo" width={15} height={15} className="group-hover:invert-50 transition-all ease-in-out duration-300"  />
+          </Link>
         </div>
       </div>
       <p className="text-center text-[14px] text-[#6B7280] pt-[16px]">
