@@ -5,21 +5,33 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // {
-      //   source: '/',
-      //   destination: '/application',
-      //   permanent: true, 
-      // },
-      // {
-      //   source: '/contact',
-      //   destination: '/application',
-      //   permanent: true,
-      // }
-    ]
+      {
+        source: "/",
+        destination: "/application",
+        permanent: true,
+      },
+      {
+        source: "/about",
+        destination: "/application",
+        permanent: true,
+      },
+      {
+        source: "/projects",
+        destination: "/application",
+        permanent: true,
+      },
+      {
+        source: "/ctrl-labs",
+        destination: "/application",
+        permanent: true,
+      },
+      {
+        source: "/explore",
+        destination: "/application",
+        permanent: true,
+      },
+    ];
   },
-}
+};
 
 export default nextConfig;
-
-
-
