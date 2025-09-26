@@ -117,7 +117,7 @@ function ApplicationHeader() {
             {`${
               expired
                 ? "The membership application period has ended."
-                : `Applications end in:`
+                : `Application ends in:`
             }`}
           </p>
           <Time />
@@ -246,7 +246,7 @@ function ApplicationHeader() {
                 {`${
                   expired
                     ? "The membership application period has ended."
-                    : `Applications end in:`
+                    : `Application ends in:`
                 }`}
               </p>
 

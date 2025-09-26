@@ -10,7 +10,7 @@ import WhyJoin from "../components/WhyJoin";
 
 function page() {
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden scroll-smooth">
       {/* <Navbar /> */}
       <Header />
       {/* <ApplicationHeaderTwo /> */}
