@@ -14,34 +14,34 @@ function Time() {
   return (
     <div className="flex gap-2 text-lg font-bold text-primary-blue">
       <div className=" flex items-start justify-center gap-2">
-        <span className="flex flex-col items-center">
-          <p className="timebox">{days < 10 ? `0${days}` : days}</p>
-          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Days</p>
-        </span>
+        <p className="flex flex-col items-center">
+          <span className="timebox">{days < 10 ? `0${days}` : days}</span>
+          <span className="text-[12px] md:text-[15px] font-medium text-text-secondary">Days</span>
+        </p>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
       </div>
       <div className=" flex items-start justify-center gap-2">
-        <span className="flex flex-col items-center">
-          <p className="timebox">{hours < 10 ? `0${hours}` : hours}</p>
-          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Hours</p>
-        </span>
+        <p className="flex flex-col items-center">
+          <span className="timebox">{hours < 10 ? `0${hours}` : hours}</span>
+          <span className="text-[12px] md:text-[15px] font-medium text-text-secondary">Hours</span>
+        </p>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
       </div>
       <div className=" flex items-start justify-center gap-2">
-        <span className="flex flex-col items-center">
-          <p className="timebox">{minutes < 10 ? `0${minutes}` : minutes}</p>
-          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Minutes</p>
-        </span>
+        <p className="flex flex-col items-center">
+          <span className="timebox">{minutes < 10 ? `0${minutes}` : minutes}</span>
+          <span className="text-[12px] md:text-[15px] font-medium text-text-secondary">Minutes</span>
+        </p>
 
         <h1 className="text-text-primary font-bold text-[40px] ">:</h1>
       </div>
       <div className=" flex items-start justify-center gap-2">
-        <span className="flex flex-col items-center">
-          <p className="timebox">{seconds < 10 ? `0${seconds}` : seconds}</p>
-          <p className="text-[12px] md:text-[15px] font-medium text-text-secondary">Seconds</p>
-        </span>
+        <p className="flex flex-col items-center">
+          <span className="timebox">{seconds < 10 ? `0${seconds}` : seconds}</span>
+          <span className="text-[12px] md:text-[15px] font-medium text-text-secondary">Seconds</span>
+        </p>
       </div>
     </div>
   );

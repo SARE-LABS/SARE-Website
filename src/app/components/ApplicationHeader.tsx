@@ -172,7 +172,7 @@ function ApplicationHeader() {
 
           {Imagess.map((i, index) => (
             <motion.div
-              key={`large-${i}`}
+              key={`large-${index}`}
               variants={{
                 hidden: { opacity: 0, y: 30 },
                 show: { opacity: 1, y: 0 },
