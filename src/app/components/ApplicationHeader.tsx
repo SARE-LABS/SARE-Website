@@ -220,11 +220,12 @@ function ApplicationHeader() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative rounded-md"
+            className="flex relative rounded-md h-[406px]"
             style={{
               backgroundImage: `url(${HomeBg.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              clipPath: 'path("M208 0C216.837 0 224 7.16344 224 16V24C224 32.8366 231.163 40 240 40H264C272.837 40 280 47.1634 280 56V390C280 398.837 272.837 406 264 406H16C7.16344 406 0 398.837 0 390V16C0 7.16344 7.16344 0 16 0H208Z")'
             }}
           >
             {/* <div className="absolute inset-0 bg-black/40"></div> */}
@@ -263,11 +264,13 @@ function ApplicationHeader() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative rounded-md"
+            className="flex relative rounded-md h-[406px]"
             style={{
               backgroundImage: `url(${Excos.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
+              clipPath: 'path("M208 0C216.837 0 224 7.16344 224 16V24C224 32.8366 231.163 40 240 40H264C272.837 40 280 47.1634 280 56V390C280 398.837 272.837 406 264 406H16C7.16344 406 0 398.837 0 390V16C0 7.16344 7.16344 0 16 0H208Z")'
+
             }}
           >
             {/* <div className="absolute inset-0 bg-black/40"></div> */}

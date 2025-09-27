@@ -84,11 +84,11 @@ function WhyJoin() {
                   className="group-hover:grayscale-100 transition-all ease-in-out duration-300"
                 />
               </Link> */}
-              <div className="w-full h-[280px] rounded-[16px] overflow-hidden">
+              <div className="w-full h-[280px] overflow-hidden path">
                 <Image
                   src={item.img}
                   alt="Excos Frame"
-                  className="object-cover rounded-[16px] w-full h-full"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <p className="text-[18px] text-text-primary leading-[120%] text-left">

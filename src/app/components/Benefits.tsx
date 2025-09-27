@@ -86,18 +86,20 @@ function Benefits() {
         {/* Right Column (Cards) */}
         <motion.div
           variants={containerVariants}
-          className="w-full md:w-[55%] grid md:grid-cols-2 grid-row-2 gap-3 "
+          className="w-full md:w-[55%] flex h-[400px] justify-between "
         >
           <motion.div
             variants={itemVariants}
-            className="row-span-2 md:row-span-1 relative"
+            className="flex-1 h-full relative"
           >
             <div
-              className="relative w-full h-[160px] md:h-full  rounded-md"
+              className="relative w-full h-[160px] md:h-full overflow-hidden"
               style={{
                 backgroundImage: `url(${CAD.src})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                clipPath: 'path("M260 353C260 360.3 254.3 366 247 366H222.7C215.4 366 209.7 371.7 209.7 379V387C209.7 394.3 204 400 196.7 400H17.5C10.2 400 4.5 394.3 4.5 387V13.5C4.5 6.2 10.2 0.5 17.5 0.5H247C254.3 0.5 260 6.2 260 13.5V353Z")',
+
               }}
             >
               <div className="relative w-[100%] h-[160px] md:h-full   overflow-hidden  flex justify-items-end items-end ">
@@ -116,19 +118,21 @@ function Benefits() {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="relative grid grid-cols-2 md:grid-cols-1 gap-3"
+            className="relative h-full flex flex-col justify-between gap-2 flex-1"
+
           >
             {BenefitsKeyPoints.slice(0, 2).map((points) => (
               <div
                 key={points.id}
-                className="relative w-full h-[160px] md:h-fit rounded-md"
+                className="relative w-full h-[160px] md:h-1/2 overflow-hidden"
                 style={{
                   backgroundImage: `url(${points.img.src})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
+                  clipPath: 'path("M260 139.67C260 146.59 252.59 153 244.67 153H219.67C211.01 153 204 159.98 204 168.67V174.67C204 181.59 196.59 188 188.67 188H16C7.163 188 0 181.59 0 174.67V12.67C0 5.163 7.163 0 16 0H244.67C252.59 0 260 5.163 260 12.67V139.67Z")', 
                 }}
               >
-                <div className="relative w-full h-[160px] rounded-md overflow-hidden flex justify-items-end items-end">
+                <div className="relative w-full h-full overflow-hidden flex justify-items-end items-end">
                   <div className="absolute inset-0 bg-black/40 rounded-md"></div>
                 </div>
               </div>
