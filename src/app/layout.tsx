@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
-  title: "SARE - Society of Agricultural and Robotic Engineers",
+  title: "SARE - Society of Agricultural Robotic Engineers",
   description:
     "Bringing together innovators in Agricultural & Environmental Engineering to create real-world impact",
 };
@@ -17,9 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.className}  antialiased`}>
+      <body className={`${spaceGrotesk.className}  antialiased overflow-x-hidden`}>
         <Navbar />
-        {children}
+        <div className="h-max w-full">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
