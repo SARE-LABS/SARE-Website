@@ -16,7 +16,7 @@ function page() {
       {/* <ApplicationHeaderTwo /> */}
       <WhyJoin />
       <Benefits />
-      {/* <AnimationBg /> */}
+      <AnimationBg />
       <Join />
       <FAQs />
       <Newsletter />
