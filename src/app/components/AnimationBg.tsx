@@ -57,7 +57,6 @@ const ParallaxColumn = ({
     </div>
   );
 };
-
 function AnimationBg() {
   const containerRef = useRef(null);
 
@@ -65,7 +64,6 @@ function AnimationBg() {
     target: containerRef,
     offset: ["start end", "end start"],
   });
-
   const smoothScroll = useSpring(scrollYProgress, { damping: 15, stiffness: 100 });
 
   const y1 = useTransform(smoothScroll, [0, 1], [0, 400]); 
