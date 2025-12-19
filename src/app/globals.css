@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Prevent mobile horizontal gaps and ensure consistent page background */
+html,
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--color-background-page);
+}
+
+/* Use border-box universally to avoid unexpected sizing issues */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 @theme {
   /* Colors */
   --color-primary-blue: #67b5dc;
