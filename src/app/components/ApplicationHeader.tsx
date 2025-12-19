@@ -4,9 +4,9 @@ import Image from "next/image";
 import Time, { countdownDate } from "../UI/Time";
 import {
   Apply,
-  Excos,
   HomeBg,
-} from "../../../public/images/images"; // Removed unused imports for brevity
+  sare_pic
+} from "../../../public/images/images";
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -50,6 +50,18 @@ function ApplicationHeader() {
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
+  // Trigger download of the handbook PDF located in public/pdfs
+  const handleDownloadHandbook = () => {
+    const fileName = "SARE_Application_Handbook.pdf";
+    const href = `/pdfs/${fileName}`;
+    const link = document.createElement("a");
+    link.href = href;
+    link.setAttribute("download", fileName);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   const ApplicationButton = (
     <motion.button
       disabled={zeroLeft}
@@ -57,7 +69,7 @@ function ApplicationHeader() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
       onClick={handleCardClick}
-      className={`w-[80%] flex items-center justify-center gap-2 
+      className={`w-full flex items-center justify-center gap-2 
         bg-primary-blue hover:bg-primary-blue-hover 
         transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
         px-[10px] py-[15px] rounded-[35px]
@@ -67,6 +79,27 @@ function ApplicationHeader() {
       <p>Start Application</p>
     </motion.button>
   );
+
+  const downloadHandBook = (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.2, duration: 0.6, ease: "easeOut" }}
+    >
+      <button
+        disabled={zeroLeft}
+        onClick={handleDownloadHandbook}
+        className={`w-full flex items-center justify-center gap-2 
+          bg-primary-blue hover:bg-primary-blue-hover 
+          transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
+          px-[10px] py-[15px] rounded-[35px]
+          ${zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""}`}
+      >
+        <Image src={Apply} width={15} height={15} alt="Download Handbook" />
+        <p>Download Handbook</p>
+      </button>
+    </motion.div>
+  )
 
   return (
     <>
@@ -133,7 +166,14 @@ function ApplicationHeader() {
           </p>
           <Time />
         </motion.div>
-        {ApplicationButton}
+        <div className="w-full flex items-center justify-center gap-4 flex-col">
+          <div className="w-full">
+            {ApplicationButton}
+          </div>
+          <div className="w-full">
+            {downloadHandBook}
+          </div>
+        </div>
         <motion.div
           initial="hidden"
           animate="show"
@@ -252,7 +292,14 @@ function ApplicationHeader() {
               <Time />
             </div>
 
-            {ApplicationButton}
+            <div className="w-full flex items-center justify-center gap-4">
+              <div className="w-[60%]">
+                {ApplicationButton}
+              </div>
+              <div className="w-[40%]">
+                {downloadHandBook}
+              </div>
+            </div>
 
             <SmallApplicationCards styles="w-full grid grid-cols-3 gap-3 mt-6" />
           </motion.div>
@@ -265,7 +312,7 @@ function ApplicationHeader() {
             // 3. APPLY THE RESPONSIVE ID HERE
             className="flex relative rounded-md h-[406px] w-full"
             style={{
-              backgroundImage: `url(${Excos.src})`,
+              backgroundImage: `url(${sare_pic.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               clipPath: "url(#responsive-card-clip)", // Reference the ID

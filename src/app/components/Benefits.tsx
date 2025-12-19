@@ -12,7 +12,7 @@ import HighlightHead from "../UI/props/HighlightHead";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView, Variants } from "framer-motion";
-import { CAD, Kennedy } from "../../../public/images/images"; // Note: Kennedy is imported but unused in logic below, kept it just in case.
+import { CAD, Kennedy, LoveBinProto } from "../../../public/images/images"; // Note: Kennedy is imported but unused in logic below, kept it just in case.
 
 /** * 1. DEFINE THE RESPONSIVE SHAPES 
  * We have two distinct shapes here.
@@ -122,7 +122,7 @@ function Benefits() {
             <div
               className="relative w-full h-full md:h-full overflow-hidden"
               style={{
-                backgroundImage: `url(${CAD.src})`,
+                backgroundImage: `url(${LoveBinProto.src})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 // 3. APPLY LARGE CARD ID

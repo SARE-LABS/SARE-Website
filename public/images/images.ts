@@ -27,7 +27,15 @@ import Excos from "./IMG_3939.avif";
 import Adruino from "./CTRL_LABS125.jpg";
 import CAD from "./IMG-20250614-WA0061.avif";
 import Member from "./IMG_3790.avif";
-
+import sare_pic from "./sare_pic.jpg";
+import GroupPictureWithLoveBin from "./GroupPictureWithLoveBin.jpg";
+import CTRLLABS2 from "./CTRLLABS2.jpg";
+import CTRLLABS from "./CTRLLABS.jpg";
+import CTRLLABS31 from "./CTRL_LABS31 (1).jpg";
+import CTRLLABS30 from "./CTRL_LABS30 (1).jpg";
+import CTRLLABS20 from "./CTRL_LABS20.jpg";
+import bot from "./bot.jpg";
+import LoveBinProto from "./LoveBinProto.jpg";
 export {
   Member,
   CAD,
@@ -57,5 +65,14 @@ export {
   Ballon,
   Plus,
   ALeft,
-  ARIght
+  ARIght,
+  sare_pic,
+  GroupPictureWithLoveBin,
+  CTRLLABS2,
+  CTRLLABS,
+  CTRLLABS31,
+  CTRLLABS30,
+  CTRLLABS20,
+  bot,
+  LoveBinProto
 };

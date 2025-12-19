@@ -9,6 +9,10 @@ import {
   Kennedy,
   Member,
   Mentorship,
+  bot,
+  CTRLLABS2,
+  CTRLLABS20,
+  LoveBinProto
 } from "./images/images";
 
 export const Why = [
@@ -16,19 +20,19 @@ export const Why = [
     id: 1,
     description: "Visionaries who thrive on tackling real-world challenges.",
     link: "/",
-    img: ExcosFrame,
+    img: CTRLLABS20,
   },
   {
     id: 2,
     description: "Believers that robotics can revolutionize food production.",
     link: "/",
-    img: ExcosFrame,
+    img: bot,
   },
   {
     id: 3,
     description: "Visionaries who thrive on tackling real-world challenges.",
     link: "/",
-    img: ExcosFrame,
+    img: CTRLLABS2,
   },
 ];
 

@@ -3,7 +3,7 @@
 import { useScroll, useTransform, motion, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import { HomeBg } from "../../../public/images/images";
+import { HomeBg, GroupPictureWithLoveBin,CTRLLABS, CTRLLABS20, CTRLLABS31, CTRLLABS30} from "../../../public/images/images";
 
 const FolderClipPath = () => (
   <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
@@ -41,7 +41,7 @@ const ParallaxColumn = ({
         {images.map((src, i) => (
           <div 
             key={i} 
-            className="relative w-full aspect-[4/5] bg-gray-100 border-3 border-[#D9D9D9] shadow-lg hover:scale-105 transition-transform duration-500 ease-out"
+            className="relative w-full aspect-[4/5] bg-gray-100 border-3 border-[#D9D9D9] shadow-lg scale-x-120 hover:scale-x-120 transition-transform duration-500 ease-out"
             style={{ clipPath: "url(#folder-card-clip)" }}
           >
             <Image
@@ -73,7 +73,7 @@ function AnimationBg() {
   const y3 = useTransform(smoothScroll, [0, 1], [0, 500]); 
   const y4 = useTransform(smoothScroll, [0, 1], [0, 250]); 
   
-  const images = Array(6).fill(HomeBg.src);
+  const images = [GroupPictureWithLoveBin.src, CTRLLABS.src, CTRLLABS20.src, CTRLLABS31.src, CTRLLABS30.src];
 
   return (
     <>
@@ -103,7 +103,7 @@ function AnimationBg() {
             <ParallaxColumn y={y4} images={[images[4]]} />
           </div>
           <div className="pt-16 h-full">
-            <ParallaxColumn y={y2} images={[images[4]]} />
+            <ParallaxColumn y={y2} images={[images[2]]} />
           </div>
         </div>
 
