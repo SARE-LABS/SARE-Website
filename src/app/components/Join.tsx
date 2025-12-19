@@ -72,7 +72,7 @@ function Join() {
   );
 
   return (
-    <div ref={ref} className="py-[24px] px-[2rem] md:py-[48px] md:px-[96px]">
+    <div ref={ref} className="py-[24px] px-[1rem] md:py-[48px] md:px-[96px] -z-50">
       {/* this form stays at root, not tied to layout */}
       <AnimatePresence>
         {showApplicationInfo && (
@@ -109,7 +109,7 @@ function Join() {
 
         <motion.h1
           variants={itemVariants}
-          className="text-[48px] font-medium text-text-primary md:w-[90%] leading-[120%]"
+          className="text-[36px] md:text-[48px] font-medium md:px-32 text-text-primary md:w-[90%] leading-[120%]"
         >
           Join the innovators who are creating real change.
         </motion.h1>

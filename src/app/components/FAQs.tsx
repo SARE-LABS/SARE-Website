@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, act } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   FAQDataCTRL,
@@ -8,7 +8,7 @@ import {
   FAQDataProjects,
 } from "../../../public/data";
 import HighlightHead from "../UI/props/HighlightHead";
-import { Plus } from "../../../public/images/images";
+import { Plus, ARIghtBlue } from "../../../public/images/images";''
 
 const categories = [
   { key: "general", label: "General", data: FAQDataGeneral },
@@ -84,12 +84,13 @@ function FAQs({ colour }: BackgroundColour) {
                 <span
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key)}
-                  className={`md:w-[160px] cursor-pointer border-0 border-border py-[8px] px-[16px] text-[16px] rounded-full transition ${
+                  className={`md:w-[160px] cursor-pointer border-0 border-border py-[8px] px-[16px] flex gap-2 text-[16px] rounded-full transition-all duration-500 ${
                     activeCategory === cat.key
                       ? "bg-highlight text-primary-blue"
                       : "bg-background-disabled text-text-secondary"
                   }`}
                 >
+                  <Image src={ARIghtBlue} alt="" className={`${activeCategory === cat.key ? "opacity-100" : "opacity-0"} duration-500 transition ease-in-out`} />
                   {cat.label}
                 </span>
               ))}

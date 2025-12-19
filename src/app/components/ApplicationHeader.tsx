@@ -4,11 +4,9 @@ import Image from "next/image";
 import Time, { countdownDate } from "../UI/Time";
 import {
   Apply,
-  ArrowSlant,
   Excos,
   HomeBg,
-  Kennedy,
-} from "../../../public/images/images";
+} from "../../../public/images/images"; // Removed unused imports for brevity
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,16 +14,34 @@ import useCountdown from "../utils/useCountdown";
 import { ApplicationKeyPoints, Imagess } from "../../../public/data";
 import SmallApplicationCards from "../UI/SmallApplicationCards";
 
+/** * 1. DEFINE THE RESPONSIVE SHAPE 
+ * This SVG is hidden but defines the shape logic.
+ * We scale the original path (280x406) down to a 0-to-1 coordinate system.
+ */
+const ResponsiveClipPaths = () => (
+  <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+    <defs>
+      <clipPath id="responsive-card-clip" clipPathUnits="objectBoundingBox">
+        {/* Original Path: M208 0...
+            Transformation: scale(1/280, 1/406) => scale(0.0035714, 0.002463)
+        */}
+        <path
+          d="M208 0C216.837 0 224 7.16344 224 16V24C224 32.8366 231.163 40 240 40H264C272.837 40 280 47.1634 280 56V390C280 398.837 272.837 406 264 406H16C7.16344 406 0 398.837 0 390V16C0 7.16344 7.16344 0 16 0H208Z"
+          transform="scale(0.0035714, 0.002463)"
+        />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 function ApplicationHeader() {
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
-  const { days, hours, minutes, seconds, expired } =
-    useCountdown(countdownDate);
+  const { days, hours, minutes, seconds, expired } = useCountdown(countdownDate);
   const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   const handleCardClick = () => setShowApplicationInfo(true);
   const handleClose = () => setShowApplicationInfo(false);
 
-  // Close on ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setShowApplicationInfo(false);
@@ -34,7 +50,6 @@ function ApplicationHeader() {
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
-  /** Button (i am avoiding re-mounting heres) */
   const ApplicationButton = (
     <motion.button
       disabled={zeroLeft}
@@ -46,9 +61,7 @@ function ApplicationHeader() {
         bg-primary-blue hover:bg-primary-blue-hover 
         transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
         px-[10px] py-[15px] rounded-[35px]
-        ${
-          zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""
-        }`}
+        ${zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""}`}
     >
       <Image src={Apply} width={15} height={15} alt="Logo" />
       <p>Start Application</p>
@@ -57,7 +70,9 @@ function ApplicationHeader() {
 
   return (
     <>
-      {/* this form stays at root, not tied to layout */}
+      {/* 2. INJECT THE SVG DEFINITIONS */}
+      <ResponsiveClipPaths />
+
       <AnimatePresence>
         {showApplicationInfo && (
           <motion.div
@@ -65,11 +80,10 @@ function ApplicationHeader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className=" fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
             onClick={handleClose}
           >
             <motion.div
-              // initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 100, opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -83,16 +97,16 @@ function ApplicationHeader() {
       </AnimatePresence>
 
       {/* Mobile layout */}
-      <div id="apply-section" className="md:hidden relative p-[2rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
+
+      <div id="apply-section" className="md:hidden relative p-[1rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[110px]">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-text-primary font-bold text-[48px] leading-[120%]"
+          className="text-text-primary font-bold text-[48px] leading-[120%] text-center"
         >
           Ready to Make an Impact?
         </motion.h1>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,7 +116,6 @@ function ApplicationHeader() {
           Join a network of innovators, collaborators, and changemakers driving
           real-world solutions.
         </motion.p>
-
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -110,21 +123,17 @@ function ApplicationHeader() {
           className="w-full flex flex-col items-center justify-center gap-4 mt-8"
         >
           <p
-            className={`text-[16px] ${
-              expired ? "text-status-error" : "text-text-primary"
-            }  leading-[148%]`}
+            className={`text-[16px] ${expired ? "text-status-error" : "text-text-primary"
+              }  leading-[148%]`}
           >
-            {`${
-              expired
-                ? "The membership application period has ended."
-                : `Application ends in:`
-            }`}
+            {`${expired
+              ? "The membership application period has ended."
+              : `Application ends in:`
+              }`}
           </p>
           <Time />
         </motion.div>
-
         {ApplicationButton}
-
         <motion.div
           initial="hidden"
           animate="show"
@@ -152,9 +161,7 @@ function ApplicationHeader() {
                     fill
                     className="object-cover "
                   />
-
                   <div className="absolute inset-0 bg-black/40"></div>
-
                   <div className="relative inset-0 flex flex-col justify-between text-left ">
                     <div className="flex flex-col items-start justify-center">
                       <p className="text-white text-sm leading-3">
@@ -169,7 +176,6 @@ function ApplicationHeader() {
               </div>
             </motion.div>
           ))}
-
           {Imagess.map((i, index) => (
             <motion.div
               key={`large-${index}`}
@@ -215,20 +221,21 @@ function ApplicationHeader() {
         </motion.p>
 
         <div className="grid grid-cols-4 gap-5 w-full overflow-hidden mt-[24px]">
+
           {/* Left big card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative rounded-md h-[406px]"
+            // 3. APPLY THE RESPONSIVE ID HERE
+            className="flex relative rounded-md h-[406px] w-full"
             style={{
               backgroundImage: `url(${HomeBg.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              clipPath: 'path("M208 0C216.837 0 224 7.16344 224 16V24C224 32.8366 231.163 40 240 40H264C272.837 40 280 47.1634 280 56V390C280 398.837 272.837 406 264 406H16C7.16344 406 0 398.837 0 390V16C0 7.16344 7.16344 0 16 0H208Z")'
+              clipPath: "url(#responsive-card-clip)", // Reference the ID
             }}
           >
-            {/* <div className="absolute inset-0 bg-black/40"></div> */}
           </motion.div>
 
           {/* Center section */}
@@ -239,18 +246,9 @@ function ApplicationHeader() {
             className="flex flex-col items-center justify-between w-full col-span-2 gap-2"
           >
             <div className="w-full flex flex-col items-center justify-center gap-4">
-              <p
-                className={`text-[18px]  ${
-                  expired ? "text-status-error" : "text-text-primary"
-                }  leading-[148%]`}
-              >
-                {`${
-                  expired
-                    ? "The membership application period has ended."
-                    : `Application ends in:`
-                }`}
+              <p className={`text-[18px] ${expired ? "text-status-error" : "text-text-primary"} leading-[148%]`}>
+                {`${expired ? "The membership application period has ended." : `Application ends in:`}`}
               </p>
-
               <Time />
             </div>
 
@@ -264,16 +262,15 @@ function ApplicationHeader() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
-            className="flex relative rounded-md h-[406px]"
+            // 3. APPLY THE RESPONSIVE ID HERE
+            className="flex relative rounded-md h-[406px] w-full"
             style={{
               backgroundImage: `url(${Excos.src})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              clipPath: 'path("M208 0C216.837 0 224 7.16344 224 16V24C224 32.8366 231.163 40 240 40H264C272.837 40 280 47.1634 280 56V390C280 398.837 272.837 406 264 406H16C7.16344 406 0 398.837 0 390V16C0 7.16344 7.16344 0 16 0H208Z")'
-
+              clipPath: "url(#responsive-card-clip)", // Reference the ID
             }}
           >
-            {/* <div className="absolute inset-0 bg-black/40"></div> */}
           </motion.div>
         </div>
       </div>
