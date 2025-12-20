@@ -12,7 +12,7 @@ import {
   bot,
   CTRLLABS2,
   CTRLLABS20,
-  LoveBinProto
+  NACOS_2022
 } from "./images/images";
 
 export const Why = [
@@ -20,7 +20,7 @@ export const Why = [
     id: 1,
     description: "Visionaries who thrive on tackling real-world challenges.",
     link: "/",
-    img: CTRLLABS20,
+    img: NACOS_2022,
   },
   {
     id: 2,

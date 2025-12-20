@@ -36,6 +36,7 @@ import CTRLLABS30 from "./CTRL_LABS30 (1).jpg";
 import CTRLLABS20 from "./CTRL_LABS20.jpg";
 import bot from "./bot.jpg";
 import LoveBinProto from "./LoveBinProto.jpg";
+import NACOS_2022 from "./NACOS_20.jpg";
 export {
   Member,
   CAD,
@@ -74,5 +75,6 @@ export {
   CTRLLABS30,
   CTRLLABS20,
   bot,
-  LoveBinProto
+  LoveBinProto,
+  NACOS_2022
 };
