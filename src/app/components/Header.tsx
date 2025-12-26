@@ -7,7 +7,7 @@ import { Folder, HomeBg, Music, User } from "../../../public/images/images";
 
 function Header() {
   return (
-<header
+    <header
       style={{
         backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${HomeBg.src})`,
         backgroundSize: "cover",
@@ -15,7 +15,6 @@ function Header() {
       }}
     >
       <div className=" py-[48px] px-[2rem] md:px-[96px] md:py-[96px] min-h-[100vh] flex flex-col-reverse md:flex-row md:items-end justify-between">
-     
         <motion.div
           className="flex flex-col items-start md:justify-end md:w-[700px]"
           initial={{ opacity: 0, y: 50 }}
@@ -98,7 +97,7 @@ function Header() {
         </motion.button>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

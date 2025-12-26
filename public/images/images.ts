@@ -37,9 +37,22 @@ import CTRLLABS20 from "./CTRL_LABS20.jpg";
 import bot from "./bot.jpg";
 import LoveBinProto from "./LoveBinProto.jpg";
 import NACOS_2022 from "./NACOS_20.jpg";
+import Check from "./mark.svg";
+import MembersTrained from "./memberstrained.svg";
+import Partners from "./partners.svg";
+import GreenFolder from "./foldergreen.svg";
+import InstagramIcon from "./instagram.svg";
+import Map from "./map.png";
+
 export {
+  Map,
+  Check,
   Member,
   CAD,
+  MembersTrained,
+  Partners,
+  GreenFolder,
+  InstagramIcon,
   Adruino,
   Excos,
   BuildSession,
