@@ -46,7 +46,7 @@ function Footer() {
         </div>
       </div>
       <p className="text-center text-[14px] text-[#6B7280] pt-[16px]">
-        @ 2025 SARE Web Experience Team
+        &copy; 2026 SARE Web Experience Team
       </p>
     </div>
   );

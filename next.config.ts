@@ -1,12 +1,23 @@
-import type { NextConfig } from "next";
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-const nextConfig: NextConfig = {
-  async redirects() {
-    return [];
+module.exports = withBundleAnalyzer({
+  experimental: {
+    turbo: false,
   },
-};
+});
 
-export default nextConfig;
+
+// import type { NextConfig } from "next";
+
+// const nextConfig: NextConfig = {
+//   async redirects() {
+//     return [];
+//   },
+// };
+
+// export default nextConfig;
 
 
 // I did this since we are doing a redirect from '/' to '/application' until we start the main website

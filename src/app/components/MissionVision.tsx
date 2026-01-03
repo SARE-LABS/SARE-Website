@@ -6,8 +6,8 @@ import Link from "next/link";
 function MissionVision() {
   return (
     <section className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[19.2px] md:mt-[99px] bg-background-page">
-      <div className="bg-[#AAAAAA]/20 md:py-[48px] md:px-[78.6px] md:gap-[100px] flex flex-col items-center justify-center">
-        <div className="w-full flex items-start justify-between">
+      <div className="bg-[#AAAAAA]/20 p-[20px] md:py-[48px] md:px-[78.6px] gap-[50px] md:gap-[100px] flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col-reverse md:flex-row items-center md:items-start justify-between">
           {/* LEFT  */}
           <svg
             width="409"
@@ -16,6 +16,7 @@ function MissionVision() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
+            className="flex items-center w-[368px] md:w-[409px]"
           >
             <path
               d="M30.6807 0.639648H316.747C330.861 0.639648 342.303 12.0806 342.303 26.1943C342.303 41.014 354.316 53.0282 369.136 53.0283H378.319C394.911 53.0283 408.36 66.478 408.36 83.0693V383.319C408.36 399.911 394.911 413.36 378.319 413.36H30.6807C14.0893 413.36 0.639648 399.911 0.639648 383.319V30.6807C0.639648 14.0893 14.0893 0.639648 30.6807 0.639648Z"
@@ -55,10 +56,10 @@ function MissionVision() {
           <div>
             <span>
               {" "}
-              <h1 className="text-text-primary md:text-[64px] leading-[120%] font-bold">
+              <h1 className="text-text-primary text-[32px] md:text-[64px] leading-[120%] font-bold">
                 Our Mission
               </h1>
-              <p className="md:text-[24px] leading-[120%] text-black mt-2 md:max-w-[550px]">
+              <p className="md:text-[24px] leading-[120%] text-text-primary font-medium mt-2 md:max-w-[550px]">
                 Delivering sustainable, efficient, and intelligent solutions for
                 modern agriculture.
               </p>
@@ -92,7 +93,7 @@ function MissionVision() {
           </div>
         </div>
 
-        <div className="w-full flex flex-row-reverse items-start justify-between">
+        <div className="w-full flex flex-col-reverse md:flex-row-reverse items-start justify-between">
           {/* LEFT  */}
           <svg
             width="409"
@@ -101,6 +102,7 @@ function MissionVision() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
+            className="flex items-center w-[368px] md:w-[409px]"
           >
             <path
               d="M30.6807 0.639648H316.747C330.861 0.639648 342.303 12.0806 342.303 26.1943C342.303 41.014 354.316 53.0282 369.136 53.0283H378.319C394.911 53.0283 408.36 66.478 408.36 83.0693V383.319C408.36 399.911 394.911 413.36 378.319 413.36H30.6807C14.0893 413.36 0.639648 399.911 0.639648 383.319V30.6807C0.639648 14.0893 14.0893 0.639648 30.6807 0.639648Z"
@@ -140,10 +142,10 @@ function MissionVision() {
           <div>
             <span>
               {" "}
-              <h1 className="text-text-primary md:text-[64px] leading-[120%] font-bold">
+              <h1 className="text-text-primary text-[32px] md:text-[64px] leading-[120%] font-bold">
                 Our Vision
               </h1>
-              <p className="md:text-[24px] leading-[120%] text-black mt-2 md:max-w-[550px]">
+              <p className="md:text-[24px] leading-[120%] text-text-primary font-medium mt-2 md:max-w-[550px]">
                 “Shaping the future of farming through smart, sustainable
                 technology.”
               </p>

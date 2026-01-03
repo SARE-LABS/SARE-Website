@@ -6,8 +6,8 @@ import Link from "next/link";
 
 function AboutUs() {
   return (
-    <div className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] md:mt-[99px] bg-background-page ">
-      <div className="flex items-center justify-between w-full">
+    <div className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] mt-[49.5px] md:mt-[99px] bg-background-page ">
+      <div className="flex flex-col md:flex-row items-center gap-[2rem] justify-between w-full">
         {/* Left Column */}
         <div className="flex flex-col gap-[16px] md:gap-[22px]">
           <span className="w-fit flex-shrink-0 whitespace-nowrap  flex items-center text-primary-blue rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 bg-highlight gap-3">
@@ -31,7 +31,7 @@ function AboutUs() {
         </div>
 
         {/* Right Column (Cards) */}
-        <div>
+        <div className="">
           <svg
             width="409"
             height="414"
