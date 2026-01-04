@@ -22,6 +22,8 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
   ];
 
   const [activeStep, setActiveStep] = useState("personal");
+  const [hasSkills, setHasSkills] = useState<boolean | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // form state
   const [formData, setFormData] = useState({
@@ -76,6 +78,15 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
     }
   };
 
+  const handleSkillChoice = (value: "Yes" | "No") => {
+    setHasSkills(value === "Yes");
+
+    setFormData((prev) => ({
+      ...prev,
+      currentSkills: value,
+    }));
+  };
+
   const handleSubmit = async () => {
     try {
       setLoading(true);
@@ -91,7 +102,8 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
 
       if (!res.ok) throw new Error(data.error || "Submission failed");
 
-      setMessage("✅ Submitted successfully!");
+      setMessage(" Submitted successfully!");
+      setShowSuccess(true);
       setFormData({
         fullName: "",
         email: "",
@@ -105,15 +117,15 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       });
       setActiveStep("personal");
 
-      onClose(); // ✅ close modal after submit
+      onClose(); //  close modal after submit
     } catch (error: any) {
-      setMessage(`❌ ${error.message}`);
+      setMessage(` ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ Close on ESC key
+  // Close on ESC key
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -123,6 +135,14 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
+
+  //  Show success alert
+  useEffect(() => {
+    if (showSuccess) {
+      window.alert("Your application has been submitted successfully!");
+      setShowSuccess(false);
+    }
+  }, [showSuccess]);
 
   return (
     <div
@@ -212,7 +232,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                   name="whatsapp"
                   required
                   placeholder="WhatsApp Number"
-                  inputMode="tel" // Better for phone numbers
+                  inputMode="tel"
                   pattern="^\+?[0-9]*$" // Allows optional "+" followed by digits
                   value={formData.whatsapp}
                   onChange={(e) => {
@@ -246,49 +266,88 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
 
           {/* Skills Step */}
           {activeStep === "skill" && (
-            <form className="flex flex-col gap-2">
-              <span className="flex flex-col">
-                <small className="text-[16px] text-text-primary">
-                  Do you have any skills currently? Yes / No
-                </small>
-                <input
-                  type="text"
-                  name="currentSkills"
-                  required
-                  placeholder="Do you have any skills currently? Yes / No"
-                  value={formData.currentSkills}
-                  onChange={handleChange}
-                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
-                />
-              </span>
-              <span className="flex flex-col">
-                <small className="text-[16px] text-text-primary">
-                  If yes, please specify
-                </small>
-                <input
-                  type="text"
-                  name="response"
-                  required
-                  placeholder="If yes..."
-                  value={formData.response}
-                  onChange={handleChange}
-                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
-                />
-              </span>
-              <span className="flex flex-col">
-                <small className="text-[16px] text-text-primary">
-                  What skill(s) do you have? (e.g., coding, design, marketing)
-                </small>
-                <input
-                  type="text"
-                  name="skills"
-                  required
-                  placeholder="Skill 1, Skill 2"
-                  value={formData.skills}
-                  onChange={handleChange}
-                  className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
-                />
-              </span>
+            <form className="flex flex-col gap-6">
+              {/* Skills Question */}
+              <div className="flex flex-col gap-3">
+                <label className="text-[16px] text-text-primary font-medium">
+                  Do you have any skills currently?
+                  <span className="text-red-500">*</span>
+                </label>
+
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    onClick={() => handleSkillChoice("Yes")}
+                    className={`flex-1 py-3 px-6 rounded-[12px] font-semibold transition-all duration-300 ${
+                      hasSkills === true
+                        ? "bg-green-500 text-white shadow-lg scale-105"
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    }`}
+                  >
+                    ✓ Yes
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleSkillChoice("No")}
+                    className={`flex-1 py-3 px-6 rounded-[12px] font-semibold transition-all duration-300 ${
+                      hasSkills === false
+                        ? "bg-red-500 text-white shadow-lg scale-105"
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    }`}
+                  >
+                    ✗ No
+                  </button>
+                </div>
+              </div>
+
+              {hasSkills !== null && (
+                <>
+                  <span className="flex flex-col">
+                    <small className="text-[16px] text-text-primary">
+                      {hasSkills
+                        ? "Please tell us more"
+                        : "Would you like to learn new skills?"}
+                      <span className="text-gray-400 text-sm ml-2">
+                        (Optional)
+                      </span>
+                    </small>
+
+                    <input
+                      type="text"
+                      name="response"
+                      placeholder={
+                        hasSkills
+                          ? "Tell us about your experience..."
+                          : "What interests you?"
+                      }
+                      value={formData.response}
+                      onChange={handleChange}
+                      className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                    />
+                  </span>
+
+                  <span className="flex flex-col">
+                    <small className="text-[16px] text-text-primary">
+                      {hasSkills
+                        ? "What skill(s) do you have? (e.g., coding, design, marketing)"
+                        : "What skill(s) would you like to learn?"}
+                      <span className="text-gray-400 text-sm ml-2">
+                        (Optional)
+                      </span>
+                    </small>
+
+                    <input
+                      type="text"
+                      name="skills"
+                      placeholder="Skill 1, Skill 2"
+                      value={formData.skills}
+                      onChange={handleChange}
+                      className="w-full rounded-[10px] md:rounded-[16px] border md:p-[20px] border-border p-2 bg-white outline-none text-[14px]"
+                    />
+                  </span>
+                </>
+              )}
             </form>
           )}
 
@@ -338,7 +397,6 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
             <small>Previous</small>
           </button>
 
-          {/* <p>hjk</p> */}
           {activeStep === "teamwork" ? (
             <button
               onClick={handleSubmit}

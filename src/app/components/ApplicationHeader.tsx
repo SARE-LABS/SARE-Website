@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import Time, { countdownDate } from "../UI/Time";
-import {
-  Apply,
-  HomeBg,
-  sare_pic
-} from "../../../public/images/images";
+import { Apply, HomeBg, sare_pic } from "../../../public/images/images";
 import { useState, useEffect } from "react";
 import ApplicationInfo from "./ApplicationInfo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,7 +10,7 @@ import useCountdown from "../utils/useCountdown";
 import { ApplicationKeyPoints, Imagess } from "../../../public/data";
 import SmallApplicationCards from "../UI/SmallApplicationCards";
 
-/** * 1. DEFINE THE RESPONSIVE SHAPE 
+/** * 1. DEFINE THE RESPONSIVE SHAPE
  * This SVG is hidden but defines the shape logic.
  * We scale the original path (280x406) down to a 0-to-1 coordinate system.
  */
@@ -36,7 +32,8 @@ const ResponsiveClipPaths = () => (
 
 function ApplicationHeader() {
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
-  const { days, hours, minutes, seconds, expired } = useCountdown(countdownDate);
+  const { days, hours, minutes, seconds, expired } =
+    useCountdown(countdownDate);
   const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
 
   const handleCardClick = () => setShowApplicationInfo(true);
@@ -73,7 +70,9 @@ function ApplicationHeader() {
         bg-primary-blue hover:bg-primary-blue-hover 
         transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
         px-[10px] py-[15px] rounded-[35px]
-        ${zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""}`}
+        ${
+          zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""
+        }`}
     >
       <Image src={Apply} width={15} height={15} alt="Logo" />
       <p>Start Application</p>
@@ -93,13 +92,17 @@ function ApplicationHeader() {
           bg-primary-blue hover:bg-primary-blue-hover 
           transition-all ease-in-out duration-300 font-bold text-[16px] text-white cursor-pointer 
           px-[10px] py-[15px] rounded-[35px]
-          ${zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""}`}
+          ${
+            zeroLeft
+              ? "opacity-50 cursor-not-allowed hover:bg-primary-blue"
+              : ""
+          }`}
       >
         <Image src={Apply} width={15} height={15} alt="Download Handbook" />
         <p>Download Handbook</p>
       </button>
     </motion.div>
-  )
+  );
 
   return (
     <>
@@ -131,7 +134,10 @@ function ApplicationHeader() {
 
       {/* Mobile layout */}
 
-      <div id="apply-section" className="md:hidden relative p-[1rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[110px]">
+      <div
+        id="apply-section"
+        className="md:hidden relative p-[1rem] flex flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[110px]"
+      >
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,23 +162,21 @@ function ApplicationHeader() {
           className="w-full flex flex-col items-center justify-center gap-4 mt-8"
         >
           <p
-            className={`text-[16px] ${expired ? "text-status-error" : "text-text-primary"
-              }  leading-[148%]`}
+            className={`text-[16px] ${
+              expired ? "text-status-error" : "text-text-primary"
+            }  leading-[148%]`}
           >
-            {`${expired
-              ? "The membership application period has ended."
-              : `Application ends in:`
-              }`}
+            {`${
+              expired
+                ? "The membership application period has ended."
+                : `Application ends in:`
+            }`}
           </p>
           <Time />
         </motion.div>
         <div className="w-full flex items-center justify-center gap-4 flex-col">
-          <div className="w-full">
-            {ApplicationButton}
-          </div>
-          <div className="w-full">
-            {downloadHandBook}
-          </div>
+          <div className="w-full">{ApplicationButton}</div>
+          <div className="w-full">{downloadHandBook}</div>
         </div>
         <motion.div
           initial="hidden"
@@ -240,7 +244,10 @@ function ApplicationHeader() {
       </div>
 
       {/* Desktop layout */}
-      <div id="apply-section" className="scroll-smooth hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]">
+      <div
+        id="apply-section"
+        className="scroll-smooth hidden md:flex p-[2rem] md:px-[96px] flex-col items-center justify-center text-center gap-4 overflow-hidden min-h-[100vh] mt-[100px]"
+      >
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -261,7 +268,6 @@ function ApplicationHeader() {
         </motion.p>
 
         <div className="grid grid-cols-4 gap-5 w-full overflow-hidden mt-[24px]">
-
           {/* Left big card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -275,8 +281,7 @@ function ApplicationHeader() {
               backgroundPosition: "center",
               clipPath: "url(#responsive-card-clip)", // Reference the ID
             }}
-          >
-          </motion.div>
+          ></motion.div>
 
           {/* Center section */}
           <motion.div
@@ -286,19 +291,23 @@ function ApplicationHeader() {
             className="flex flex-col items-center justify-between w-full col-span-2 gap-2"
           >
             <div className="w-full flex flex-col items-center justify-center gap-4">
-              <p className={`text-[18px] ${expired ? "text-status-error" : "text-text-primary"} leading-[148%]`}>
-                {`${expired ? "The membership application period has ended." : `Application ends in:`}`}
+              <p
+                className={`text-[18px] ${
+                  expired ? "text-status-error" : "text-text-primary"
+                } leading-[148%]`}
+              >
+                {`${
+                  expired
+                    ? "The membership application period has ended."
+                    : `Application ends in:`
+                }`}
               </p>
               <Time />
             </div>
 
             <div className="w-full flex items-center justify-center gap-4">
-              <div className="w-[60%]">
-                {ApplicationButton}
-              </div>
-              <div className="w-[40%]">
-                {downloadHandBook}
-              </div>
+              <div className="w-[60%]">{ApplicationButton}</div>
+              <div className="w-[40%]">{downloadHandBook}</div>
             </div>
 
             <SmallApplicationCards styles="w-full grid grid-cols-3 gap-3 mt-6" />
@@ -317,8 +326,7 @@ function ApplicationHeader() {
               backgroundPosition: "center",
               clipPath: "url(#responsive-card-clip)", // Reference the ID
             }}
-          >
-          </motion.div>
+          ></motion.div>
         </div>
       </div>
     </>
