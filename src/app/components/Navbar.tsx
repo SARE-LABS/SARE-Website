@@ -18,6 +18,9 @@ import NavMobile from "../UI/NavMobile";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ApplicationInfo from "./ApplicationInfo";
+import useCountdown from "../utils/useCountdown";
+import { countdownDate } from "../UI/Time";
+import App from "next/app";
 
 function Navbar() {
   const pathname = usePathname();
@@ -25,10 +28,28 @@ function Navbar() {
   const handleCardClick = () => setShowApplicationInfo(true);
   const handleClose = () => setShowApplicationInfo(false);
 
-
   const isActive = (link: string) => pathname === link;
   const showIcon = (id: number, link: string) =>
     isActive(link) && [1, 2, 3, 5].includes(id);
+
+  const { days, hours, minutes, seconds, expired } =
+    useCountdown(countdownDate);
+  const zeroLeft = days === 0 && hours === 0 && minutes === 0 && seconds === 0;
+
+  const ApplyNowBtn = (
+    <motion.button
+      disabled={zeroLeft}
+      onClick={handleCardClick}
+      className={`flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2  bg-primary-blue hover:bg-primary-blue-hover 
+        transition-all ease-in-out duration-300 font-bold text-[16px] text-white p-[10px] rounded-[35px] cursor-pointer md:w-fit
+        ${
+          zeroLeft ? "opacity-50 cursor-not-allowed hover:bg-primary-blue" : ""
+        }`}
+    >
+      <Image src={Apply} width={15} height={15} alt="Logo" />
+      <p>Apply now</p>
+    </motion.button>
+  );
 
   return (
     <>
@@ -81,8 +102,9 @@ function Navbar() {
                 key={nav.id}
                 href={nav.link}
                 className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
-                text-text-primary hover:text-primary-blue  ${pathname === "/application" ? "hidden" : ""
-                  }
+                text-text-primary hover:text-primary-blue  ${
+                  pathname === "/application" ? "hidden" : ""
+                }
                 ${isActive(nav.link) ? "bg-highlight" : ""}`}
               >
                 {/* Navigation Icon (only on specific IDs when active) */}
@@ -113,7 +135,7 @@ function Navbar() {
             ))}
           </div>
 
-          <Link
+          {/* <Link
             href="#"
             onClick={handleCardClick}
             className="flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2  bg-primary-blue hover:bg-primary-blue-hover 
@@ -126,7 +148,8 @@ function Navbar() {
               alt="Action icon"
             />
             <p>{pathname !== "/application" ? "Get involved" : "Apply now"}</p>
-          </Link>
+          </Link> */}
+          <div>{ApplyNowBtn}</div>
         </div>
 
         <NavMarques />
