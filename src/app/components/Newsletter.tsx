@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import HighlightHead from "../UI/props/HighlightHead";
+import { useToast } from "../UI/ToastContext";
 
 function Newsletter() {
   const ref = useRef(null);
@@ -10,6 +11,7 @@ function Newsletter() {
 
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState<string | null>(null);
+  const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,10 +29,10 @@ function Newsletter() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong");
 
-      setMessage("Thank you for subscribing!");
+      showToast("success", "Thank you for subscribing!");
       setEmail("");
     } catch (err: any) {
-      setMessage(` ${err.message}`);
+      showToast("error", err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
