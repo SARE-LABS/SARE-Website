@@ -135,7 +135,7 @@ function Navbar() {
             ))}
           </div>
 
-          {/* <Link
+          <Link
             href="#"
             onClick={handleCardClick}
             className="flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2  bg-primary-blue hover:bg-primary-blue-hover 
@@ -148,8 +148,8 @@ function Navbar() {
               alt="Action icon"
             />
             <p>{pathname !== "/application" ? "Get involved" : "Apply now"}</p>
-          </Link> */}
-          <div>{ApplyNowBtn}</div>
+          </Link>
+          {/* <div>{ApplyNowBtn}</div> */}
         </div>
 
         {/* <NavMarques /> */}
