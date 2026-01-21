@@ -1,7 +1,7 @@
 "use client";
 import useCountdown from "../utils/useCountdown";
 
-export const countdownDate = "2026-01-04T17:04:59";
+export const countdownDate = "2026-01-19T23:59:59";
 
 function Time() {
   const { days, hours, minutes, seconds, expired } =

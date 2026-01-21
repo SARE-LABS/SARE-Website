@@ -7,20 +7,23 @@ import Join from "../components/Join";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import WhyJoin from "../components/WhyJoin";
+import { ToastProvider } from "../UI/ToastContext";
 
 function page() {
   return (
-    <div className="w-full overflow-hidden scroll-smooth">
-      {/* <Navbar /> */}
-      <Header />
-      {/* <ApplicationHeaderTwo /> */}
-      <WhyJoin />
-      <Benefits />
-      <AnimationBg />
-      <Join />
-      <FAQs />
-      <Newsletter />
-    </div>
+    <ToastProvider>
+      <div className="w-full overflow-hidden scroll-smooth">
+        {/* <Navbar /> */}
+        <Header />
+        {/* <ApplicationHeaderTwo /> */}
+        <WhyJoin />
+        <Benefits />
+        <AnimationBg />
+        <Join />
+        <FAQs />
+        <Newsletter />
+      </div>
+    </ToastProvider>
   );
 }
 

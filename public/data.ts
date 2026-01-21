@@ -69,65 +69,86 @@ export const Benefit = [
 export const FAQDataGeneral = [
   {
     id: 1,
-    question: "How can I stay updated on SARE events?",
+    question: "What is SARE?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "SARE (Society of Agricultural Robotics Engineers) is a student-led innovation community focused on building engineering and technology solutions for agriculture, the environment, sustainability, and real-world problems.",
   },
   {
     id: 2,
-    question: "How can I get involved with SARE?",
+    question: "Who can join SARE?",
     answer:
-      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+      "SARE is open to students and young innovators from all backgrounds — engineering, agriculture, design, programming, content creation, and even beginners who are eager to learn and grow.",
   },
   {
     id: 3,
-    question: "How can I stay updated on SARE events?",
+    question: "Do I need prior technical experience to join?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "No. SARE is structured to support both beginners and experienced members. We provide learning pathways, mentorship, and hands-on projects that help members grow at their own pace.",
+  },
+  {
+    id: 4,
+    question: "What makes SARE different from other tech clubs?",
+    answer:
+      "SARE focuses on building real, functional solutions with measurable impact, especially in agriculture and the environment. Members don’t just learn — they design, prototype, test, and deploy.",
   },
 ];
+
 
 export const FAQDataProjects = [
   {
     id: 1,
-    question: "How can I know about the ongoing projects?",
+    question: "What kind of projects does SARE work on?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "SARE works on practical engineering and technology projects including agricultural robotics, automation systems, environmental solutions, IoT devices, and AI-driven tools for real-world problems.",
   },
   {
     id: 2,
-    question: "How can I get involved with SARE?",
+    question: "Can members contribute to ongoing projects?",
     answer:
-      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+      "Yes. Members are encouraged to join active project teams where they can contribute based on their skills — from software and electronics to design, research, and documentation.",
   },
   {
     id: 3,
-    question: "How can I stay updated on SARE events?",
+    question: "Are projects built from scratch?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "Most SARE projects start from problem identification and are built from the ground up. Members are involved in ideation, design, prototyping, testing, and iteration.",
+  },
+  {
+    id: 4,
+    question: "Do projects lead to competitions or exhibitions?",
+    answer:
+      "Yes. Many SARE projects are developed for competitions, showcases, research presentations, and innovation exhibitions, giving members exposure and practical experience.",
   },
 ];
+
 
 export const FAQDataCTRL = [
   {
     id: 1,
-    question: "What is CTRL Labs all about?",
+    question: "What is CTRL LABS?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "CTRL LABS is SARE’s structured training and mentorship program designed to teach practical engineering, robotics, and technology skills through guided sessions and hands-on learning.",
   },
   {
     id: 2,
-    question: "How can I get involved with SARE?",
+    question: "What skills are taught in CTRL LABS?",
     answer:
-      "To get involved with SARE, you can visit our website and fill out the contact form. We welcome individuals who are passionate about sustainability and community development.",
+      "CTRL LABS covers areas such as robotics fundamentals, embedded systems, AI/ML basics, 3D CAD design, frontend and backend development, and problem-solving through engineering.",
   },
   {
     id: 3,
-    question: "How can I stay updated on SARE events?",
+    question: "How often do CTRL LABS sessions hold?",
     answer:
-      "SARE is a community-driven initiative focused on empowering individuals through sustainable projects, events, and collaborations. We work on community development, education, sustainability, and tech-driven projects.",
+      "CTRL LABS training sessions are held bi-weekly, with each session focused on building practical skills and applying them to real engineering challenges.",
+  },
+  {
+    id: 4,
+    question: "Is CTRL LABS beginner-friendly?",
+    answer:
+      "Yes. CTRL LABS is designed to accommodate beginners while still challenging advanced members. Learning paths are progressive and supported by mentors and project leads.",
   },
 ];
+
 
 export const Navigations = [
   { id: 1, name: "Home", link: "/", icon: ARIghtBlue },

@@ -13,6 +13,7 @@ const transporter = nodemailer.createTransport({
 async function sendConfirmationEmail(to: string, name: string, type: string) {
   let subject = "";
   let htmlContent = "";
+  const WHATSAPP_LINK = "https://chat.whatsapp.com/J90Z22acjjK6MWWX8KPCaP";
 
   if (type === "newsletter") {
     subject = "Welcome to the SARE Community! 🌱";
@@ -28,18 +29,33 @@ async function sendConfirmationEmail(to: string, name: string, type: string) {
       </div>
     `;
   } else if (type === "application") {
+    // --- UPDATED SECTION START ---
     subject = "Application Received: SARE 🤖";
     htmlContent = `
-      <div style="font-family: Arial, sans-serif; color: #333;">
+      <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
         <h2>Dear ${name},</h2>
         <p>Thank you for applying to the <strong>Society of Agricultural Robotics Engineers (SARE)</strong>.</p>
-        <p>We’re pleased to let you know that we have successfully received your application. Our team is currently reviewing all submissions, and shortlisted applicants will be contacted with details of the next stage of the application process.</p>
-        <p>We appreciate your interest in SARE and your enthusiasm for innovation in agriculture and engineering. Please keep an eye on your email — we’ll be in touch soon.</p>
+        
+        <p>We’re pleased to confirm that we have successfully received your application. Our team is currently reviewing all submissions.</p>
+
+        <h3>👇 Next Step: Join the Community</h3>
+        <p>While we review your application, it is mandatory to join our <strong>Applicant WhatsApp Group</strong>. This is where we will post interview schedules, urgent updates, and host our Q&A sessions.</p>
+
+        <p style="text-align: center; margin: 20px 0;">
+          <a href="${WHATSAPP_LINK}" style="background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+            Click to Join WhatsApp Group
+          </a>
+        </p>
+
+        <p><em>(If the button doesn't work, use this link: <a href="${WHATSAPP_LINK}">${WHATSAPP_LINK}</a>)</em></p>
+
+        <p>We appreciate your interest in SARE and your enthusiasm for innovation. Please keep an eye on the group and your email!</p>
         <br>
         <p>Warm regards,</p>
         <p><strong>The SARE Team</strong><br>Society of Agricultural Robotics Engineers</p>
       </div>
     `;
+    // --- UPDATED SECTION END ---
   }
 
   await transporter.sendMail({
@@ -116,7 +132,6 @@ export async function POST(req: Request) {
           values: [[question, new Date().toISOString()]],
         },
       });
-      // (Optional: You could add an email here for FAQs if you wanted)
       return NextResponse.json({
         success: true,
         message: "✅ FAQ submitted successfully!",

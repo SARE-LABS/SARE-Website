@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { ALeft, ARIght, Plus } from "../../../public/images/images";
 import useCountdown from "../utils/useCountdown";
 import { countdownDate } from "../UI/Time";
+import { useToast } from "../UI/ToastContext";
 
 interface ApplicationInfoProps {
   onClose: () => void;
@@ -23,7 +24,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
 
   const [activeStep, setActiveStep] = useState("personal");
   const [hasSkills, setHasSkills] = useState<boolean | null>(null);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const { showToast } = useToast();
 
   // form state
   const [formData, setFormData] = useState({
@@ -103,7 +104,8 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       if (!res.ok) throw new Error(data.error || "Submission failed");
 
       setMessage(" Submitted successfully!");
-      setShowSuccess(true);
+      // show success toast and delay modal close so user sees it
+      showToast("success", "Your application has been submitted successfully!");
       setFormData({
         fullName: "",
         email: "",
@@ -117,9 +119,11 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
       });
       setActiveStep("personal");
 
-      onClose(); //  close modal after submit
+      // close modal after short delay to allow toast to appear
+      setTimeout(() => onClose(), 1200);
     } catch (error: any) {
       setMessage(` ${error.message}`);
+      showToast("error", error.message || "Submission failed");
     } finally {
       setLoading(false);
     }
@@ -136,13 +140,7 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
-  //  Show success alert
-  useEffect(() => {
-    if (showSuccess) {
-      window.alert("Your application has been submitted successfully!");
-      setShowSuccess(false);
-    }
-  }, [showSuccess]);
+  // remove window.alert usage; toasts handle notifications
 
   return (
     <div
@@ -308,9 +306,6 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                       {hasSkills
                         ? "Please tell us more"
                         : "Would you like to learn new skills?"}
-                      <span className="text-gray-400 text-sm ml-2">
-                        (Optional)
-                      </span>
                     </small>
 
                     <input
@@ -332,9 +327,6 @@ function ApplicationInfo({ onClose }: ApplicationInfoProps) {
                       {hasSkills
                         ? "What skill(s) do you have? (e.g., coding, design, marketing)"
                         : "What skill(s) would you like to learn?"}
-                      <span className="text-gray-400 text-sm ml-2">
-                        (Optional)
-                      </span>
                     </small>
 
                     <input
