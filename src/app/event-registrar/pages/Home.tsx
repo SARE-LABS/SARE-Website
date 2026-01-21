@@ -16,7 +16,7 @@ export const Home = () => {
         <Instructor />
         {/* <Footer /> */}
       </div>
-      {/* <Belt /> */}
+      <Belt />
 
       {/* Dummy space */}
       <div className="h-52 md:h-32"></div>
