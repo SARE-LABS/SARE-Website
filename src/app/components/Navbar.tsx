@@ -61,7 +61,7 @@ function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className=" fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            className=" fixed inset-0 bg-black/40 flex items-center justify-center z-100"
             onClick={handleClose}
           >
             <motion.div
@@ -152,7 +152,7 @@ function Navbar() {
           <div>{ApplyNowBtn}</div>
         </div>
 
-        <NavMarques />
+        {/* <NavMarques /> */}
         <NavMobile />
       </nav>
     </>
