@@ -23,7 +23,7 @@ export const Form = () => {
   const { showToast } = useToast();
 
   // Your Google Apps Script Web App URL
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwJ6EhfQ8Xv68hzR_Ixow54e1wAix5RkCYH9zf2HpBW4hwXKYqYcAWK61_qjtCnYyhIg/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFTAvgJTvXSjX9HV8lYDAQSbtl0pS_F1hu7ZwFPYPhHP42rMF1U9UfDSB_jkxbS5ssKg/exec';
 
   useEffect(() => {
     if (isModalOpen) {
@@ -47,7 +47,7 @@ export const Form = () => {
   };
 
   const validate = () => {
-    let newErrors = { fullName: "", email: "", phone: "" };
+    const newErrors = { fullName: "", email: "", phone: "" };
     let isValid = true;
 
     if (!formData.fullName.trim()) {

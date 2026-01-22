@@ -43,7 +43,7 @@ export const Belt = () => {
    }`}
     >
       <div className="h-max flex justify-between items-center md:px-0 px-4 py-4 gap-4 ">
-        <div className="md:w-[120px] w-[140px] h-[80px] md:h-[120px] relative">
+        {/* <div className="md:w-[120px] w-[140px] h-[80px] md:h-[120px] relative">
           <Image
             alt="S.A.R.E. is Cooking"
             src={SARE}
@@ -54,17 +54,11 @@ export const Belt = () => {
             alt="S.A.R.E. is Cooking"
             className="object-cover w-full h-full absolute top-0 rounded-lg"
           />
-        </div>
+        </div> */}
         <div className="h-max flex flex-col gap-1">
-          <small className="text-[10px] md:text-[12px] font-normal text-[#4B5563]">
-            Register now for:
-          </small>
-          <h1 className="text-[18px] md:text-[24px] font-medium text-[#1F2937]">
-            How to Git Started
-          </h1>
-          <p className="text-[12px] md:text-[14px] font-normal text-[#4B5563]">
-            A beginners guide on the Easiest Way to Connect Your IDE to GitHub
-          </p>
+          <small className="text-[10px] md:text-[12px] font-normal text-[#4B5563]">Register now for:</small>
+                <h1 className="text-[18px] md:text-[24px] font-medium text-[#1F2937]">The Missing Link</h1>
+                <p className="text-[12px] md:text-[14px] font-normal text-[#4B5563]">An Introduction to CAD Design</p>
         </div>
       </div>
 

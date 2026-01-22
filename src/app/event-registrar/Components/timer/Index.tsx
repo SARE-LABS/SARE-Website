@@ -5,7 +5,7 @@ import ClockGif from "../../assets/gifs/Clock.gif";
 import Image from "next/image";
 
 export const Timer = () => {
-  const targetDate = new Date("2025-08-23T20:00:00"); // Target event date
+  const targetDate = new Date("2026-01-31T20:00:00");
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
