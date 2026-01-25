@@ -7,27 +7,32 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/",
-        destination: "/application",
+        destination: "/event-registrar",
+        permanent: true,
+      },
+      {
+        source: "/application",
+        destination: "/event-registrar",
         permanent: true,
       },
       {
         source: "/about",
-        destination: "/application",
+        destination: "/event-registrar",
         permanent: true,
       },
       {
         source: "/projects",
-        destination: "/application",
+        destination: "/event-registrar",
         permanent: true,
       },
       {
         source: "/ctrl-labs",
-        destination: "/application",
+        destination: "/event-registrar",
         permanent: true,
       },
       {
         source: "/explore",
-        destination: "/application",
+        destination: "/event-registrar",
         permanent: true,
       },
     ];

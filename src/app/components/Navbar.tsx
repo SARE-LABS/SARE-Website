@@ -61,7 +61,7 @@ function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className=" fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            className={`fixed inset-0 bg-red-500 flex items-center justify-center z-100 `}
             onClick={handleClose}
           >
             <motion.div
@@ -77,7 +77,9 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-      <nav className="fixed top-0 left-0 right-0 z-[40]">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[40] ${pathname === "/event-registrar" ? "hidden" : ""}`}
+      >
         <div className="flex items-center justify-between py-[.2rem] px-[.5rem] md:px-[76px] bg-white md:min-w-[81px]">
           <Link href="/">
             <Image
@@ -135,7 +137,7 @@ function Navbar() {
             ))}
           </div>
 
-          {/* <Link
+          <Link
             href="#"
             onClick={handleCardClick}
             className="flex items-center justify-center flex-shrink-0 whitespace-nowrap  gap-2  bg-primary-blue hover:bg-primary-blue-hover 
@@ -148,11 +150,11 @@ function Navbar() {
               alt="Action icon"
             />
             <p>{pathname !== "/application" ? "Get involved" : "Apply now"}</p>
-          </Link> */}
-          <div>{ApplyNowBtn}</div>
+          </Link>
+          {/* <div>{ApplyNowBtn}</div> */}
         </div>
 
-        <NavMarques />
+        {/* <NavMarques /> */}
         <NavMobile />
       </nav>
     </>
