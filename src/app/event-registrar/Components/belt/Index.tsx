@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { RegisterButton } from "../button/Register";
 import { ShareButton } from "../button/Share";
-import SARE from "../../assets/images/How to GIT Started.jpg";
+import SARE from "../../assets/images/The Missing Link Flyer.jpeg";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -43,7 +43,7 @@ export const Belt = () => {
    }`}
     >
       <div className="h-max flex justify-between items-center md:px-0 px-4 py-4 gap-4 ">
-        {/* <div className="md:w-[120px] w-[140px] h-[80px] md:h-[120px] relative">
+        <div className="md:w-[120px] w-[140px] h-[80px] md:h-[120px] relative">
           <Image
             alt="S.A.R.E. is Cooking"
             src={SARE}
@@ -54,7 +54,7 @@ export const Belt = () => {
             alt="S.A.R.E. is Cooking"
             className="object-cover w-full h-full absolute top-0 rounded-lg"
           />
-        </div> */}
+        </div>
         <div className="h-max flex flex-col gap-1">
           <small className="text-[10px] md:text-[12px] font-normal text-[#4B5563]">Register now for:</small>
                 <h1 className="text-[18px] md:text-[24px] font-medium text-[#1F2937]">The Missing Link</h1>

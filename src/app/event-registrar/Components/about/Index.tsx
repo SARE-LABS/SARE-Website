@@ -30,7 +30,7 @@ export const About = () => {
         apart the moment you try to assemble them — this workshop bridges that
         gap.
       </p>
-      {/* <Carousel /> */}
+      <Carousel />
     </div>
   );
 };
