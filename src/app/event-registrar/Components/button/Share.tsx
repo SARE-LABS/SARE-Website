@@ -6,7 +6,7 @@ export const ShareButton = () => {
   const { showToast } = useToast();
 
   const handleShare = async () => {
-    const urlToCopy = "https://event-registrar.vercel.app/";
+    const urlToCopy = "https://www.sarengineers.com/event-registrar";
     
     try {
       await navigator.clipboard.writeText(urlToCopy);

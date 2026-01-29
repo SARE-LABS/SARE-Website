@@ -5,6 +5,7 @@ const nodemailer = require("nodemailer");
 // --- CONFIGURATION ---
 const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
 const RANGE = "ApplicationResponse!A:B"; 
+const WORKSHOP_LINK = "https://www.sarengineers.com/event-registrar";
 const WHATSAPP_LINK = "https://chat.whatsapp.com/J90Z22acjjK6MWWX8KPCaP";
 
 // --- NODEMAILER SETUP ---
@@ -50,7 +51,7 @@ async function main() {
       return;
     }
 
-    console.log(`✅ Found ${rows.length} rows. Sending 'Applications Closed' update...`);
+    console.log(`✅ Found ${rows.length} rows. Sending 'Review Update' email...`);
 
     // Start at i = 1 to skip headers
     for (let i = 1; i < rows.length; i++) {
@@ -63,7 +64,7 @@ async function main() {
       }
 
       await sendUpdateEmail(email, name);
-      await sleep(1000); // 1 second delay
+      await sleep(1000); // 1 second delay to prevent blocking
     }
 
     console.log("🎉 All emails processed!");
@@ -74,47 +75,54 @@ async function main() {
 }
 
 async function sendUpdateEmail(to, name) {
-  const subject = "SARE Applications Closed: Next Steps & Upcoming Workshop 🛠️";
+  const subject = "Application Update + Invitation to Build with Fusion 360";
   
   const htmlContent = `
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
       <h2>Hello ${name},</h2>
 
-      <p>This is a quick update to inform you that <strong>SARE Membership Applications are now officially closed.</strong></p>
+      <p>We know it’s been a little while, so we wanted to reach out and give you a quick update.</p>
 
-      <p>Congratulations! ✅ You have successfully completed the first step of the process.</p>
-
-      <h3>🔍 What Happens Next?</h3>
-      <p>Our team is currently reviewing all submissions. Over the coming days, we will be sending out invitations for the next stage of the recruitment process.</p>
+      <p><strong>First off: Don't panic.</strong></p>
       
-      <p><strong>Please keep a close eye on your email (and spam folder) so you don't miss important updates.</strong></p>
+      <p>Your application is safe and sound. We received an overwhelming number of incredible submissions, and our team is taking the time to carefully review every single one. We want to ensure we give every applicant the attention they deserve.</p>
+
+      <p>Your application is <strong>still under review</strong>, and we will be in touch regarding the next stage soon. Hang in tight!</p>
 
       <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
-      <h3>🎨 Coming Soon: Virtual Fusion 360 Workshop</h3>
-      <p>While you wait for the next stage, we want to keep the momentum going.</p>
+      <h3>🎨 While you wait... Let's Build.</h3>
+      <p>At SARE, we believe in constant growth. So, while the review process continues, we decided to organize something special to keep you engaged.</p>
       
-      <p>We are excited to announce that we will be hosting a <strong>Virtual CAD Workshop</strong> tailored for everyone—beginners and pros alike.</p>
+      <p>We are hosting a <strong>Hands-on Fusion 360 Workshop</strong>!</p>
       
+      <p>Whether you are a complete beginner or looking to sharpen your CAD skills, this workshop is designed to get you designing 3D models in no time. It is open to everyone—you don't need to be a member to join.</p>
+
       <ul>
-        <li><strong>Tool:</strong> Autodesk Fusion 360 ⚙️</li>
-        <li><strong>Focus:</strong> Practical 3D Design & Modeling</li>
-        <li><strong>Eligibility:</strong> Open to ALL</li>
+        <li><strong>Topic:</strong> The Missing Link; An introduction to Joints in CAD design </li>
+        <li><strong>Cost:</strong> Free</li>
+        <li><strong>Requirement:</strong> A laptop & willingness to learn</li>
       </ul>
 
-      <p>This session promises to be highly engaging and hands-on. Details on the date and time will be shared in the <strong>WhatsApp Group</strong> soon.</p>
+      <p><strong>Secure your slot now by registering below:</strong></p>
 
-      <p style="text-align: center;">
-        <a href="${WHATSAPP_LINK}" style="color: #25D366; font-weight: bold; text-decoration: none;">
-          Make sure you are in the WhatsApp Group to get the link &raquo;
+      <p style="text-align: center; margin: 30px 0;">
+        <a href="${WORKSHOP_LINK}" style="background-color: #007bff; color: white; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+          Register for Workshop Here
         </a>
       </p>
-      <p>By the way, you are the first to know. 🫣</p>
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-      <p>Stay tuned and keep building!</p>
+
+      <p><em>(Link not working? Copy this: <a href="${WORKSHOP_LINK}">${WORKSHOP_LINK}</a>)</em></p>
+
+      <p>We can't wait to see what you create!</p>
       <br>
       <p>Best regards,</p>
       <p><strong>The SARE Team</strong></p>
+      
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+      <p style="font-size: 12px; color: #888; text-align: center;">
+        Missed the WhatsApp link? <a href="${WHATSAPP_LINK}" style="color: #25D366;">Join here for updates</a>.
+      </p>
     </div>
   `;
 

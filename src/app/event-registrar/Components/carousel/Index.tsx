@@ -4,13 +4,13 @@ import { useRef, useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import SARE from "../../assets/images/The Missing Link Flyer.jpeg";
-// import SARE2 from "../../assets/images/flyerTwo.jpg";
-// import SARE3 from "../../assets/images/FlyerThree.jpg";
+import SARE2 from "../../assets/images/The Missing Link General.png";
+import SARE3 from "../../assets/images/The Missing Link; Meet the Instructor.png";
 import Image from "next/image";
 
 
 export const Carousel = () => {
-  const images = [SARE]; // Added more images
+  const images = [SARE, SARE2, SARE3]; // Added more images
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
