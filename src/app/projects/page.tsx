@@ -9,6 +9,7 @@ import { ExploreSection } from "../components/Projects/ExploreSection";
 import { FAQSection } from "../components/Projects/FAQSection";
 import Footer from "../components/Footer";
 import Newsletter from "../components/Newsletter";
+import FAQs from "../components/FAQs";
 
 export default function ProjectsPage() {
   const INITIAL_VISIBLE_COUNT = 2;
@@ -104,7 +105,7 @@ export default function ProjectsPage() {
         )}
       </div>
       <ExploreSection />
-      <FAQSection />
+      <FAQs/>
       <Newsletter/>
     </div>
   );
