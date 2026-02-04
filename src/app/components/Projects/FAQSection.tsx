@@ -49,7 +49,7 @@ export const FAQSection = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Sidebar: Categories */}
-        <div className="lg:col-span-2 flex  gap-2">
+        <div className="lg:col-span-2 flex md:flex-col gap-2  w-full min-w-0 max-w-xs sm:max-w-sm md:max-w-full overflow-x-auto no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -114,7 +114,7 @@ export const FAQSection = () => {
                       </h3>
                       <button
                         onClick={() => setOpenIndex(null)}
-                        className="w-10 h-10 relative left-8 bottom-4  bg-[#CBD5E1] rounded-full flex items-center justify-center text-[#1E293B] transition-transform"
+                        className="w-10 h-10 relative left-8 bottom-8  bg-[#CBD5E1] rounded-full flex items-center justify-center text-[#1E293B] transition-transform"
                       >
                         <span className="text-2xl font-bold leading-none mb-1">
                           −

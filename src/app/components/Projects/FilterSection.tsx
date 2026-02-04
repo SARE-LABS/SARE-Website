@@ -169,12 +169,12 @@ export const FilterSection = ({
               </svg>
             </div>
           </div>
-          <div className="flex md:hidden bg-[#F1F5F9] p-1.5 rounded-full">
+          <div className="flex md:hidden w-full min-w-0 max-w-xs sm:max-w-sm md:max-w-full overflow-x-auto no-scrollbar bg-[#F1F5F9] p-1.5 rounded-full">
             {mainTabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setStatusFilter(tab)}
-                className={`px-8 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 py-2 whitespace-nowrap rounded-full text-sm font-medium transition-all ${
                   statusFilter === tab
                     ? "bg-[#67B5DC] text-white shadow-md"
                     : "text-[#64748B] hover:text-[#1E293B]"

@@ -52,8 +52,10 @@ function Footer() {
       - Takes up the remaining 4 columns on large screens
       - grid-cols-2: 2 columns on mobile (fits links perfectly)
       - sm:grid-cols-4: 4 columns from tablet upwards
+
     */}
-          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-8">
+
+          <div className="lg:col-span-4 ml-8 md:ml-0 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-8">
             {footerLinks.map((column, idx) => (
               <div key={idx} className="flex flex-col gap-4 md:gap-6">
                 <h4 className="flex items-center gap-2 font-bold text-[#1E293B] text-[16px] md:text-[18px]">
