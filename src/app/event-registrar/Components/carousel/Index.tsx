@@ -3,14 +3,13 @@ import { useRef, useState, useEffect } from "react";
 // import { ChevronLeft, ChevronRight } from "lucide-react"; // optional icons
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-import SARE from "../../assets/images/The Missing Link Flyer.jpeg";
-import SARE2 from "../../assets/images/The Missing Link General.png";
-import SARE3 from "../../assets/images/The Missing Link; Meet the Instructor.png";
+import SARE from "../../assets/images/CTRL LABS Ice Breaker - Reveal.png";
+import SARE2 from "../../assets/images/CTRL LABS Ice Breaker - Teaser (1).png";
 import Image from "next/image";
 
 
 export const Carousel = () => {
-  const images = [SARE, SARE2, SARE3]; // Added more images
+  const images = [SARE, SARE2]; // Added more images
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
@@ -59,7 +58,7 @@ export const Carousel = () => {
             <Image
               src={image}
               alt={`Carousel ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         ))}

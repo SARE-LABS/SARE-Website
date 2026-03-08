@@ -13,7 +13,7 @@ export const Home = () => {
       :pt-10 pt-4">
         <Landing />
         <About />
-        <Instructor />
+        {/* <Instructor /> */}
         {/* <Footer /> */}
       </div>
       <Belt />

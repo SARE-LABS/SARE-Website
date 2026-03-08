@@ -1,10 +1,10 @@
 export const Tags = () => {
   const tags = [
-    "Create and apply joints the right way in Fusion 360",
-    "Understand joint types and when to use each one",
-    "Build assemblies that move realistically",
-    "Avoid common mistakes that break assemblies",
-    "Think like an engineer, not just a modeler",
+    "Build with Purpose",
+    "Break Barriers",
+    "Automate for Impact",
+    "Think Entrepreneurially",
+    "Collaborate for Success",
   ];
   return (
     <div className="flex gap-4 flex-col md:flex-row md:flex-wrap">
