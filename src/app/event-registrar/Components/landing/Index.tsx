@@ -11,7 +11,7 @@ export const Landing = () => {
   return (
     <div className="w-full h-max flex flex-col relative">
       {/* Dummy images */}
-       <div className="md:w-[450px] w-[200px] h-[200px] absolute md:h-[450px] left-[30%] md:left-[33%] block top-[200px]">
+       <div className="md:w-[450px] w-[200px] h-[200px] absolute md:h-[450px] left-[30%] md:left-[33%] block md:top-0.5 top-[200px]">
         <Image src={Fusion1Icon} alt="Placeholder" className="object-cover" />
       </div>
       {/* <div className="w-24 absolute h-24 left-[50%] hidden md:block">
