@@ -1,5 +1,6 @@
 import { RegisterButton } from "../button/Register"
 import { Timer } from "../timer/Index"
+import Fusion1Icon from "../../assets/images/Frame 2147223632.png"
 // import Fusion2Icon from "../../assets/images/Fusion2.webp"
 // import Fusion3Icon from "../../assets/images/Fusion3.png"
 import { ShareButton } from "../button/Share"
@@ -10,9 +11,9 @@ export const Landing = () => {
   return (
     <div className="w-full h-max flex flex-col relative">
       {/* Dummy images */}
-       {/* <div className="md:w-[450px] w-[200px] h-[200px] absolute md:h-[450px] left-[30%] md:left-[33%] block md:top-0.5 top-[200px]">
+       <div className="md:w-[450px] w-[200px] h-[200px] absolute md:h-[450px] left-[30%] md:left-[33%] hidden md:block top-0.5">
         <Image src={Fusion1Icon} alt="Placeholder" className="object-cover" />
-      </div> */}
+      </div>
       {/* <div className="w-24 absolute h-24 left-[50%] hidden md:block">
         <Image src={Fusion2Icon} alt="Placeholder" className="object-cover" />
       </div>
