@@ -47,33 +47,37 @@ export async function registerParticipant(formData: {
     const auth = await getGoogleAuth();
     const sheets = google.sheets({ version: "v4", auth: auth as any });
 
-    // 1. Check for duplicates
+    // 1. Get Spreadsheet Metadata to find the first sheet name
+    const spreadsheet = await sheets.spreadsheets.get({
+      spreadsheetId: SPREADSHEET_ID,
+    });
+
+    const sheetName = spreadsheet.data.sheets?.[0]?.properties?.title || "Sheet1";
+    const range = `${sheetName}!A:E`;
+
+    // 2. Check for duplicates
     const getResponse = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: RANGE,
+      range: range,
     });
 
     const rows = getResponse.data.values || [];
     const emailIndex = 2; // Assuming Column C is Email (A=0, B=1, C=2)
-    
-    // Check if header exists, if not, we can't really index strictly but let's assume standard layout
-    // Headers: [ID, Full Name, Email, Phone, Timestamp]
     
     const isDuplicate = rows.some((row) => row[emailIndex] === email);
     if (isDuplicate) {
       return { success: false, message: "This email address is already registered." };
     }
 
-    // 2. Generate Unique ID (IBS2.0-001)
-    const nextIdNumber = rows.length; // If 0 rows (no header even), start with 1? 
-    // Usually row 0 is header. So if rows.length is 1 (header only), nextId is 1.
+    // 3. Generate Unique ID (IBS2.0-001)
+    const nextIdNumber = rows.length; 
     const id = `IBS2.0-${String(nextIdNumber).padStart(3, "0")}`;
     const timestamp = new Date().toLocaleString();
 
-    // 3. Append to Google Sheets
+    // 4. Append to Google Sheets
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: RANGE,
+      range: range,
       valueInputOption: "RAW",
       requestBody: {
         values: [[id, fullName, email, phone, timestamp]],
