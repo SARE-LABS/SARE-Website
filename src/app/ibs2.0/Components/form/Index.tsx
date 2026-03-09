@@ -110,7 +110,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   if (!validate()) {
-    showToast("Please fix the errors above", "error");
+    showToast("Please fill in all the fields", "error");
     return;
   }
 
