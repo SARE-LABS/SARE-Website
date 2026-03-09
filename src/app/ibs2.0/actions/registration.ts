@@ -33,9 +33,23 @@ export async function registerParticipant(formData: {
   email: string;
   phone: string;
 }) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
-  const RANGE = "Sheet1!A:E"; 
+  const { 
+    RESEND_API_KEY, 
+    RESEND_SENDER_EMAIL, 
+    GOOGLE_SHEET_ID, 
+    GOOGLE_CLIENT_EMAIL, 
+    GOOGLE_PRIVATE_KEY 
+  } = process.env;
+
+  // 1. Strict Environment Validation
+  if (!RESEND_API_KEY) return { success: false, message: "Missing RESEND_API_KEY in production." };
+  if (!RESEND_SENDER_EMAIL) return { success: false, message: "Missing RESEND_SENDER_EMAIL in production." };
+  if (!GOOGLE_SHEET_ID) return { success: false, message: "Missing GOOGLE_SHEET_ID in production." };
+  if (!GOOGLE_CLIENT_EMAIL) return { success: false, message: "Missing GOOGLE_CLIENT_EMAIL in production." };
+  if (!GOOGLE_PRIVATE_KEY) return { success: false, message: "Missing GOOGLE_PRIVATE_KEY in production." };
+
+  const resend = new Resend(RESEND_API_KEY);
+  const SPREADSHEET_ID = GOOGLE_SHEET_ID;
 
   try {
     const { fullName, email, phone } = formData;
@@ -75,7 +89,7 @@ export async function registerParticipant(formData: {
     const timestamp = new Date().toLocaleString();
 
     // 4. Append to Google Sheets
-    await sheets.spreadsheets.values.append({
+    const appendResponse = await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: range,
       valueInputOption: "RAW",
@@ -84,9 +98,11 @@ export async function registerParticipant(formData: {
       },
     });
 
-    // 4. Send Styled Email via Resend
+    console.log(`Log to Sheet: ${sheetName} (ID: ${SPREADSHEET_ID}), Status: ${appendResponse.status}`);
+
+    // 5. Send Styled Email via Resend
     const { data, error } = await resend.emails.send({
-      from: `CTRL LABS Ice Breaker Session <${process.env.RESEND_SENDER_EMAIL}>`,
+      from: `CTRL LABS Ice Breaker Session <${RESEND_SENDER_EMAIL}>`,
       to: [email],
       subject: "Registration Confirmed: Take CTRL of Innovation 🚀",
       html: `
@@ -122,8 +138,6 @@ export async function registerParticipant(formData: {
 
     if (error) {
       console.error("Resend Error:", error);
-      // We still return success: true because it's recorded in Sheets, but mention email failure if needed
-      // Actually, better to inform user if email failed but registration succeeded
       return { 
         success: true, 
         message: "Registration successful! (Email delivery failed but your spot is reserved)", 
@@ -133,7 +147,7 @@ export async function registerParticipant(formData: {
 
     return { success: true, message: "Registration successful!", id };
   } catch (err: any) {
-    console.error("Registration Error:", err);
+    console.error("DEBUG: Full Registration Error:", err);
     return { success: false, message: err.message || "An unexpected error occurred." };
   }
 }
