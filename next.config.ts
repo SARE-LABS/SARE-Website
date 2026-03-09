@@ -7,32 +7,32 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
       {
         source: "/application",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
       {
         source: "/about",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
       {
         source: "/projects",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
       {
         source: "/ctrl-labs",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
       {
         source: "/explore",
-        destination: "/event-registrar",
+        destination: "/ibs2.0",
         permanent: true,
       },
     ];
