@@ -78,7 +78,7 @@ function Navbar() {
         )}
       </AnimatePresence>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[40] ${pathname === "/event-registrar" ? "hidden" : ""}`}
+        className={`fixed top-0 left-0 right-0 z-[40] ${pathname === "/ibs2.0" ? "hidden" : ""}`}
       >
         <div className="flex items-center justify-between py-[.2rem] px-[.5rem] md:px-[76px] bg-white md:min-w-[81px]">
           <Link href="/">
@@ -105,7 +105,7 @@ function Navbar() {
                 href={nav.link}
                 className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
                 text-text-primary hover:text-primary-blue  ${
-                  pathname === "/application" ? "hidden" : ""
+                  pathname === "/ibs2.0" ? "hidden" : ""
                 }
                 ${isActive(nav.link) ? "bg-highlight" : ""}`}
               >
