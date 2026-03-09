@@ -3,10 +3,6 @@
 import { google } from "googleapis";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
-const RANGE = "Sheet1!A:E"; // Adjust range as needed
 
 async function getGoogleAuth() {
   let privateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -37,6 +33,10 @@ export async function registerParticipant(formData: {
   email: string;
   phone: string;
 }) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
+  const RANGE = "Sheet1!A:E"; 
+
   try {
     const { fullName, email, phone } = formData;
 
