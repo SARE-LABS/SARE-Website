@@ -10,17 +10,6 @@ import Image from "next/image"
 export const Landing = () => {
   return (
     <div className="w-full h-max flex flex-col relative">
-      {/* Dummy images */}
-       <div className="md:w-[450px] w-[200px] h-[200px] absolute md:h-[450px] left-[30%] md:left-[33%] hidden md:block top-0.5">
-        <Image src={Fusion1Icon} alt="Placeholder" className="object-cover" />
-      </div>
-      {/* <div className="w-24 absolute h-24 left-[50%] hidden md:block">
-        <Image src={Fusion2Icon} alt="Placeholder" className="object-cover" />
-      </div>
-       <div className="w-24 absolute h-24 left-[58%] hidden md:block top-[20%] rotate-12">
-        <Image src={Fusion3Icon} alt="Placeholder" className="object-cover" />
-      </div> */}
-
       <div className="w-full flex flex-col">
         <h1 className="text-[#1F2937] text-[36px] md:text-[48px] font-medium">CTRL LABS Icebreaker <br /> Session 2.0</h1>
         <small className="text-[#4B5563] text-[16px] md:text-[14px] font-normal">Take CTRL of Innovation: Build. Break. Automate.</small>
@@ -32,7 +21,12 @@ export const Landing = () => {
           <ShareButton/>
         </div>
       </div>
-      <div className="w-full h-max flex justify-between mt-10">
+      
+      <div className="w-full h-max flex justify-between relative mt-24 md:mt-32">
+        {/* Robot Icon sitting on top of the belts */}
+        <div className="absolute -top-[192px] md:-top-[412px] left-1/2 -translate-x-1/2 w-[280px] md:w-[600px] h-auto z-10 pointer-events-none">
+          <Image src={Fusion1Icon} alt="Robot Icon" className="object-contain" priority />
+        </div>
         <Details/>
       </div>
     </div>
