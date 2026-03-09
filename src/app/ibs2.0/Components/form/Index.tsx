@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import InputField from "./Input";
+import { registerParticipant } from "../../actions/registration";
 import { useModal } from "../../context/ModalContext";
 import { useToast } from "../../context/ToastContext";
 
@@ -21,9 +22,6 @@ export const Form = () => {
 
   const { isModalOpen, closeModal } = useModal();
   const { showToast } = useToast();
-
-  // Your Google Apps Script Web App URL
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFTAvgJTvXSjX9HV8lYDAQSbtl0pS_F1hu7ZwFPYPhHP42rMF1U9UfDSB_jkxbS5ssKg/exec';
 
   useEffect(() => {
     if (isModalOpen) {
@@ -119,26 +117,11 @@ const handleSubmit = async (e: React.FormEvent) => {
   setIsSubmitting(true);
 
   try {
-    const submitData = new FormData();
-    submitData.append('fullName', formData.fullName);
-    submitData.append('email', formData.email);
-    submitData.append('phoneNumber', formData.phone);
+    const result = await registerParticipant(formData);
 
-    const response = await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: submitData,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Response:", data);
-
-    if (data.result === "success") {
+    if (result.success) {
       showToast(
-        "Registration successful! You will receive a confirmation email shortly.",
+        result.message || "Registration successful!",
         "success"
       );
       setFormData({ fullName: "", email: "", phone: "" });
@@ -146,7 +129,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       setTimeout(() => handleClose(), 2000);
     } else {
       showToast(
-        `Registration failed: ${data.message || "Please try again later."}`,
+        result.message || "Registration failed. Please try again later.",
         "error"
       );
     }
