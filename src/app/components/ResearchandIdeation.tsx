@@ -11,7 +11,7 @@ import { useInView, Variants } from "framer-motion";
 
 function ResearchandIdeation() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   // Container for staggered children
   const containerVariants: Variants = {

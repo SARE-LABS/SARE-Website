@@ -1,4 +1,4 @@
-// I did this since we are doing a redirect from '/' to '/application' until we start the main website
+// // I did this since we are doing a redirect from '/' to '/application' until we start the main website
 
 import type { NextConfig } from "next";
 
@@ -35,31 +35,36 @@ const nextConfig: NextConfig = {
         destination: "/event-registrar",
         permanent: true,
       },
+      {
+        source: "/project",
+        destination: "/event-registrar",
+        permanent: true,
+      },
     ];
   },
 };
 
-export default nextConfig;
-
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// });
-
-// module.exports = withBundleAnalyzer({
-//   experimental: {
-//     turbo: false,
-//   },
-// });
-
-
-// import type { NextConfig } from "next";
-
-// const nextConfig: NextConfig = {
-//   async redirects() {
-//     return [];
-//   },
-// };
-
 // export default nextConfig;
+
+// // const withBundleAnalyzer = require('@next/bundle-analyzer')({
+// //   enabled: process.env.ANALYZE === 'true',
+// // });
+
+// // module.exports = withBundleAnalyzer({
+// //   experimental: {
+// //     turbo: false,
+// //   },
+// // });
+
+
+// // import type { NextConfig } from "next";
+
+// // const nextConfig: NextConfig = {
+// //   async redirects() {
+// //     return [];
+// //   },
+// // };
+
+export default nextConfig;
 
 

@@ -43,8 +43,26 @@ import Partners from "./partners.svg";
 import GreenFolder from "./foldergreen.svg";
 import InstagramIcon from "./instagram.svg";
 import Map from "./map.png";
+import FutureOrientatetedStatsBg from "./future-orientated-stat.jpg"
+import Divider from "./divider.svg"
+import XanthaOne from "./xanthaOne.png"
+import XanthaTwo from "./xanthaTwo.png"
+import XanthaThree from "./xanthaThree.png"
+import Instagram from "./instagram.png"
+import Twitter from "./twitter.png"
+import Linkedin from "./linkdin.png"
+import Youtube from "./youtube.png"
 
 export {
+  Instagram,
+  Youtube,
+  Twitter,
+  Linkedin,
+  XanthaOne,
+  XanthaTwo,
+  XanthaThree,
+  Divider,
+  FutureOrientatetedStatsBg,
   Map,
   Check,
   Member,

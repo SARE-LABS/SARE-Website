@@ -18,6 +18,13 @@ import {
   Partners,
   MembersTrained,
   GreenFolder,
+  XanthaOne,
+  XanthaTwo,
+  XanthaThree,
+  Linkedin,
+  Youtube,
+  Instagram,
+  Twitter,
 } from "./images/images";
 import { title } from "process";
 import { link } from "fs";
@@ -93,7 +100,6 @@ export const FAQDataGeneral = [
   },
 ];
 
-
 export const FAQDataProjects = [
   {
     id: 1,
@@ -121,7 +127,6 @@ export const FAQDataProjects = [
   },
 ];
 
-
 export const FAQDataCTRL = [
   {
     id: 1,
@@ -148,7 +153,6 @@ export const FAQDataCTRL = [
       "Yes. CTRL LABS is designed to accommodate beginners while still challenging advanced members. Learning paths are progressive and supported by mentors and project leads.",
   },
 ];
-
 
 export const Navigations = [
   { id: 1, name: "Home", link: "/", icon: ARIghtBlue },
@@ -283,31 +287,31 @@ export const Vision = [
 export const FutureOrientedStat = [
   {
     id: 1,
-    icon: Partners,
-    figure: "15+",
+    title: "Students Trained",
+    figure: "400+",
     description:
-      "Strategic Partners – collaborating with research institutes, farms, and technology providers.",
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
   },
   {
     id: 2,
-    icon: MembersTrained,
-    figure: "Over 40+",
+    title: "Project Completed",
+    figure: "Over 4+",
     description:
-      "Members Trained – empowering farmers and agri-tech enthusiasts with modern skills.",
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
   },
   {
     id: 2,
-    icon: GreenFolder,
-    figure: "20+",
+    title: "Active Members",
+    figure: "40+",
     description:
-      "Projects Completed – delivering innovative agro-robotics solutions.",
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
   },
 ];
 
 export const Founders = [
   {
     id: 1,
-    image: Kennedy,
+    image: XanthaOne,
     alias: "JFK",
     name: "Ifeadi Kennedy Chukuwike",
     role: "Frontend | UIUX(Interaction design)",
@@ -318,7 +322,7 @@ export const Founders = [
   },
   {
     id: 2,
-    image: Kennedy,
+    image: XanthaTwo,
     alias: "Xantha",
     name: "Sheriffdeen Adesokan Adedamola",
     role: "Robotics(IOT) | UIUX(Interaction design)",
@@ -329,7 +333,7 @@ export const Founders = [
   },
   {
     id: 3,
-    image: Kennedy,
+    image: XanthaThree,
     alias: "PythonMat",
     name: "Olagunju Matthew Oluwanifemi",
     role: "Backend | AI/ML",
@@ -392,24 +396,97 @@ export const WebExperienceTeam = [
     link: "https://www.instagram.com/",
   },
   {
-    id: 1,
+    id: 2,
     image: Kennedy,
     name: "Oladele Victory",
     title: "UIUX Designer",
     link: "https://www.instagram.com/",
   },
   {
-    id: 1,
+    id: 3,
     image: Kennedy,
     name: "Oladele Victory",
     title: "UIUX Designer",
     link: "https://www.instagram.com/",
   },
   {
-    id: 1,
+    id: 4,
     image: Kennedy,
     name: "Oladele Victory",
     title: "UIUX Designer",
     link: "https://www.instagram.com/",
+  },
+];
+
+export const Journey = [
+  {
+    id: 1,
+    date: "25 / 11 / 24",
+    month: "November",
+    title: "1st General Meeting & Inauguration of Pioneer members",
+    context:
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations. Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
+  },
+
+  {
+    id: 1,
+    date: "25 / 11 / 24",
+    month: "November",
+    title: "1st General Meeting & Inauguration of Pioneer members",
+    context:
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations. Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
+  },
+
+  {
+    id: 1,
+    date: "25 / 11 / 24",
+    month: "November",
+    title: "1st General Meeting & Inauguration of Pioneer members",
+    context:
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations. Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
+  },
+
+  {
+    id: 1,
+    date: "25 / 11 / 24",
+    month: "November",
+    title: "1st General Meeting & Inauguration of Pioneer members",
+    context:
+      "Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations. Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.Once we understand the problem, our team dives deep into research—studying existing solutions, leveraging robotics innovations.",
+  },
+];
+
+export const social = [
+  {
+    id: 1,
+    icon: Linkedin,
+    name: "Linkedln",
+    url: "/",
+    action: "Follow",
+    color: "bg-[#3B82F6/10]"
+  },
+  {
+    id: 2,
+    icon: Youtube,
+    name: "Youtube",
+    url: "/",
+    action: "Subscribe",
+    color: "bg-[#FF383C/10]"
+  },
+  {
+    id: 3,
+    icon: Instagram,
+    name: "Instagram",
+    url: "/",
+    action: "Follow",
+    color: "bg-[#3B82F6/10]"
+  },
+  {
+    id: 4,
+    icon: Twitter,
+    name: "Twitter",
+    url: "/",
+    action: "Follow",
+    color: "bg-[#000000/10]"
   },
 ];
