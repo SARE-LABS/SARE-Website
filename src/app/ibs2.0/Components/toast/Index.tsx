@@ -32,7 +32,7 @@ export const Toast: React.FC<ToastProps> = ({ message, type }) => {
       </div>
       {styleConfig?.icon && (
         <div className="ml-4 w-[40%] h-full flex justify-end items-center">
-          <Image alt="" src={styleConfig.icon}  className="h-10 w-10" />
+          <Image unoptimized alt="" src={styleConfig.icon}  className="h-10 w-10" />
         </div>
       )}
     </div>
