@@ -52,7 +52,7 @@ export const FilterSection = ({
           ))}
         </div>
 
-        <div className="flex md:flex-row  items-center gap-4">
+        <div className="flex md:flex-row   items-center gap-4">
           <div className="flex items-center gap-2 group/search">
             <button
               className="p-2 rounded-full transition-colors hover:bg-gray-100"
@@ -169,7 +169,7 @@ export const FilterSection = ({
               </svg>
             </div>
           </div>
-          <div className="flex md:hidden w-full min-w-0 max-w-xs sm:max-w-sm md:max-w-full overflow-x-auto no-scrollbar bg-[#F1F5F9] p-1.5 rounded-full">
+          <div className="flex md:hidden justify-between w-full min-w-0 max-w-xs sm:max-w-sm md:max-w-full overflow-x-auto no-scrollbar bg-[#F1F5F9] p-1.5 rounded-full">
             {mainTabs.map((tab) => (
               <button
                 key={tab}
@@ -228,7 +228,7 @@ export const FilterSection = ({
           })}
         </div>
 
-        <button
+        {/* <button
           type="button"
           onClick={scrollCategories}
           aria-label="Scroll categories"
@@ -248,7 +248,7 @@ export const FilterSection = ({
               fill="#67B5DC"
             />
           </svg>
-        </button>
+        </button> */}
 
         <button className="hidden md:inline-flex text-sm font-medium text-[#64748B] px-4 py-2">
           ...See all

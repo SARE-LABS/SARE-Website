@@ -4,7 +4,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   const isCompleted = project.status === "Completed";
 
   return (
-    <div className="bg-[#F8FAFC] rounded-[24px] p-8 relative mb-8">
+    <div className="bg-[#F8FAFC] rounded-3xl p-4 md:p-6 relative mb-8">
       {/* Top Right Arrow Link */}
       <button className="absolute top-6 right-6 w-10 h-10 bg-[#67B5DC] rounded-full flex items-center justify-center text-white hover:bg-[#56a4cb] transition-colors">
         <svg
@@ -38,11 +38,11 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         {project.status}
       </div>
 
-      <h2 className="text-[32px] font-bold text-[#1E293B] mb-4 leading-tight">
+      <h2 className="text-[26px] md:text-[40px] font-bold text-[#1E293B] mb-4 leading-tight">
         {project.title}
       </h2>
 
-      <p className="text-[#64748B] text-lg max-w-[1000px] mb-8 leading-relaxed">
+      <p className="text-[#64748B] text-[14px] md:text-[16px] max-w-[1000px] mb-8 leading-relaxed">
         {project.description}
       </p>
       <div className="flex flex-col-reverse gap-2 md:block ">
@@ -111,7 +111,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       <div className="mt-8 flex justify-center">
         <button
           type="button"
-          className="relative flex items-center justify-center gap-3 px-6 py-4 rounded-full bg-[#67B5DC] text-white font-bold text-base leading-5 tracking-tight shadow-lg w-full max-w-[350px] h-12 transition-colors hover:bg-[#56a4cb]"
+          className="relative cursor-pointer flex items-center justify-center gap-3 px-6 py-4 rounded-full bg-[#67B5DC] text-white font-bold text-base leading-5 tracking-tight shadow-lg w-full max-w-[350px] h-12 transition-colors hover:bg-[#56a4cb]"
         >
           <span className=" left-4 top-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-white/15">
             <svg
@@ -126,8 +126,8 @@ export const ProjectCard = ({ project }: { project: Project }) => {
                 fill="white"
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M3.54 11.526H6.97C7.15232 11.5117 7.32112 11.6229 7.38 11.796L7.98 14.686L5.25 16.686L2.54 14.616L3.15 11.836C3.19193 11.6545 3.35366 11.5259 3.54 11.526ZM5.28 14.996L6.28 13.996V13.966C6.55303 13.677 6.55303 13.2251 6.28 12.936C6.14071 12.7931 5.94959 12.7125 5.75 12.7125C5.55041 12.7125 5.35929 12.7931 5.22 12.936L4.22 13.936C3.92755 14.2289 3.92755 14.7032 4.22 14.996C4.36285 15.1332 4.552 15.2117 4.75 15.216C4.94841 15.2137 5.13828 15.1349 5.28 14.996Z"
                 fill="white"
               />
