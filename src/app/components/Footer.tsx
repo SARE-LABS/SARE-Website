@@ -82,7 +82,7 @@ function Footer() {
         {/* 3. Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[#64748B] text-[14px] md:text-[16px] text-center md:text-left">
-            @ 2025 SARE Web Experience Team
+            @ 2026 SARE Web Experience Team
           </p>
 
           {/* flex-wrap ensures icons don't break on very small screens */}

@@ -7,8 +7,8 @@ export const ProjectsHero = () => {
   const router = useRouter();
 
   return (
-    <section className="  px-[24px] py-32 md:mx-[48px] md:my-[96px]">
-      <div className="relative min-h-[520px] md:min-h-[400px] rounded-xl overflow-hidden">
+    <section className="  px-[24px] py-[48px] md:px-[48px] md:py-[96px]">
+      <div className="relative min-h-[px] md:min-h-[px] my-[48px] rounded-xl overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 md:hidden">
           <Image
@@ -19,7 +19,7 @@ export const ProjectsHero = () => {
             className="object-full"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/20" aria-hidden />
+          {/* <div className="absolute inset-0 bg-black/20" aria-hidden /> */}
         </div>
         <div className="absolute inset-0 hidden md:block">
           <Image
@@ -84,7 +84,7 @@ export const ProjectsHero = () => {
             <span className="ml-2">Explore Projects</span>
           </button>
         </div>
-        <button
+        {/* <button
           className="w-[50px] h-[38px] md:w-[54px] md:h-[44px] bg-[#67B5DC] absolute bottom-0 flex items-center justify-center rounded-full right-0 md:right-0 text-black z-20 cursor-pointer transition-all "
           onClick={() => router.push("/projects")}
         >
@@ -112,7 +112,7 @@ export const ProjectsHero = () => {
               fill="#FAFBFC"
             />
           </svg>
-        </button>
+        </button> */}
       </div>
     </section>
   );

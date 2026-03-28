@@ -43,17 +43,33 @@ import Partners from "./partners.svg";
 import GreenFolder from "./foldergreen.svg";
 import InstagramIcon from "./instagram.svg";
 import Map from "./map.png";
-import FutureOrientatetedStatsBg from "./future-orientated-stat.jpg"
-import Divider from "./divider.svg"
-import XanthaOne from "./xanthaOne.png"
-import XanthaTwo from "./xanthaTwo.png"
-import XanthaThree from "./xanthaThree.png"
-import Instagram from "./instagram.png"
-import Twitter from "./twitter.png"
-import Linkedin from "./linkdin.png"
-import Youtube from "./youtube.png"
+import FutureOrientatetedStatsBg from "./future-orientated-stat.jpg";
+import Divider from "./divider.svg";
+import XanthaOne from "./xanthaOne.png";
+import XanthaTwo from "./xanthaTwo.png";
+import XanthaThree from "./xanthaThree.png";
+import Instagram from "./instagram.png";
+import Twitter from "./twitter.png";
+import Linkedin from "./linkdin.png";
+import Youtube from "./youtube.png";
+import NeuroHomeHero from "./neuroHomeHero.png";
+import MICROCONTROLLER from "./MICROCONTROLLER.png";
+import MICROPHONEMODULE from "./MICROPHONE MODULE.png";
+import RELAYMODULE from "./RELAY MODULE.png";
+import AdruinoUno from "./arduino.svg";
+import OpenAi from "./openai.svg";
+import VsCode from "./vscode.svg";
+import Firebase from "./firebase.svg";
 
 export {
+  AdruinoUno,
+  OpenAi,
+  VsCode,
+  Firebase,
+  NeuroHomeHero,
+  MICROCONTROLLER,
+  MICROPHONEMODULE,
+  RELAYMODULE,
   Instagram,
   Youtube,
   Twitter,
@@ -107,5 +123,5 @@ export {
   CTRLLABS20,
   bot,
   LoveBinProto,
-  NACOS_2022
+  NACOS_2022,
 };
