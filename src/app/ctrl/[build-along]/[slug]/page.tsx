@@ -122,7 +122,7 @@ export default async function Page({ params }: Props) {
             <h3 className="md:text-[36px] text-text-primary leading-[120%]">
               Codes and Setup
             </h3>
-            <div className="grid md:grid-cols-2 gap-[16px]">
+            <div className="grid md:grid-cols-2 gap-[16px] ">
              
             </div>
           </div>
