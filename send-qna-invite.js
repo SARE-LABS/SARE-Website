@@ -4,8 +4,8 @@ const nodemailer = require("nodemailer");
 
 // --- CONFIGURATION ---
 const SPREADSHEET_ID = process.env.GOOGLE_SHEET_ID;
-const RANGE = "ApplicationResponse!A:B"; 
-const WHATSAPP_LINK = "https://chat.whatsapp.com/J90Z22acjjK6MWWX8KPCaP";
+const RANGE = "Selected Applicants!A:D"; // Col A = Name, Col B = Email, Col C = Status, Col D = Notes
+const GOOGLE_FORM_LINK = "https://forms.gle/Aadftnd7a1GBSPBV7"; 
 
 // --- NODEMAILER SETUP ---
 const transporter = nodemailer.createTransport({
@@ -19,116 +19,153 @@ const transporter = nodemailer.createTransport({
 // --- GOOGLE SHEETS SETUP ---
 const auth = new google.auth.GoogleAuth({
   credentials: {
-    type: process.env.GOOGLE_TYPE,
-    project_id: process.env.GOOGLE_PROJECT_ID,
-    private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    client_id: process.env.GOOGLE_CLIENT_ID,
+    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    project_id: process.env.GOOGLE_PROJECT_ID,
   },
   scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
 });
 
 const sheets = google.sheets({ version: "v4", auth });
-
-// --- HELPER: DELAY ---
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function main() {
   try {
-    console.log("🔄 Fetching applicants from Google Sheets...");
-
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: RANGE,
-    });
-
-    const rows = response.data.values;
-
-    if (!rows || rows.length === 0) {
+    console.log("🔄 Fetching selected applicants...");
+    const response = await sheets.spreadsheets.values.get({ spreadsheetId: SPREADSHEET_ID, range: RANGE });
+    
+    const applicants = response.data.values;
+    
+    if (!applicants || applicants.length === 0) {
       console.log("No data found.");
       return;
     }
 
-    console.log(`✅ Found ${rows.length} rows. Starting email blast...`);
+    console.log(`✅ Found ${applicants.length} rows. Sending 24-Hour Countdown Emails...`);
 
-    // LOOP: Start at i = 1 (to skip headers).
-    // If you want to skip the 1 person who already got it, change to: let i = 2;
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const name = row[0] || "Future Engineer"; // Column A
-      const email = row[1]; // Column B
+    for (let i = 1; i < applicants.length; i++) {
+      const row = applicants[i];
+      const name = row[0];
+      const email = row[1];
+      const status = row[3] ? row[3].trim().toLowerCase() : "nill"; 
 
-      if (!email || !email.includes("@")) {
-        console.log(`⚠️ Skipping row ${i + 1}: Invalid email.`);
-        continue;
+      if (email && email.includes("@")) {
+        if (status === "paid") {
+          await sendPaidEmail(email, name);
+        } else if (status === "nill" || status === "nil") {
+          await sendReminderEmail(email, name);
+        } else {
+          console.log(`⚠️ Skipped ${name} - Unknown status: ${status}`);
+        }
+        await sleep(1500); 
       }
-
-      // Send the email
-      await sendInviteEmail(email, name);
-
-      // Wait 1 second between emails
-      await sleep(1000); 
     }
 
-    console.log("🎉 All emails processed!");
+    console.log("🎉 All eve-of-Onboarding Session emails sent successfully!");
 
   } catch (error) {
     console.error("❌ Fatal Error:", error);
   }
 }
 
-async function sendInviteEmail(to, name) {
-  const subject = "Urgent: Join the SARE Q&A Session this Saturday! 🚀";
-  
+// ==========================================
+// 1. EMAIL FOR THOSE WHO HAVE PAID (HYPED)
+// ==========================================
+async function sendPaidEmail(to, fullName) {
+  const firstName = fullName ? fullName.split(" ")[0] : "Builder";
+  const subject = "TOMORROW: Your SARE Onboarding Session!";
+
   const htmlContent = `
-    <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-      <h2>Hello ${name},</h2>
+    <div style="font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; border: 1px solid #eee; padding: 20px;">
+      
+      <h2 style="color: #27ae60;">Hello ${firstName},</h2>
+      
+      <p>The countdown is almost over. We are officially <strong>less than 24 hours away</strong> from the SARE Onboarding Session! 🚀</p>
+      
+      <p>Since your acceptance is fully confirmed, all you need to do right now is get ready. Tomorrow, you will officially be plugged into the SARE ecosystem.</p>
 
-      <p>Thank you for your application to the <strong>Society of Agricultural Robotics Engineers (SARE)</strong>.</p>
-
-      <p>We know you might have questions about the recruitment process, what we are looking for, or what exactly we do at SARE. We want to answer them.</p>
-
-      <h3>📢 Live Q&A Session</h3>
-      <p>We are holding an exclusive <strong>Q&A Session this Saturday</strong> to address:</p>
+      <h3>What to Expect Tomorrow:</h3>
       <ul>
-        <li>The next stages of the application process.</li>
-        <li>What to expect during the interview phase.</li>
-        <li>Clarifications on projects, teams, and time commitment.</li>
+        <li>You will be added to the exclusive SARE members-only WhatsApp group.</li>
+        <li>We will walk you through our operational workflows and how we collaborate.</li>
+        <li>You will be formally assigned to your selected technical teams (e.g., AI/ML, 3D Design, Software Dev).</li>
       </ul>
 
-      <p><strong>This is your chance to get ahead and ensure you are fully prepared.</strong></p>
-
-      <h3>👇 Action Required: Join the Group</h3>
-      <p>To participate in the session and get the meeting link, please join our dedicated Applicant WhatsApp Group immediately:</p>
-
-      <p style="text-align: center;">
-        <a href="${WHATSAPP_LINK}" style="background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
-          Click to Join WhatsApp Group
-        </a>
-      </p>
-
-      <p><em>(If the button doesn't work, use this link: <a href="${WHATSAPP_LINK}">${WHATSAPP_LINK}</a>)</em></p>
-
-      <p>See you on Saturday!</p>
       <br>
-      <p>Best regards,</p>
-      <p><strong>The SARE Recruitment Team</strong></p>
+      <p>Warm regards,<br>
+      <strong>The SARE Team</strong></p>
     </div>
   `;
 
   try {
     await transporter.sendMail({
-      from: `"SARE Recruitment Team" <${process.env.MY_GMAIL_USER}>`,
+      from: `"SARE Team" <${process.env.MY_GMAIL_USER}>`,
       to: to,
       subject: subject,
       html: htmlContent,
     });
-    // FIXED: Changed 'email' to 'to'
-    console.log(`📧 Sent to: ${to} (${name})`); 
+    console.log(`✅ Sent PAID (Tomorrow) email to: ${fullName}`);
   } catch (error) {
-    // FIXED: Changed 'email' to 'to'
-    console.error(`❌ Failed to send to ${to}:`, error.message); 
+    console.error(`❌ Failed PAID email for ${to} | ${error.message}`);
+  }
+}
+
+// ==========================================
+// 2. EMAIL FOR THOSE YET TO PAY (URGENT)
+// ==========================================
+async function sendReminderEmail(to, fullName) {
+  const firstName = fullName ? fullName.split(" ")[0] : "Builder";
+  const subject = "⏳ URGENT: SARE Onboarding Session is TOMORROW (Action Required)";
+
+  const htmlContent = `
+    <div style="font-family: 'Segoe UI', Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; border: 1px solid #eee; padding: 20px;">
+      
+      <h2 style="color: #e67e22;">Hello ${firstName},</h2>
+      
+      <p>The SARE Onboarding Session is officially happening <strong>tomorrow, March 7th</strong>, and we don't want you to miss out!</p>
+      
+      <p>We are doing a final check-in because our records show that your acceptance fee is still pending. Tomorrow’s Onboarding Session is where members will be assigned to their specific technical teams and added to the official society workspace.</p>
+
+      <p><strong>This is your final reminder to secure your spot.</strong></p>
+
+      <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin: 20px 0;">
+        <h4 style="margin-top: 0; color: #333;">Payment Breakdown</h4>
+        <ul style="list-style-type: none; padding: 0;">
+          <li><strong>Member Fee:</strong> ₦1,000</li>
+          <li><strong>Acceptance Fee:</strong> ₦1,500</li>
+          <li style="border-top: 1px solid #ddd; margin-top: 10px; padding-top: 10px; font-weight: bold; font-size: 18px;">Total: ₦2,500</li>
+        </ul>
+      </div>
+
+      <h3>Payment Procedure</h3>
+      <p>Please make your payment and upload your receipt to the acceptance form below before the Onboarding Session kicks off tomorrow.</p>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <a href="${GOOGLE_FORM_LINK}" style="background-color: #e67e22; color: white; padding: 14px 28px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+          Complete Acceptance Form
+        </a>
+      </div>
+
+      <p><em>(Link not working? Use this: <a href="${GOOGLE_FORM_LINK}">${GOOGLE_FORM_LINK}</a>)</em></p>
+
+      <p>We truly hope to see you tomorrow so we can start building together!</p>
+
+      <br>
+      <p>Warm regards,<br>
+      <strong>The SARE Team</strong></p>
+    </div>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"SARE Team" <${process.env.MY_GMAIL_USER}>`,
+      to: to,
+      subject: subject,
+      html: htmlContent,
+    });
+    console.log(`⚠️ Sent URGENT REMINDER to: ${fullName}`);
+  } catch (error) {
+    console.error(`❌ Failed REMINDER email for ${to} | ${error.message}`);
   }
 }
 
