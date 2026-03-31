@@ -19,7 +19,7 @@ export const buildAlong = [
       "Neuro-Home is an AI-powered smart home system that lets users control IoT devices with natural, everyday language. Instead of strict commands, it understands context and intent, enabling actions like turning on a fan when someone says “this room is hot,” making home interaction more intuitive and human-friendly.",
     paragraphTwo:
       "The system uses an ESP32 microcontroller paired with a microphone to capture voice input. Audio is transcribed and interpreted through natural language processing, then converted into control signals for connected devices like lights or fans. Communication is handled via Wi-Fi using HTTP or MQTT, allowing real-time interaction and easy expansion for additional devices and automation.",
-    category: [
+    categories: [
       "Voice Control",
       "Home Automation",
       "Energy Management",
