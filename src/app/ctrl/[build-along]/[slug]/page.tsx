@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ArrowDownToLine, Files, Share2 } from "lucide-react";
+import { Share2 } from "lucide-react";
 import Image from "next/image";
 import CodeBlock from "@/app/utils/CodeBlock";
+import { highlightCode } from "@/app/utils/shiki";
 import { client } from "@/sanity/lib/client";
 import { getBuildBySlugQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
@@ -28,6 +29,13 @@ type Build = {
     desc: string;
     icon: any;
   }[];
+  codesSetup: {
+    name: string;
+    subtitle: string;
+    filename: string;
+    extension: string;
+    code: string;
+  }[];
 };
 
 export default async function Page({ params }: Props) {
@@ -39,6 +47,16 @@ export default async function Page({ params }: Props) {
     return <div className="p-10">Project not found</div>;
   }
 
+  const files =
+    build.codesSetup?.map(async (file) => ({
+      filename: `${file.filename}.${file.extension}`,
+      code: file.code,
+      name: file.name,
+      subtitle: file.subtitle,
+      highlighted: await highlightCode(file.code, file.extension || "cpp"),
+    })) || [];
+
+  const resolvedFiles = await Promise.all(files);
   return (
     <div className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] mt-[49.5px] md:mt-[99px] bg-background-page flex flex-col items-start">
       {/* Tag */}
@@ -171,59 +189,8 @@ export default async function Page({ params }: Props) {
             </h3>
 
             <div className="grid md:grid-cols-1 gap-[16px]">
-              <div className="w-full rounded-[24px] shadow-md border border-text-disabled flex md:flex-col items-start gap-[16px] p-[24px]">
-                <span className="flex flex-col items-start">
-                  <h4 className="md:text-[24px] text-text-primary leading-[120%] font-medium">
-                    Arduino Code
-                  </h4>
-                  <p className="md:text-[16px] text-text-primary leading-[148%]">
-                    Run this code in your Arduino IDE
-                  </p>
-                </span>
-
-                <div className="flex flex-col w-full">
-                  <div className="w-full flex items-end justify-between gap-[30px]">
-                    <div className="flex items-center justify-center gap-1">
-                      <div className="flex items-center justify-center gap-1">
-                        <span className="bg-[#67B5DC]/10 md:px-[16px] md:py-[8px] flex items-center justify-center rounded-tl-[16px] cursor-pointer">
-                          <p className="text-primary-blue md:text-[14px]">
-                            Neuro_home_main_code.ino
-                          </p>
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-center gap-1">
-                        <span className="bg-[#9CA3AF]/10 md:px-[16px] md:py-[8px] flex items-center justify-center rounded-tr-[16px] cursor-pointer">
-                          <p className="text-text-disabled md:text-[14px]">
-                            Neuro_home_main_code.ino
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-center gap-1">
-                      <span className="bg-[#67B5DC]/10 md:p-[8px] flex items-center justify-center rounded-tl-[16px] cursor-pointer">
-                        <ArrowDownToLine className="text-primary-blue" />
-                      </span>
-                      <span className="bg-[#67B5DC]/10 md:p-[8px] flex items-center justify-center rounded-tr-[16px] cursor-pointer">
-                        <Files className="text-primary-blue" />
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* <div className="w-full min-h-[100px] bg-background-disabled mt-1.5"></div> */}
-                  <CodeBlock
-  filename="neuro_home_main_code.ino"
-  language="cpp"
-  code={`void setup() {
-  Serial.begin(115200);
-}
-
-void loop() {
-  Serial.println("Hello Neuro Home");
-  delay(1000);
-}`}
-/>
-                </div>
+              <div className="w-full rounded-[24px] shadow-sm border border-text-disabled flex md:flex-col items-start gap-[16px] p-[24px]">
+                <CodeBlock files={resolvedFiles} />
               </div>
             </div>
           </div>

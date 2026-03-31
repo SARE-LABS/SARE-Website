@@ -71,6 +71,20 @@ body {
 .desktopBody {
   @apply text-[16px] leading-[148%] tracking-[0%] font-medium text-white;
 }
+/* 
+pre code {
+  counter-reset: line;
+}
+
+pre code span {
+  counter-increment: line;
+}
+
+pre code span::before {
+  content: counter(line);
+  margin-right: 16px;
+  color: gray;
+} */
 
 @keyframes marquee {
   0% {

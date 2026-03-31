@@ -1,5 +1,3 @@
-// /sanity/schemas/appPlatform.ts
-
 import { defineField, defineType } from "sanity";
 
 export const appPlatform = defineType({

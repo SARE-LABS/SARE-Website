@@ -1,5 +1,3 @@
-// /sanity/schemas/buildAlong.ts
-
 import { defineField, defineType } from "sanity";
 
 export const buildAlong = defineType({
@@ -71,6 +69,13 @@ export const buildAlong = defineType({
       title: "Apps & Platforms",
       type: "array",
       of: [{ type: "appPlatform" }],
+    }),
+
+    defineField({
+      name: "codesSetup",
+      title: "Codes & Setup",
+      type: "array",
+      of: [{ type: "codeSetup" }],
     }),
   ],
 });
