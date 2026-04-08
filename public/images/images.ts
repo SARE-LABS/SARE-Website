@@ -1,6 +1,7 @@
 import logoOne from "./logoOne.avif";
 import logoTwo from "./logoTwo.avif";
 import logoThree from "./logoThree.png";
+import eyeIcon from "./eyeIcon.png"
 import Apply from "./apply.svg";
 import ArrowUpRight from "./ArrowUpRight.png";
 import Kennedy from "./kennedy.avif";
@@ -24,6 +25,7 @@ import Glances from "./glance.png";
 import Mentorship from "./Mentorship.avif";
 import BuildSession from "./b.avif";
 import Excos from "./IMG_3939.avif";
+import exploreHero from "./eventsHero.png"
 import Adruino from "./CTRL_LABS125.jpg";
 import CAD from "./IMG-20250614-WA0061.avif";
 import Member from "./IMG_3790.avif";
@@ -43,9 +45,32 @@ import Partners from "./partners.svg";
 import GreenFolder from "./foldergreen.svg";
 import InstagramIcon from "./instagram.svg";
 import Map from "./map.png";
-
+import ArrowRight from "./arrowRight.png"
+import registerIcon from "./registerIcon.png";
+import Clock from "./Clock.png";
+import Calendar from "./calendar.png";
+import googleMeet from "./googleMeet.png"
+import sareIsCooking from "./sareIsCooking.svg"
+import xantha from "./xantha.svg";
+import agrinova from "./agronova.png";
+import tpi from "./tpi.png";
+import agrictech from "./agrictech.png";
+import precisionfield from "./precisonfield.png";
 export {
+  agrinova,
+  tpi,
+  agrictech,
+  precisionfield,
+  xantha,
+  sareIsCooking,
+  Clock,
+  Calendar,
+  googleMeet,
   Map,
+  eyeIcon,
+  registerIcon,
+  exploreHero,
+  ArrowRight,
   Check,
   Member,
   CAD,

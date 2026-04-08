@@ -1,4 +1,3 @@
-import { figure } from "framer-motion/client";
 import {
   Adruino,
   ARIghtBlue,
@@ -19,8 +18,6 @@ import {
   MembersTrained,
   GreenFolder,
 } from "./images/images";
-import { title } from "process";
-import { link } from "fs";
 
 export const Why = [
   {
@@ -93,7 +90,6 @@ export const FAQDataGeneral = [
   },
 ];
 
-
 export const FAQDataProjects = [
   {
     id: 1,
@@ -120,7 +116,6 @@ export const FAQDataProjects = [
       "Yes. Many SARE projects are developed for competitions, showcases, research presentations, and innovation exhibitions, giving members exposure and practical experience.",
   },
 ];
-
 
 export const FAQDataCTRL = [
   {
@@ -149,7 +144,6 @@ export const FAQDataCTRL = [
   },
 ];
 
-
 export const Navigations = [
   { id: 1, name: "Home", link: "/", icon: ARIghtBlue },
   { id: 2, name: "About Us", link: "/about", icon: ARIghtBlue },
@@ -157,7 +151,9 @@ export const Navigations = [
   { id: 4, name: "CTRL LABS", link: "/ctrl-labs", icon: ARIghtBlue },
   { id: 5, name: "Explore", link: "/explore", icon: ARIghtBlue },
 ];
-
+export const ExploreSubNav = [
+  { id: 1, name: "Events & Activities", link: "/eventsandactivities" },
+];
 export const ProblemDiscovery = [
   {
     id: 1,

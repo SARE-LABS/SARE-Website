@@ -12,23 +12,24 @@ import {
   logoTwo,
   User,
 } from "../../../public/images/images";
-import { Navigations } from "../../../public/data";
-import NavMarques from "../UI/NavMarques";
+import { ExploreSubNav, Navigations } from "../../../public/data";
 import NavMobile from "../UI/NavMobile";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ApplicationInfo from "./ApplicationInfo";
 import useCountdown from "../utils/useCountdown";
 import { countdownDate } from "../UI/Time";
-import App from "next/app";
 
 function Navbar() {
   const pathname = usePathname();
+  const [isExploreDropdownOpen, setIsExploreDropdownOpen] = useState(false);
   const [showApplicationInfo, setShowApplicationInfo] = useState(false);
   const handleCardClick = () => setShowApplicationInfo(true);
   const handleClose = () => setShowApplicationInfo(false);
-
   const isActive = (link: string) => pathname === link;
+  const isExploreActive =
+    pathname === "/explore" ||
+    ExploreSubNav.some((item) => item.link === pathname);
   const showIcon = (id: number, link: string) =>
     isActive(link) && [1, 2, 3, 5].includes(id);
 
@@ -99,42 +100,109 @@ function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center justify-center">
-            {Navigations.map((nav) => (
-              <Link
-                key={nav.id}
-                href={nav.link}
-                className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
-                text-text-primary hover:text-primary-blue  ${
-                  pathname === "/ibs2.0" ? "hidden" : ""
-                }
-                ${isActive(nav.link) ? "bg-highlight" : ""}`}
-              >
-                {/* Navigation Icon (only on specific IDs when active) */}
-                {showIcon(nav.id, nav.link) && (
-                  <Image src={nav.icon} alt={nav.name} className="mr-2" />
-                )}
+            {Navigations.map((nav) =>
+              nav.id === 5 ? (
+                <div
+                  key={nav.id}
+                  className="relative"
+                  onMouseEnter={() => setIsExploreDropdownOpen(true)}
+                  onMouseLeave={() => setIsExploreDropdownOpen(false)}
+                >
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setIsExploreDropdownOpen((v) => !v)}
+                      className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] pr-[44px] transition-all ease-in-out duration-200 
+                      text-text-primary hover:text-primary-blue bg-blue-200 ${
+                        pathname === "/ibs2.0" ? "hidden" : ""
+                      }
+                      ${isExploreActive ? "bg-highlight" : ""}`}
+                    >
+                      {showIcon(nav.id, nav.link) && (
+                        <Image src={nav.icon} alt={nav.name} className="mr-2" />
+                      )}
+                      <span className="flex items-center flex-shrink-0 whitespace-nowrap">
+                        <p
+                          className={isExploreActive ? "text-primary-blue" : ""}
+                        >
+                          {nav.name}
+                        </p>
+                      </span>
+                    </button>
 
-                <span className="flex items-center flex-shrink-0 whitespace-nowrap ">
-                  <p className={isActive(nav.link) ? "text-primary-blue" : ""}>
-                    {nav.name}
-                  </p>
+                    <button
+                      type="button"
+                      aria-label="Toggle Explore menu"
+                      className="absolute right-[22px] top-1/2 -translate-y-1/2"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setIsExploreDropdownOpen((v) => !v);
+                      }}
+                    >
+                      <Image src={ArrowDown} alt="Dropdown icon" />
+                    </button>
+                  </div>
 
-                  {nav.id === 4 && (
-                    <Image
-                      src={ARIghtUp}
-                      height={16}
-                      width={16}
-                      alt="External link icon"
-                      className="ml-2"
-                    />
+                  <AnimatePresence>
+                    {isExploreDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-0 top-full mt-2 w-[220px] rounded-[16px] bg-white border border-gray-200 p-2 z-[60]"
+                      >
+                        {ExploreSubNav.map((item) => (
+                          <Link
+                            key={item.id}
+                            href={item.link}
+                            onClick={() => setIsExploreDropdownOpen(false)}
+                            className={`block rounded-[12px] px-3 py-2 text-[14px] text-text-primary hover:bg-highlight transition-all ease-in-out duration-200 ${
+                              pathname === item.link
+                                ? "bg-highlight text-primary-blue"
+                                : ""
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={nav.id}
+                  href={nav.link}
+                  className={`flex items-center justify-center mx-4 text-[16px] rounded-[24px] px-[16px] py-[8px] transition-all ease-in-out duration-200 
+                  text-text-primary hover:text-primary-blue pr-4 ${
+                    pathname === "/ibs2.0" ? "hidden" : ""
+                  }
+                  ${isActive(nav.link) ? "bg-highlight" : ""}`}
+                >
+                  {showIcon(nav.id, nav.link) && (
+                    <Image src={nav.icon} alt={nav.name} className="mr-2" />
                   )}
-                </span>
-
-                {nav.id === 5 && (
-                  <Image src={ArrowDown} alt="Dropdown icon" className="ml-2" />
-                )}
-              </Link>
-            ))}
+                  <span className="flex items-center flex-shrink-0 whitespace-nowrap ">
+                    <p
+                      className={isActive(nav.link) ? "text-primary-blue" : ""}
+                    >
+                      {nav.name}
+                    </p>
+                    {nav.id === 4 && (
+                      <Image
+                        src={ARIghtUp}
+                        height={16}
+                        width={16}
+                        alt="External link icon"
+                        className="ml-2"
+                      />
+                    )}
+                  </span>
+                </Link>
+              ),
+            )}
           </div>
 
           <Link

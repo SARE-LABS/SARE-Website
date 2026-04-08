@@ -1,45 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/application",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/about",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/projects",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/ctrl-labs",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/explore",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-      {
-        source: "/project",
-        destination: "/event-registrar",
-        permanent: true,
-      },
-    ];
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
