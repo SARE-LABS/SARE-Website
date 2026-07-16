@@ -3,7 +3,7 @@
 /* Prevent mobile horizontal gaps and ensure consistent page background */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-overflow-scrolling: touch;
   background-color: var(--color-background-page);
 }
@@ -93,6 +93,16 @@ pre code span::before {
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 
 .animate-marquee {

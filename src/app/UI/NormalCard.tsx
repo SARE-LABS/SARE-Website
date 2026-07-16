@@ -9,19 +9,6 @@ interface Dimension {
 function NormalCard({ dimen }: Dimension) {
   return (
     <div className={`relative w-full  ${dimen ?? ""}`}>
-      <Link
-        href={`/`}
-        className="group overflow-hidden flex justify-center items-center absolute p-[10px] rounded-full hover:bg-primary-blue transition-all ease-in-out duration-300 bg-background-disabled right-1 top-1 z-40"
-      >
-        <Image
-          src={ArrowSlant}
-          width={15}
-          height={15}
-          alt="Logo"
-          className="group-hover:grayscale transition-all ease-in-out duration-300"
-        />
-      </Link>
-
       <div className="relative w-full h-[160px] md:h-full rounded-2xl overflow-hidden flex items-end">
         <Image
           src={Kennedy}

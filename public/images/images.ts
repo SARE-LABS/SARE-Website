@@ -61,7 +61,14 @@ import OpenAi from "./openai.svg";
 import VsCode from "./vscode.svg";
 import Firebase from "./firebase.svg";
 
+import XanthaErin from "./XnE.jpg";
+import CTRLLed from "./ctrl-led.jpg";
+import DesignSession from "./design-session.jpg";
+
 export {
+  DesignSession,
+  CTRLLed,
+  XanthaErin,
   AdruinoUno,
   OpenAi,
   VsCode,

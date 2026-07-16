@@ -1,11 +1,16 @@
+// "use client"
+
 import Link from "next/link";
-import { Share2 } from "lucide-react";
+import { Share2, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import CodeBlock from "@/app/utils/CodeBlock";
 import { highlightCode } from "@/app/utils/shiki";
 import { client } from "@/sanity/lib/client";
 import { getBuildBySlugQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import HighlightHead from "@/app/UI/props/HighlightHead";
+import { motion, useInView } from "framer-motion";
+import ExploreMoreBuildAlong from "@/components/ExploreMoreBuildAlong";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -57,46 +62,47 @@ export default async function Page({ params }: Props) {
     })) || [];
 
   const resolvedFiles = await Promise.all(files);
-  return (
-    <div className="py-[24px] px-[2rem] overflow-hidden md:py-[48px] md:px-[96px] mt-[49.5px] md:mt-[99px] bg-background-page flex flex-col items-start">
-      {/* Tag */}
-      <span className="bg-highlight text-primary-blue py-[8px] px-[16px] text-[16px] rounded-full flex items-center justify-center gap-2 w-fit">
-        Project Description
-      </span>
 
-      <div className="md:my-[48px] flex flex-col items-start w-full">
+  return (
+    <div className="w-full bg-background-page ">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-6 md:py-12 flex flex-col gap-8">
+        {/* Tag */}
+        <span className="bg-highlight text-primary-blue px-4 py-2 text-sm md:text-base rounded-full w-fit">
+          Project Description
+        </span>
+
         {/* Header */}
-        <div className="flex items-end justify-between w-full">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <h1 className="md:text-[64px] font-bold leading-[120%]">
+            <h1 className="text-[48px] md:text-5xl font-bold leading-tight">
               {build.name}
             </h1>
-            <p className="md:text-[20px] text-primary-blue-hover">
+            <p className="text-[18px] leading-[120%] md:text-lg text-primary-blue-hover">
               {build.subTitle}
             </p>
           </div>
 
           <Link
             href={`/`}
-            className="flex items-center gap-3 px-[24px] py-[16px] border-2 border-primary-blue rounded-full text-primary-blue hover:text-white hover:bg-primary-blue transition-all duration-300"
+            className="flex items-center gap-2 px-5 py-2 md:py-3 border-2 border-primary-blue rounded-full text-primary-blue hover:bg-primary-blue hover:text-white transition w-fit"
           >
-            <Share2 strokeWidth={1.75} />
+            <Share2 size={18} />
             <p>Share</p>
           </Link>
         </div>
 
         {/* Paragraphs */}
-        <div className="w-full text-text-primary md:text-[16px] leading-[148%] md:mt-[24px] flex flex-col gap-[16px]">
+        <div className="text-sm md:text-base text-text-primary leading-relaxed flex flex-col gap-4">
           <p>{build.paragraphOne}</p>
           <p>{build.paragraphTwo}</p>
         </div>
 
         {/* Categories */}
-        <div className="md:mt-[24px] flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {build.categories?.map((cat) => (
             <span
               key={cat}
-              className="px-[16px] py-[8px] border border-primary-blue rounded-full text-black md:text-[14px]"
+              className="px-4 py-1.5 border border-primary-blue rounded-full text-sm"
             >
               {cat}
             </span>
@@ -105,97 +111,119 @@ export default async function Page({ params }: Props) {
 
         {/* Main Image */}
         {build.mainImage && (
-          <div className="w-full rounded-[24px] md:my-[48px] relative">
+          <div className="w-full rounded-2xl overflow-hidden">
             <Image
               src={urlFor(build.mainImage).width(1200).url()}
               alt={build.name}
               width={1200}
               height={700}
-              className="object-cover w-full rounded-[24px]"
+              className="w-full h-auto object-cover"
             />
           </div>
         )}
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-4 gap-[48px] w-full">
-        <div className="col-span-3 flex flex-col gap-[48px]">
-          {/* Components */}
-          <div className="bg-white rounded-[24px] flex flex-col gap-[24px] p-[24px]">
-            <h3 className="md:text-[36px] text-text-primary">Components</h3>
+      {/* GRID LAYOUT */}
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* MAIN CONTENT */}
+          <div className="md:col-span-3 flex flex-col gap-8">
+            {/* Components */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col gap-6">
+              <h3 className="text-[28px] md:text-3xl font-medium text-text-primary">
+                Components
+              </h3>
 
-            <div className="grid md:grid-cols-3 gap-[24px]">
-              {build.components?.map((component, i) => (
-                <div
-                  key={i}
-                  className="border border-text-disabled md:p-[16px] rounded-[24px] flex flex-col gap-3"
-                >
-                  <Image
-                    src={urlFor(component.image).width(300).url()}
-                    alt={component.componentName}
-                    width={300}
-                    height={200}
-                    className="rounded-[24px]"
-                  />
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                {build.components?.map((component, i) => (
+                  <div
+                    key={i}
+                    className="border border-text-disabled rounded-2xl p-3 flex flex-col gap-3 w-full"
+                  >
+                    <Image
+                      src={urlFor(component.image).width(300).url()}
+                      alt={component.componentName}
+                      width={300}
+                      height={200}
+                      className="rounded-xl w-full h-auto object-cover"
+                    />
 
-                  <div className="text-text-primary flex flex-col gap-[8px]">
-                    <h5 className="text-[14px] font-medium">
-                      {component.componentName}
-                    </h5>
-                    <h4 className="text-[20px] font-medium">
-                      {component.code}
-                    </h4>
-                    <p className="text-[13px]">{component.subtitle}</p>
+                    <div className="flex flex-col gap-1">
+                      <h5 className="text-sm font-medium">
+                        {component.componentName}
+                      </h5>
+                      <h4 className="text-lg font-medium">{component.code}</h4>
+                      <p className="text-xs md:text-sm text-text-secondary">
+                        {component.subtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Apps & Platforms */}
-          <div className="bg-white rounded-[24px] flex flex-col gap-[24px] p-[24px]">
-            <h3 className="md:text-[36px] text-text-primary">
-              Apps & Platforms
-            </h3>
+            {/* Apps & Platforms */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col gap-6">
+              <h3 className="text-[28px] md:text-3xl font-medium text-text-primary">
+                Apps & Platforms
+              </h3>
 
-            <div className="grid md:grid-cols-2 gap-[16px]">
-              {build.appsPlatforms?.map((apps, i) => (
-                <div
-                  key={i}
-                  className="border border-text-disabled md:p-[10px] shadow-sm rounded-[24px] flex gap-3"
-                >
-                  <div className="md:w-[100px]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {build.appsPlatforms?.map((apps, i) => (
+                  <div
+                    key={i}
+                    className="border border-text-disabled rounded-2xl p-4 flex gap-4 items-start"
+                  >
                     <Image
                       src={urlFor(apps.icon).width(80).url()}
                       alt={apps.name}
-                      width={80}
-                      height={80}
+                      width={60}
+                      height={60}
                     />
-                  </div>
 
-                  <div className="text-text-primary flex flex-col gap-[8px]">
-                    <h5 className="text-[20px] font-medium">{apps.name}</h5>
-                    <p className="text-[13px]">{apps.desc}</p>
+                    <div>
+                      <h5 className="text-lg font-medium">{apps.name}</h5>
+                      <p className="text-sm text-text-secondary">{apps.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Codes & Setup */}
-          <div className="bg-white rounded-[24px] flex flex-col gap-[24px] p-[24px]">
-            <h3 className="md:text-[36px] text-text-primary">
-              Codes and Setup
-            </h3>
+            {/* Codes & Setup */}
+            <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col gap-6">
+              <h3 className="text-[28px] md:text-3xl font-medium text-text-primary">
+                Codes and Setup
+              </h3>
 
-            <div className="grid md:grid-cols-1 gap-[16px]">
-              <div className="w-full rounded-[24px] shadow-sm border border-text-disabled flex md:flex-col items-start gap-[16px] p-[24px]">
+              <div className="w-full border border-text-disabled rounded-2xl p-4">
                 <CodeBlock files={resolvedFiles} />
               </div>
             </div>
           </div>
+
+          {/* SIDEBAR */}
+          {/* <div className="w-full">
+            <div className="bg-background-card rounded-3xl p-3 shadow-sm md:sticky md:top-[120px] flex flex-col gap-[0.25rem]">
+              <div className="bg-primary-blue text-white px-6 py-5 rounded-t-2xl text-[20px] md:text-[22px] font-medium">
+                Table Of Content
+              </div>
+              <div className="bg-highlight text-primary-blue px-[1rem] py-[0.5rem] flex items-center gap-2 font-medium text-[1rem]">
+                <ArrowRight size={20} strokeWidth={2} />
+                <p>Components Used</p>
+              </div>
+              <div className="bg-background-page text-text-disabled px-6 py-4 font-medium text-[16px]">
+                Design Systems
+              </div>
+              <div className="bg-background-page text-text-disabled px-6 py-4 rounded-b-2xl font-medium text-[16px]">
+                UI Elements
+              </div>
+            </div>
+          </div> */}
         </div>
       </div>
+
+      <ExploreMoreBuildAlong />
     </div>
   );
 }

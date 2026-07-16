@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { ProjectsHero } from "../components/Projects/ProjectsHero";
-import { FilterSection } from "../components/Projects/FilterSection";
-import { ProjectCard } from "../components/Projects/ProjectCard";
+import { ProjectsHero } from "../../components/Projects/ProjectsHero";
+import { FilterSection } from "../../components/Projects/FilterSection";
+import { ProjectCard } from "../../components/Projects/ProjectCard";
 import { PROJECTS, ProjectStatus } from "../../../constants/projects";
-import { ExploreSection } from "../components/Projects/ExploreSection";
-import { FAQSection } from "../components/Projects/FAQSection";
-import Footer from "../components/Footer";
-import Newsletter from "../components/Newsletter";
-import FAQs from "../components/FAQs";
+import { ExploreSection } from "../../components/Projects/ExploreSection";
+import { FAQSection } from "../../components/Projects/FAQSection";
+import Footer from "../../components/Footer";
+import Newsletter from "../../components/Newsletter";
+import FAQs from "../../components/FAQs";
 
 export default function ProjectsPage() {
   const INITIAL_VISIBLE_COUNT = 2;

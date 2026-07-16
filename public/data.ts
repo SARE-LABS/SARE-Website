@@ -154,12 +154,23 @@ export const FAQDataCTRL = [
   },
 ];
 
+const port = process.env.NEXT_PUBLIC_PORT || process.env.PORT || 3000;
+const isDev = process.env.NODE_ENV === "development";
+
+const ctrlUrl = isDev
+  ? `http://ctrl.localhost:${port}`
+  : "https://ctrl.sarengineers.com";
+
+const mainUrl = isDev
+  ? `http://localhost:${port}`
+  : "https://sarengineers.com"; // <-- Update this if your main production domain is different
+
 export const Navigations = [
-  { id: 1, name: "Home", link: "/", icon: ARIghtBlue },
-  { id: 2, name: "About Us", link: "/about", icon: ARIghtBlue },
-  { id: 3, name: "Projects", link: "/projects", icon: ARIghtBlue },
-  { id: 4, name: "CTRL LABS", link: "/ctrl-labs", icon: ARIghtBlue },
-  { id: 5, name: "Explore", link: "/explore", icon: ARIghtBlue },
+  { id: 1, name: "Home", link: `${mainUrl}/`, icon: ARIghtBlue },
+  { id: 2, name: "About Us", link: `${mainUrl}/about`, icon: ARIghtBlue },
+  { id: 3, name: "Projects", link: `${mainUrl}/projects`, icon: ARIghtBlue },
+  { id: 4, name: "CTRL LABS", link: ctrlUrl, icon: ARIghtBlue },
+  { id: 5, name: "Explore", link: `${mainUrl}/explore`, icon: ARIghtBlue },
 ];
 
 export const ProblemDiscovery = [
@@ -463,7 +474,7 @@ export const social = [
     name: "Linkedln",
     url: "/",
     action: "Follow",
-    color: "bg-[#3B82F6/10]"
+    color: "bg-[#3B82F6/10]",
   },
   {
     id: 2,
@@ -471,7 +482,7 @@ export const social = [
     name: "Youtube",
     url: "/",
     action: "Subscribe",
-    color: "bg-[#FF383C/10]"
+    color: "bg-[#FF383C/10]",
   },
   {
     id: 3,
@@ -479,7 +490,7 @@ export const social = [
     name: "Instagram",
     url: "/",
     action: "Follow",
-    color: "bg-[#3B82F6/10]"
+    color: "bg-[#3B82F6/10]",
   },
   {
     id: 4,
@@ -487,6 +498,6 @@ export const social = [
     name: "Twitter",
     url: "/",
     action: "Follow",
-    color: "bg-[#000000/10]"
+    color: "bg-[#000000/10]",
   },
 ];
