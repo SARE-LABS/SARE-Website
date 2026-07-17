@@ -9,6 +9,7 @@ import HighlightHead from "../app/UI/props/HighlightHead";
 import { Executives, Founders, WebExperienceTeam } from "../../public/data";
 import { InstagramIcon, Linkdln, Mail } from "../../public/images/images";
 import TheFounder from "./TheFounder";
+import TheExecutive from "./TheExecutive";
 import { spaceGrotesk } from "../../public/fonts/fonts";
 import { ChevronDown } from "lucide-react";
 
@@ -58,13 +59,13 @@ function TheTeam() {
         {/* ---------------- Header ---------------- */}
         <motion.div
           variants={itemVariants}
-          className="w-[382px] md:w-full flex flex-col gap-[16px] items-center text-center"
+          className="w-[382px] md:w-full flex flex-col md:gap-[16px] items-center text-center"
         >
           <HighlightHead title="The Team" />
-          <h1 className="text-[32px] font-medium text-text-primary leading-[120%]">
+          <h2 className="text-[32p] font-medium text-text-primary leading-[120%]">
             Meet the SARE Team
-          </h1>
-          <p className="text-text-primary text-[16px] leading-[148%]">
+          </h2>
+          <p className="text-text-primary md:text-[1rem] leading-[148%]">
             Meet the individuals making the SARE dream possible
           </p>
         </motion.div>
@@ -76,9 +77,13 @@ function TheTeam() {
               <HighlightHead title="The Founders" />
             </div>
             <p className="md:text-[16px] text-[14px] text-text-primary leading-[148%] md:text-left font-medium">
-              "SARE started not as a at SARE, we&apos;ve built a proven process
-              that transforms agricultural challenges into cutting-edge robotic
-              solutions... <span className="text-accent-green">- JXM</span>
+              “SARE started not as a At SARE, we’ve built a proven process that
+              transforms agricultural challenges into cutting-edge robotic
+              solutions, ensuring innovation is not just an idea but a reality
+              in the field. Through this framework, we tackle inefficiencies,
+              reduce labor intensity, and pave the way for a smarter, more
+              sustainable farming future.”
+              <span className="text-accent-green">- JXM</span>
             </p>
           </div>
 
@@ -100,61 +105,7 @@ function TheTeam() {
             </p>
           </div>
 
-          <motion.div
-            variants={containerVariants}
-            className="bg-background-disabled w-full rounded-[24px] px-[8px] py-[24px] md:p-[24px] grid grid-cols-2 md:grid-cols-4 gap-[5px] justify-center items-center md:justify-between relative"
-          >
-            {Executives.map((executive) => (
-              <motion.div
-                key={executive.id}
-                variants={itemVariants}
-                whileHover="hover"
-                className="relative flex flex-col items-start"
-              >
-                <motion.div variants={cardHover}>
-                  <h4 className={`${spaceGrotesk.className} mobileH4`}>
-                    {executive.alias}
-                  </h4>
-
-                  <div className="w-ful md:w-[250px] md:h-[308px] rounded-[12px] md:rounded-[16px] overflow-hidden mt-[8px]">
-                    <Image
-                      src={executive.image}
-                      alt={executive.name}
-                      className="w-full h-full object-cover "
-                    />
-                  </div>
-
-                  <div className="absolute bottom-1 left-0 md:p-3 text-white">
-                    <p className="md:text-[18px] desktopBody shrink-0">
-                      {executive.name}
-                    </p>
-                    <p className="md:text-[16px]">{executive.title}</p>
-
-                    {/* <div className="flex gap-4 mt-3">
-                      {[
-                        { href: executive.instagram, icon: InstagramIcon },
-                        { href: executive.email, icon: Mail },
-                        { href: executive.linkedin, icon: Linkdln },
-                      ].map((social, i) => (
-                        <motion.div key={i} whileTap={{ scale: 0.9 }}>
-                          <Link
-                            href={social.href}
-                            className="bg-white rounded-full p-[6px] flex items-center justify-center group hover:bg-accent-green transition-colors"
-                          >
-                            <Image
-                              src={social.icon}
-                              alt="social"
-                              className="w-[17px] group-hover:brightness-0 group-hover:invert"
-                            />
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </div> */}
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <TheExecutive />
         </motion.div>
 
         {/* ---------------- Teams ---------------- */}

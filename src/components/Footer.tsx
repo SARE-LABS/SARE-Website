@@ -24,15 +24,8 @@ function Footer() {
 
   return (
     <footer className="bg-white">
-      {/* 2. Main Links Section */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-[48px] pb-12">
-        {/* 
-    Parent Grid: 
-    - 1 column on mobile (items stack)
-    - 5 columns on desktop (Logo takes 1, Nav takes 4)
-  */}
+      <div className="max-w-[1400px] mx-aut px-4 md:px-[6rem] pb-12 md:py-[3rem]">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
-          {/* Logo Column: Centered on mobile, Left-aligned on large screens */}
           <div className="lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
             <Image
               src={logoTwo}
@@ -47,19 +40,10 @@ function Footer() {
             </p>
           </div>
 
-          {/* 
-      Nav Columns Container:
-      - Takes up the remaining 4 columns on large screens
-      - grid-cols-2: 2 columns on mobile (fits links perfectly)
-      - sm:grid-cols-4: 4 columns from tablet upwards
-
-    */}
-
           <div className="lg:col-span-4 ml-8 md:ml-0 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-10 md:gap-8">
             {footerLinks.map((column, idx) => (
               <div key={idx} className="flex flex-col gap-4 md:gap-6">
                 <h4 className="flex items-center gap-2 font-bold text-[#1E293B] text-[16px] md:text-[18px]">
-                  <span className="text-[12px] font-normal">→</span>{" "}
                   {column.title}
                 </h4>
                 <ul className="flex flex-col gap-3 md:gap-4">
@@ -85,7 +69,6 @@ function Footer() {
             @ 2026 SARE Web Experience Team
           </p>
 
-          {/* flex-wrap ensures icons don't break on very small screens */}
           <div className="flex items-center gap-3 flex-wrap justify-center">
             {/* Social Icons */}
             {[1, 2, 3].map((_, i) => (

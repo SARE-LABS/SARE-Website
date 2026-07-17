@@ -4,12 +4,12 @@ import { Divider } from "../../public/images/images";
 
 function OurJourneySoFar() {
   return (
-    <div className="overflow-hidden md:pt-[48px] md:px-[96px] md:gap-[50px] bg-white hidden md:flex flex-col items-center justify-center ">
+    <div className="overflow-hidden pt-[32px] px-[24px] md:pt-[48px] md:px-[96px] gap-[32px] md:gap-[50px] bg-white flex flex-col items-center justify-center w-full">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="font-medium md:text-[36px] leading-[120%]">
+        <h2 className="font-medium  leading-[120%] text-center">
           Our Journey so far
-        </h3>
-        <Image src={Divider} alt="" />
+        </h2>
+        <Image src={Divider} alt="" className="mt-2" />
       </div>
       <OurJourney />
     </div>

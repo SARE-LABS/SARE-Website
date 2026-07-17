@@ -4,48 +4,44 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Journey } from "../../../public/data";
 
-// ─── Single item — calculates its own blur based on distance from container center ───
-function JourneyItem({
-  journey,
-  containerRef,
-}: {
-  journey: (typeof Journey)[number];
-  containerRef: React.RefObject<HTMLDivElement | null>;
-}) {
+function JourneyItem({ journey }: { journey: (typeof Journey)[number] }) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [blur, setBlur] = useState(6);
   const [opacity, setOpacity] = useState(0.4);
 
   const updateBlur = useCallback(() => {
-    if (!itemRef.current || !containerRef.current) return;
+    if (!itemRef.current) return;
 
-    const container = containerRef.current.getBoundingClientRect();
     const item = itemRef.current.getBoundingClientRect();
 
-    const containerCenter = container.top + container.height / 2;
+    // Use the window's inner height to find the center of the screen
+    const windowCenter = window.innerHeight / 2;
     const itemCenter = item.top + item.height / 2;
 
-    // Distance from center as a ratio (0 = center, 1 = edge)
-    const distance = Math.abs(containerCenter - itemCenter);
-    const maxDistance = container.height / 2;
+    // Distance from center as a ratio (0 = center, 1 = edge of screen)
+    const distance = Math.abs(windowCenter - itemCenter);
+    const maxDistance = window.innerHeight / 2;
     const ratio = Math.min(distance / maxDistance, 1);
 
-    // Blur: 0px at center → 7px at edges
-    // Opacity: 1 at center → 0.35 at edges
-    setBlur(ratio * 7);
-    setOpacity(1 - ratio * 0.65);
-  }, [containerRef]);
+    // Blur
+    setBlur(ratio * 2.5);
+    // Opacity
+    setOpacity(1 - ratio * 0.5);
+  }, []);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    // Listen to window scroll instead of a container
+    window.addEventListener("scroll", updateBlur, { passive: true });
+    // Also update on resize in case window size changes
+    window.addEventListener("resize", updateBlur, { passive: true });
 
-    // Run on scroll and on mount
-    container.addEventListener("scroll", updateBlur, { passive: true });
     updateBlur();
 
-    return () => container.removeEventListener("scroll", updateBlur);
-  }, [containerRef, updateBlur]);
+    return () => {
+      window.removeEventListener("scroll", updateBlur);
+      window.removeEventListener("resize", updateBlur);
+    };
+  }, [updateBlur]);
 
   return (
     <motion.div
@@ -55,63 +51,55 @@ function JourneyItem({
         opacity,
       }}
       transition={{ duration: 0.08, ease: "linear" }}
-      className="w-full grid grid-cols-3 gap-10 py-2"
+      className="w-full relative flex"
     >
-      {/* Left — date */}
-      <div className="flex items-start flex-col gap-1">
-        <p className="text-[16px] font-normal leading-[148%]">{journey.date}</p>
-        <h3 className="text-text-primary text-[36px] font-medium leading-[120%]">
-          {journey.month}
-        </h3>
-      </div>
+      {/* Seamless vertical line */}
+      <div className="absolute left-[125px] md:left-[201px] top-0 bottom-0 w-[2px] bg-[#E5E7EB] z-0" />
 
-      {/* Right — content */}
-      <div className="col-span-2 w-full flex flex-col items-start">
-        <h1 className="text-text-primary text-[48px] leading-[120%]">
-          {journey.title}
-        </h1>
-        <p className="text-text-primary text-[16px] leading-[148%]">
-          {journey.context}
-        </p>
+      <div className="w-full grid grid-cols-[100px_20px_1fr] md:grid-cols-[150px_40px_1fr] gap-4 md:gap-8 py-[40px] z-10">
+        {/* Left — date */}
+        <div className="flex items-start flex-col gap-1 w-full text-left pt-1">
+          <p className="text-[12px] md:text-[14px] font-medium leading-[148%] text-[#9CA3AF]">
+            {journey.date}
+          </p>
+          <h3 className="text-text-primary text-[20px] md:text-[28px] font-medium leading-[120%]">
+            {journey.month}
+          </h3>
+        </div>
+
+        {/* Middle — Dot */}
+        <div className="flex flex-col items-center pt-[6px] md:pt-[10px]">
+          <div
+            className="w-[14px] h-[14px] md:w-[18px] md:h-[18px] rounded-full border-[2px] border-white transition-colors duration-300 shadow-sm"
+            style={{ backgroundColor: blur < 2 ? "#4CC9F0" : "#D1D5DB" }}
+          />
+        </div>
+
+        {/* Right — content */}
+        <div className="w-full flex flex-col items-start pr-4 md:pr-8">
+          <h1 className="text-text-primary text-[24px] md:text-[36px] font-medium leading-[120%] mb-3">
+            {journey.title}
+          </h1>
+          <p className="text-[#4B5563] text-[14px] md:text-[16px] leading-[148%] mb-6">
+            {journey.context}
+          </p>
+          {/* <button className="ml-auto bg-[#67B5DC] text-white px-[20px] py-[8px] rounded-full text-[14px] flex items-center gap-2 hover:bg-[#5AA1C5] transition-colors">
+            Read Blog <span>↗</span>
+          </button> */}
+        </div>
       </div>
     </motion.div>
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────
+//  Main component
 function OurJourney() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div className="relative max-h-[690px]">
-      {/* Top fade mask */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[var(--background,white)] to-transparent z-10 pointer-events-none" />
-      {/* Bottom fade mask */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--background,white)] to-transparent z-10 pointer-events-none" />
-
-      {/* Scrollable container */}
-      <div
-        ref={containerRef}
-        className="overflow-y-auto max-h-[690px] flex flex-col gap-7 px-1"
-        style={{
-          // Hide scrollbar visually but keep it functional
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {/* Top padding so first item can reach center */}
-        <div className="min-h-[120px]" />
-
+    <div className="relative w-full">
+      <div className="flex flex-col px-1 w-full">
         {Journey.map((journey) => (
-          <JourneyItem
-            key={journey.id}
-            journey={journey}
-            containerRef={containerRef}
-          />
+          <JourneyItem key={journey.id} journey={journey} />
         ))}
-
-        {/* Bottom padding so last item can reach center */}
-        <div className="min-h-[120px]" />
       </div>
     </div>
   );

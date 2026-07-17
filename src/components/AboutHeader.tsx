@@ -1,14 +1,25 @@
 "use client";
 
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+} from "react";
 import { HomeBg } from "../../public/images/images";
-import { motion } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 
-function AboutHeader() {
+interface header {
+  title: string;
+  description: string;
+  img: any;
+}
+function AboutHeader({ img, title, description }: header) {
   return (
     <div
       className=" w-full h-[80vh] md:h-[450px]  bg-white text-white py-[48px] px-[2rem] m md:py-[96px]"
       style={{
-        backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${HomeBg.src})`,
+        backgroundImage: `linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)), url(${img?.src || img})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -25,7 +36,7 @@ function AboutHeader() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
         >
-          ABOUT SARE
+          {title}
         </motion.h1>
 
         <motion.p
@@ -34,8 +45,7 @@ function AboutHeader() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
         >
-          Bringing together students, innovators, and leaders in Agricultural &
-          Environmental Engineering to create real-world impact
+          {description}
         </motion.p>
       </motion.div>
     </div>

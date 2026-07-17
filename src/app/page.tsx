@@ -39,9 +39,7 @@ function Page() {
           <Deployment />
         </div>
       </div>
-      <div className="">
-        <ExploreMore />
-      </div>
+      <div className="">{/* <ExploreMore /> */}</div>
       <div>
         <FAQs colour="bg-background-page" />
       </div>

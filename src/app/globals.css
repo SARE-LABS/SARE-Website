@@ -50,6 +50,22 @@ body {
   );
 }
 
+@layer base {
+  h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+  h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
 .sare-text {
   background: var(--color-sare-gradient);
   -webkit-background-clip: text;
@@ -57,7 +73,7 @@ body {
 }
 
 .mobileH3 {
-  @apply text-[28px] leading-[120%] tracking-[0%] font-medium text-text-primary;
+  @apply text-text-primary;
 }
 
 .mobileH4 {
@@ -101,8 +117,8 @@ pre code span::before {
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE + Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; /* IE + Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .animate-marquee {

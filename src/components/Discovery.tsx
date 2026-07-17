@@ -47,7 +47,7 @@ function Discovery() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex flex-col md:flex-row items-start justify-start gap-[24px] md:gap-[6rem]"
+        className="flex flex-col md:flex-row items-start justify-start md:justify-between gap-[24px] md:gap-[6rem]"
       >
         {/* Left Column */}
         <motion.div
@@ -124,14 +124,14 @@ function Discovery() {
             </div>
           </motion.div>
           {/* Right column with two stacked cards */}
-          <div className="grid grid-rows-2 gap-3">
+          {/* <div className="grid grid-rows-2 gap-3">
             <motion.div variants={itemVariants} className="relative">
               <NormalCard dimen="h-[100%]" />
             </motion.div>
             <motion.div variants={itemVariants} className="relative">
               <NormalCard dimen="h-[50%]" />
             </motion.div>
-          </div>
+          </div> */}
         </motion.div>
       </motion.div>
     </div>

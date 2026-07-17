@@ -1,3 +1,4 @@
+import { HomeBg } from "../../../public/images/images";
 import AboutHeader from "../../components/AboutHeader";
 import AboutUs from "../../components/AboutUs";
 import FutureOrientedStats from "../../components/FutureOrientedStats";
@@ -13,7 +14,11 @@ import Vision from "../../components/Vision";
 function page() {
   return (
     <div className="w-full min-h-[100vh] overflow-hidden scroll-smooth ">
-      <AboutHeader />
+      <AboutHeader
+        img={HomeBg}
+        title="About SARE"
+        description="Bringing together students, innovators, and leaders in Agricultural & Environmental Engineering to create real-world impact"
+      />
       <Problem />
       <Mission />
       <Vision />

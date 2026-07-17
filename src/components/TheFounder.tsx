@@ -48,18 +48,16 @@ function TheFounder() {
             key={founder.id}
             variants={itemVariants}
             whileHover="hover"
-            className="relative flex flex-col items-start group"
+            className="relative flex flex-col items-stat group"
           >
             <motion.div>
-              <h3 className={`${spaceGrotesk.className} mobileH3`}>
-                {founder.alias}
-              </h3>
+              <h3 className={`text-[1.75rem] mobileH3`}>{founder.alias}</h3>
 
-              <div className="md:w-[338px] md:h-[400px] md:rounded-[20px] overflow-hidden">
+              <div className="md:w-[338px] md:h-[30rem] md:rounded-[20p] overflow-hidden">
                 <Image
                   src={founder.image}
                   alt={founder.name}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:"
+                  className="w-full h-full object-cover transition-transform duration-500 md:rounded-md"
                 />
               </div>
 

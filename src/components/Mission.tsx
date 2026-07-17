@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { ARIghtBlue } from "../../public/images/images";
+import {
+  ARIghtBlue,
+  CTRLLed,
+  DesignSession,
+  XanthaErin,
+} from "../../public/images/images";
 import Card from "../app/UI/Card";
 import CardLarge from "../app/UI/CardLarge";
 import { motion } from "framer-motion";
@@ -43,7 +48,7 @@ function Mission() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex items-start justify-start gap-[24px] flex-col md:flex-row"
+        className="flex items-start justify-start md:justify-between gap-[24px] flex-col md:flex-row"
       >
         {/* Left Column */}
         <motion.div
@@ -72,13 +77,39 @@ function Mission() {
         {/* Right Column (Cards) */}
         <motion.div
           variants={containerVariants}
-          className="w-full grid grid-cols-3 gap- overflow-hidden"
+          className="w-full md:max-w-[32.5rem] md:h-[30rem] flex flex-col gap-3 md:gap-4"
         >
-          <motion.div variants={itemVariants} className="col-span-3 relative ">
-            <CardExec />
+          <motion.div
+            variants={itemVariants}
+            className="relative w-full h-[14.5re] flex-1"
+          >
+            <Image
+              fill
+              src={XanthaErin}
+              alt=""
+              className="object-cover rounded-2xl"
+            />
           </motion.div>
-          <motion.div variants={itemVariants} className="col-span-3 relative">
-            <CardExecTwo />
+          <motion.div
+            variants={itemVariants}
+            className="w-full flex-1 flex flex-row gap-3 md:gap-4"
+          >
+            <div className="relative flex-1 h-full">
+              <Image
+                fill
+                src={DesignSession}
+                alt=""
+                className="object-cover rounded-xl"
+              />
+            </div>
+            <div className="relative flex-1 h-full">
+              <Image
+                fill
+                src={CTRLLed}
+                alt=""
+                className="object-cover rounded-xl"
+              />
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
