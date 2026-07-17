@@ -75,7 +75,7 @@ export default async function RootLayout({
       >
         {!isCtrlSubdomain && <Navbar />}
         <div className="h-max w-full">{children}</div>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
