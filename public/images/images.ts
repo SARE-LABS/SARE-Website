@@ -64,8 +64,12 @@ import Firebase from "./firebase.svg";
 import XanthaErin from "./XnE.jpg";
 import CTRLLed from "./ctrl-led.jpg";
 import DesignSession from "./design-session.jpg";
+import Robot from "./images (1).png";
+import flyer from "./whats next.jpg";
 
 export {
+  flyer,
+  Robot,
   DesignSession,
   CTRLLed,
   XanthaErin,

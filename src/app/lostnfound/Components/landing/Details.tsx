@@ -1,7 +1,7 @@
 export const Details = () => {
   const details = [
     {
-      location: "Google Meet",
+      location: "NLNG, Faculty of Tech.",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export const Details = () => {
       ),
     },
     {
-      time: "8:00 PM - 9:30 PM",
+      time: "9:00 PM - 12:30 PM",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export const Details = () => {
       ),
     },
     {
-      date: "25th July, 2026",
+      date: "14th Nov., 2026",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

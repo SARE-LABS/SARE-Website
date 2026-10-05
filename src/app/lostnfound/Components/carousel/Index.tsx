@@ -1,14 +1,12 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-// import { ChevronLeft, ChevronRight } from "lucide-react"; // optional icons
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-import SARE from "../../assets/images/SARE - Lost & Found - Teaser_120754.png";
-import SARE2 from "../../assets/images/SARE - Lost & Found - General Flyer_120826.png";
 import Image from "next/image";
+import { flyer } from "../../../../../public/images/images";
 
 export const Carousel = () => {
-  const images = [SARE, SARE2]; // Added more images
+  const images = [flyer, flyer];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
@@ -35,7 +33,6 @@ export const Carousel = () => {
     };
   }, []);
 
-  // Scroll by fixed amount
   const scrollByAmount = (amount: number) => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
@@ -44,7 +41,6 @@ export const Carousel = () => {
 
   return (
     <div className="relative w-full">
-      {/* Scroll container */}
       <div
         ref={scrollRef}
         className="flex overflow-x-auto gap-4 scroll-smooth no-scrollbar justify-center"
@@ -55,7 +51,7 @@ export const Carousel = () => {
             className="flex-shrink-0 w-[300px] h-[300px] flex justify-center items-center"
           >
             <Image
-              src={image}
+              src={flyer}
               alt={`Carousel ${index + 1}`}
               className="w-full h-full object-contain"
             />
@@ -63,7 +59,6 @@ export const Carousel = () => {
         ))}
       </div>
 
-      {/* {left shadow} */}
       {showLeft && (
         <div className="absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#F3F4F6CC] to-transparent w-36 h-full" />
       )}

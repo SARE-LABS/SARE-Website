@@ -29,7 +29,8 @@ export const Footer = () => {
       </div>
       <div className="w-full h-max flex justify-center items-center mt-4">
         <p className="text-[#1F2937] text-[12px] font-normal">
-          Ⓒ Society of Agricultural Robotics Engineers 2025
+          Ⓒ Society of Agricultural Robotics Engineers{" "}
+          {new Date().getFullYear()}
         </p>
       </div>
     </div>
