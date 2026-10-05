@@ -22,7 +22,7 @@ function ApplyButton({ pathname, onClick }: Props) {
         height={15}
         alt="Action icon"
       />
-      <p>{!isApplicationPage ? "Get involved" : "Apply now"}</p>
+      <p>{!isApplicationPage ? "Register now" : "Apply now"}</p>
     </button>
   );
 }

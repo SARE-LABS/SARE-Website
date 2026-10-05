@@ -1,6 +1,9 @@
-// // // I did this since we are doing a redirect from '/' to '/application' until we start the main website
+// Redirects are active by default. Set PREVIEW_MODE=true to disable them
+// so the design team can preview the full application.
 
 import type { NextConfig } from "next";
+
+const isPreviewMode = process.env.PREVIEW_MODE === "true";
 
 const nextConfig: NextConfig = {
   images: {
@@ -12,40 +15,44 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
+    if (isPreviewMode) {
+      return [];
+    }
+
     return [
       {
         source: "/",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/application",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/about",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/projects",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/ctrl-labs",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/explore",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/project",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
     ];
