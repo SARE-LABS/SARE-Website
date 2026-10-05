@@ -22,37 +22,37 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/application",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/about",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/projects",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/ctrl-labs",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/explore",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
       {
         source: "/project",
-        destination: "/lostnfound",
+        destination: "/thegrandfinale",
         permanent: true,
       },
     ];

@@ -7,6 +7,7 @@ import SARE from "../../assets/images/SARE - Lost & Found - Teaser_120754.png";
 import SARE_2 from "../../assets/images/SARE - Lost & Found - General Flyer_120826.png";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
+import { flyer } from "../../../../../public/images/images";
 
 export const Belt = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,11 +48,11 @@ export const Belt = () => {
         <div className="md:w-[120px] w-[140px] h-[80px] md:h-[120px] relative">
           <Image
             alt="S.A.R.E. is Cooking"
-            src={SARE}
+            src={flyer}
             className="object-cover w-full h-full absolute top-0 rounded-lg rotate-[-8deg] shadow-2xl"
           />
           <Image
-            src={SARE_2}
+            src={flyer}
             alt="S.A.R.E. is Cooking"
             className="object-cover w-full h-full absolute top-0 rounded-lg"
           />
@@ -61,10 +62,10 @@ export const Belt = () => {
             Register now for:
           </small>
           <h1 className="text-[18px] md:text-[24px] font-medium text-[#1F2937]">
-            Lost & Found
+            The Grand Finale
           </h1>
           <p className="text-[12px] md:text-[14px] font-normal text-[#4B5563]">
-            The Science Behind Autonomous Navigation
+            Bringing Everything Together
           </p>
         </div>
       </div>
