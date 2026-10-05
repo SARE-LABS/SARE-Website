@@ -1,6 +1,6 @@
 import {
   Bot,
-  Sparkles,
+  Key,
   Zap,
   Gamepad2,
   Trophy,
@@ -31,7 +31,7 @@ const EVENT_FEATURES: EventFeature[] = [
     title: "Keynote Session",
     description:
       "Inspiring perspectives and practical insights delivered by seasoned professionals and tech innovators.",
-    icon: Sparkles,
+    icon: Key,
   },
   {
     title: "Live Robotics Demonstrations",

@@ -25,7 +25,7 @@ export const Timer = () => {
     },
     {
       time: timeLeft.minutes,
-      text: "Mintues",
+      text: "Minutes",
     },
     {
       time: timeLeft.seconds,
