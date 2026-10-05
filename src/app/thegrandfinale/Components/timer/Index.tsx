@@ -62,7 +62,7 @@ export const Timer = () => {
   return (
     <div className="flex items-center md:pl-4 gap-2 ">
       <Image alt="Clock" src={ClockGif} className="w-10 h-10 md:mr-2" />
-      <div className="text-center text-[#1F2937] font-medium md:text-[48px] text-[48px] flex ">
+      <div className="text-center text-[#1F2937] font-medium md:text-[48px] text-[40px] flex ">
         <div className="flex gap-1">
           {timeStamp.map((time, index) => (
             <div key={index} className="flex gap-2">

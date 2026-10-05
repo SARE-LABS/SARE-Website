@@ -15,7 +15,7 @@ export const Home = () => {
       >
         <Landing />
         <About />
-        <Instructor />
+        {/* <Instructor /> */}
         <Footer />
       </div>
       <Belt />
