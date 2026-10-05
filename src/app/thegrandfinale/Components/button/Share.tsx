@@ -6,7 +6,7 @@ export const ShareButton = () => {
   const { showToast } = useToast();
 
   const handleShare = async () => {
-    const urlToCopy = "https://www.sarengineers.com/lostnfound";
+    const urlToCopy = "https://www.sarengineers.com/thegrandfinale";
 
     try {
       await navigator.clipboard.writeText(urlToCopy);

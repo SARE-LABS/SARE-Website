@@ -111,16 +111,16 @@ export const Form = () => {
         setFormData({ ...formData, phone: e.target.value }),
       type: "tel",
     },
-    {
-      label: "Location",
-      placeholder: "Where will you be joining us from....",
-      name: "location",
-      value: formData.location,
-      error: errors.location,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        setFormData({ ...formData, location: e.target.value }),
-      type: "text",
-    },
+    // {
+    //   label: "Location",
+    //   placeholder: "Where will you be joining us from....",
+    //   name: "location",
+    //   value: formData.location,
+    //   error: errors.location,
+    //   onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+    //     setFormData({ ...formData, location: e.target.value }),
+    //   type: "text",
+    // },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
