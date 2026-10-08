@@ -25,4 +25,3 @@ export const Tags = ({ tags = DEFAULT_TAGS, className = "" }: TagsProps) => {
     </div>
   );
 };
-

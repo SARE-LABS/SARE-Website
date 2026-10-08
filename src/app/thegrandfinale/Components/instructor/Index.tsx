@@ -23,9 +23,7 @@ export const Instructor = () => {
           <div className="flex flex-col">
             <h1 className="text-[28px] font-normal">Bello Abdullahi</h1>
             <div className="flex gap-1 text-[14px]">
-              <span className="font-medium">
-                Robotics Engineer
-              </span>
+              <span className="font-medium">Robotics Engineer</span>
               <span className="text-[#67B5DC] font-light">
                 <a href="https://www.linkedin.com/">@NETCO</a>
               </span>
@@ -36,7 +34,10 @@ export const Instructor = () => {
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-[16px] text-[#4B5563] font-normal">
-              “Autonomous navigation isn't just about getting robots from point A to point B. It’s about merging AI and IoT to create intelligent systems that can safely and effectively solve the complex challenges of the real world.”
+              “Autonomous navigation isn't just about getting robots from point
+              A to point B. It’s about merging AI and IoT to create intelligent
+              systems that can safely and effectively solve the complex
+              challenges of the real world.”
             </p>
           </div>
         </div>

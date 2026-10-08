@@ -43,7 +43,10 @@ export const FilterSection = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsSortOpen(false);
       }
     };
@@ -110,7 +113,9 @@ export const FilterSection = ({
                       setIsSortOpen(false);
                     }}
                     className={`w-full text-left px-4 py-2 text-[14px] hover:bg-[#F1F5F9] transition-colors ${
-                      sortBy === option ? "text-[#67B5DC] font-medium" : "text-text-secondary"
+                      sortBy === option
+                        ? "text-[#67B5DC] font-medium"
+                        : "text-text-secondary"
                     }`}
                   >
                     {option}

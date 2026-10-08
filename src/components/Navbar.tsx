@@ -28,7 +28,7 @@ function Navbar() {
 
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] ${
-          pathname === "/ibs2.0" ? "hidden" : ""
+          pathname === "/thegrandfinale" ? "hidden" : ""
         }`}
       >
         <div className="flex items-center justify-between py-[.2rem] px-2 md:px-[76px] bg-white">

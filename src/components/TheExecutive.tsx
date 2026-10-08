@@ -46,11 +46,12 @@ function TheExecutive() {
           variants={itemVariants}
           className="relative flex flex-col items-start w-full"
         >
-          <h4 className={`mobileH4`}>
-            {executive.alias}
-          </h4>
+          <h4 className={`mobileH4`}>{executive.alias}</h4>
 
-          <motion.div variants={cardHover} className="group/card relative w-full mt-[8px]">
+          <motion.div
+            variants={cardHover}
+            className="group/card relative w-full mt-[8px]"
+          >
             <div className="w-full h-[220px] md:h-[308px] rounded-[12px] md:rounded-[16px] overflow-hidden relative">
               <Image
                 fill
@@ -64,7 +65,9 @@ function TheExecutive() {
               <p className="text-[16px] md:text-[18px] font-medium shrink-0">
                 {executive.name}
               </p>
-              <p className="text-[14px] md:text-[16px] opacity-90">{executive.title}</p>
+              <p className="text-[14px] md:text-[16px] opacity-90">
+                {executive.title}
+              </p>
 
               <div className="flex gap-3 mt-3">
                 {[
