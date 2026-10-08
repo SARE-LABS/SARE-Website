@@ -73,7 +73,7 @@ export async function registerParticipant(formData: {
     const sheets = google.sheets({ version: "v4", auth: auth as any });
 
     const sheetName = "thegrandfinale";
-    const range = `${sheetName}!A:F`;
+    const range = `'${sheetName}'!A:F`;
 
     // check for duplicates
     const getResponse = await sheets.spreadsheets.values.get({
