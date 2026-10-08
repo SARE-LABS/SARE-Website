@@ -60,7 +60,10 @@ export async function registerParticipant(formData: {
       message: "Missing GOOGLE_PRIVATE_KEY in environment.",
     };
 
-  const SPREADSHEET_ID = GOOGLE_SHEET_ID;
+  const SPREADSHEET_ID = (GOOGLE_SHEET_ID || "")
+    .replace(/^"(.*)"$/, "$1")
+    .replace(/"/g, "")
+    .trim();
 
   try {
     const { fullName, email, phone, location } = formData;
@@ -72,10 +75,63 @@ export async function registerParticipant(formData: {
     const auth = await getGoogleAuth();
     const sheets = google.sheets({ version: "v4", auth: auth as any });
 
-    const sheetName = "thegrandfinale";
-    const range = `'${sheetName}'!A:F`;
+    // 1. Fetch spreadsheet metadata to auto-discover or auto-create tab
+    const spreadsheet = await sheets.spreadsheets.get({
+      spreadsheetId: SPREADSHEET_ID,
+    });
 
-    // check for duplicates
+    const existingSheets = spreadsheet.data.sheets || [];
+
+    // Find tab: exact match or case/space-insensitive match (e.g. "The Grand Finale", "thegrandfinale ")
+    let matchedSheet = existingSheets.find((s) => {
+      const title = s.properties?.title || "";
+      return (
+        title === "thegrandfinale" ||
+        title.toLowerCase().replace(/[^a-z0-9]/g, "") === "thegrandfinale"
+      );
+    });
+
+    let sheetTitle = matchedSheet?.properties?.title;
+
+    // If the tab doesn't exist in the spreadsheet, create it automatically!
+    if (!sheetTitle) {
+      console.warn(
+        `[Registration] Tab "thegrandfinale" not found in spreadsheet "${spreadsheet.data.properties?.title}". Creating it automatically...`
+      );
+
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: SPREADSHEET_ID,
+        requestBody: {
+          requests: [
+            {
+              addSheet: {
+                properties: {
+                  title: "thegrandfinale",
+                },
+              },
+            },
+          ],
+        },
+      });
+
+      sheetTitle = "thegrandfinale";
+
+      // Seed default column headers
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `'${sheetTitle}'!A1:F1`,
+        valueInputOption: "RAW",
+        requestBody: {
+          values: [
+            ["Reg. ID", "Full Name", "Email", "Phone", "Location", "Timestamp"],
+          ],
+        },
+      });
+    }
+
+    const range = `'${sheetTitle}'!A:F`;
+
+    // 2. Check for duplicates
     const getResponse = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: range,
@@ -110,7 +166,7 @@ export async function registerParticipant(formData: {
     });
 
     console.log(
-      `Log to Sheet: ${sheetName} (ID: ${SPREADSHEET_ID}), Status: ${appendResponse.status}`
+      `Log to Sheet: ${sheetTitle} (ID: ${SPREADSHEET_ID}), Status: ${appendResponse.status}`
     );
 
     // calendar invite (.ics)
