@@ -186,7 +186,7 @@ END:VCALENDAR`.replace(/\n/g, "\r\n");
 
               <div style="background-color: #f0f7fb; border: 1px solid #67B5DC; border-radius: 8px; padding: 15px; margin: 20px 0;">
                 <h3 style="color: #3081AA; margin-top: 0; font-size: 16px;">Next Steps</h3>
-                <p style="margin: 10px 0 5px 0;">📅 <a href="https://calendar.app.google/DgS1wBEMAcUinBfW9" style="color: #3081AA; text-decoration: none; font-weight: bold;">Add to Google Calendar</a></p>
+                <p style="margin: 10px 0 5px 0;">📅 <a href="https://calendar.app.google/4dRGyvSUPPgvhMpAA" style="color: #3081AA; text-decoration: none; font-weight: bold;">Add to Google Calendar</a></p>
                 <p style="margin: 5px 0 0 0;">💬 <a href="https://chat.whatsapp.com/J90Z22acjjK6MWWX8KPCaP" style="color: #3081AA; text-decoration: none; font-weight: bold;">Join the WhatsApp Group for Updates</a></p>
               </div>
               

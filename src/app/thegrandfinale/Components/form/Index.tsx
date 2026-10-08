@@ -259,7 +259,7 @@ export const Form: React.FC = () => {
                 {/* Direct Action Links */}
                 <div className="mt-5 flex flex-col gap-2.5 w-full">
                   <a
-                    href="https://calendar.app.google/DgS1wBEMAcUinBfW9"
+                    href="https://calendar.app.google/4dRGyvSUPPgvhMpAA"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#67B5DC]/10 py-3 px-4 text-sm font-semibold text-[#3081AA] border border-[#67B5DC]/25 transition-all hover:bg-[#67B5DC]/20 active:scale-[0.99]"
