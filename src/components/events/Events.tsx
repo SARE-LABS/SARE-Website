@@ -41,15 +41,31 @@ function Events() {
 
   const filteredEvents = useMemo(() => {
     const parseEventDate = (dateStr: string) => {
-      const match = dateStr.match(/^(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)\s*-\s*(\d{4})$/);
+      const match = dateStr.match(
+        /^(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)\s*-\s*(\d{4})$/
+      );
       if (!match) return 0;
       const [, day, month, year] = match;
       const monthMap: Record<string, number> = {
-        jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-        jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+        jan: 0,
+        feb: 1,
+        mar: 2,
+        apr: 3,
+        may: 4,
+        jun: 5,
+        jul: 6,
+        aug: 7,
+        sep: 8,
+        oct: 9,
+        nov: 10,
+        dec: 11,
       };
       const monthIndex = monthMap[month.toLowerCase().substring(0, 3)] ?? 0;
-      return new Date(parseInt(year, 10), monthIndex, parseInt(day, 10)).getTime();
+      return new Date(
+        parseInt(year, 10),
+        monthIndex,
+        parseInt(day, 10)
+      ).getTime();
     };
 
     return EVENTS.filter((event) => {
@@ -65,7 +81,9 @@ function Events() {
       const matchesSearch =
         event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         event.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        event.tags.some(tag => tag.label.toLowerCase().includes(searchQuery.toLowerCase()));
+        event.tags.some((tag) =>
+          tag.label.toLowerCase().includes(searchQuery.toLowerCase())
+        );
 
       return matchesStatus && matchesCategory && matchesSearch;
     }).sort((a, b) => {
