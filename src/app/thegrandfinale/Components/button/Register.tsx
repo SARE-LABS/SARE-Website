@@ -11,7 +11,7 @@ export const RegisterButton = () => {
       onClick={open ? openModal : undefined}
       disabled={!open}
       className={
-        "text-white py-2 md:px-6 px-12 rounded-full flex items-center font-medium gap-1 " +
+        "text-white py-2 md:px-4 px-10 rounded-full flex items-center font-medium gap-1 " +
         (open
           ? "bg-[#67B5DC] hover:bg-[#5BA7CE] ease-in-out duration-300 cursor-pointer"
           : "bg-[#67B5DC] opacity-50 cursor-not-allowed")

@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import ClockGif from "../../assets/gifs/Clock.gif";
 import Image from "next/image";
-
+export const endDate = "2026-11-14T10:00:00";
+export const targetDate = new Date(endDate);
 export const Timer = () => {
-  const targetDate = new Date("2026-11-14T10:00:00");
-
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -67,7 +66,7 @@ export const Timer = () => {
           {timeStamp.map((time, index) => (
             <div key={index} className="flex gap-2">
               <div className="flex flex-col">
-                <span>{time.time}</span>
+                <span>{String(time.time).padStart(2, "0")}</span>
                 <span className="text-[12px]">{time.text}</span>
               </div>
               {index < timeStamp.length - 1 && <span>:</span>}
