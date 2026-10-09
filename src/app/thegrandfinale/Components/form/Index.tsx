@@ -232,7 +232,7 @@ export const Form: React.FC = () => {
                 </p>
                 {successData.emailSent && (
                   <p className="mt-1 text-xs text-emerald-600 font-medium">
-                    ✓ A confirmation email was sent to {successData.email}
+                    A confirmation email was sent to {successData.email}
                   </p>
                 )}
 

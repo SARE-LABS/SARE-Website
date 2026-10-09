@@ -117,7 +117,7 @@ export async function POST(req: Request) {
 
       return NextResponse.json({
         success: true,
-        message: "✅ Newsletter signup successful!",
+        message: " Newsletter signup successful!",
       });
     }
 
@@ -134,7 +134,7 @@ export async function POST(req: Request) {
       });
       return NextResponse.json({
         success: true,
-        message: "✅ FAQ submitted successfully!",
+        message: " FAQ submitted successfully!",
       });
     }
 
@@ -173,7 +173,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "✅ Application submitted successfully!",
+      message: " Application submitted successfully!",
     });
   } catch (error: any) {
     console.error("API Error:", error);

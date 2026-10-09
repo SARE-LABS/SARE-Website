@@ -65,6 +65,14 @@ export async function registerParticipant(formData: {
     .replace(/"/g, "")
     .trim();
 
+  // 🔴 TEMPORARY DEBUG — remove after fixing production
+  console.log("DEBUG ENV:", {
+    SPREADSHEET_ID,
+    CLIENT_EMAIL: GOOGLE_CLIENT_EMAIL,
+    HAS_PRIVATE_KEY: !!GOOGLE_PRIVATE_KEY,
+    KEY_LENGTH: GOOGLE_PRIVATE_KEY?.length,
+  });
+
   try {
     const { fullName, email, phone, location } = formData;
 
