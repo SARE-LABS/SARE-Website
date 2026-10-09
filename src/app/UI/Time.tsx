@@ -1,15 +1,12 @@
 "use client";
+import { endDate } from "../thegrandfinale/Components/timer/Index";
 import useCountdown from "../utils/useCountdown";
 
-export const countdownDate = "2026-01-19T23:59:59";
+export const countdownDate = endDate;
 
 function Time() {
   const { days, hours, minutes, seconds, expired } =
     useCountdown(countdownDate);
-
-  // if (expired) {
-  //   return <p className="text-red-600 font-medium">SARE Application Closes!</p>;
-  // }
 
   return (
     <div className="flex gap-2 text-lg font-bold text-primary-blue">
