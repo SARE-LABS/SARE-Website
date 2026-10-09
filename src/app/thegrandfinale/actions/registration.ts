@@ -75,14 +75,13 @@ export async function registerParticipant(formData: {
     const auth = await getGoogleAuth();
     const sheets = google.sheets({ version: "v4", auth: auth as any });
 
-    // 1. Fetch spreadsheet metadata to auto-discover or auto-create tab
     const spreadsheet = await sheets.spreadsheets.get({
       spreadsheetId: SPREADSHEET_ID,
     });
 
     const existingSheets = spreadsheet.data.sheets || [];
 
-    // Find tab: exact match or case/space-insensitive match (e.g. "The Grand Finale", "thegrandfinale ")
+    // Find tab
     let matchedSheet = existingSheets.find((s) => {
       const title = s.properties?.title || "";
       return (
@@ -116,7 +115,7 @@ export async function registerParticipant(formData: {
 
       sheetTitle = "thegrandfinale";
 
-      // Seed default column headers
+      //  default column headers
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
         range: `'${sheetTitle}'!A1:F1`,
@@ -131,7 +130,7 @@ export async function registerParticipant(formData: {
 
     const range = `'${sheetTitle}'!A:F`;
 
-    // 2. Check for duplicates
+    //check for duplicates
     const getResponse = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
       range: range,
@@ -278,7 +277,10 @@ END:VCALENDAR`.replace(/\n/g, "\r\n");
     console.error("DEBUG: Full Registration Error:", err);
     return {
       success: false,
-      message: err.message || "An unexpected error occurred.",
+      message:
+        err.code === 403 || err.code === 400 || err.code === 409
+          ? "Something went wrong. Please try again later."
+          : "An unexpected error occurred.",
     };
   }
 }

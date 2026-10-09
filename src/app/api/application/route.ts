@@ -176,9 +176,15 @@ export async function POST(req: Request) {
       message: "✅ Application submitted successfully!",
     });
   } catch (error: any) {
-    console.error("API Error:", error); // Helpful for debugging
+    console.error("API Error:", error);
     return NextResponse.json(
-      { success: false, error: error.message || "Something went wrong" },
+      {
+        success: false,
+        error:
+          error.message === "ECONNREFUSED" || error.message === "ETIMEDOUT"
+            ? "Unable to connect. Please check your connection and try again."
+            : "Something went wrong. Please try again later.",
+      },
       { status: 500 }
     );
   }
