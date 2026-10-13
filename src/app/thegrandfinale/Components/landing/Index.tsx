@@ -6,7 +6,7 @@ import { RegisterButton } from "../button/Register";
 import { ShareButton } from "../button/Share";
 import { Timer } from "../timer/Index";
 import { Details } from "./Details";
-import { Robot } from "../../../../../public/images/images";
+import { bombDefuser, Robot } from "../../../../../public/images/images";
 
 export const Landing: React.FC = () => {
   return (
@@ -72,7 +72,7 @@ export const Landing: React.FC = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          className="relative z-10 w-[260px] sm:w-[360px] md:w-[480px] lg:w-[560px] -mb-14 sm:-mb-20 md:-mb-28 lg:-mb-32 pointer-events-none select-none"
+          className="relative z-10 w-[300px] sm:w-[420px] md:w-[540px] lg:w-[640px] -mb-16 sm:-mb-24 md:-mb-32 lg:-mb-36 pointer-events-none select-none"
         >
           <motion.div
             animate={{ y: [-4, 6, -4] }}
@@ -84,11 +84,11 @@ export const Landing: React.FC = () => {
             className="relative w-full h-auto flex flex-col items-center"
           >
             <Image
-              src={Robot}
+              src={bombDefuser}
               alt="Remote Controlled Bomb-Disposal Robot Prototype - SARE Grand Finale"
               className="w-full h-auto object-contain drop-shadow-[0_22px_32px_rgba(31,41,55,0.22)]"
               priority
-              sizes="(max-width: 640px) 260px, (max-width: 768px) 360px, (max-width: 1024px) 480px, 560px"
+              sizes="(max-width: 640px) 300px, (max-width: 768px) 420px, (max-width: 1024px) 540px, 640px"
             />
             <div className="w-[78%] h-4 -mt-2 bg-[#1F2937]/15 rounded-full blur-md" />
           </motion.div>

@@ -66,8 +66,16 @@ import CTRLLed from "./ctrl-led.jpg";
 import DesignSession from "./design-session.jpg";
 import Robot from "./images (1).png";
 import flyer from "./whats next.jpg";
+import Neutra from "./Meet Neutra.png";
+import bombDefuser from "./bomb-defuser.png";
+import grandFianle from "./grandfinale.png";
+import callForVolunters from "./volunters.jpg";
 
 export {
+  callForVolunters,
+  grandFianle,
+  bombDefuser,
+  Neutra,
   flyer,
   Robot,
   DesignSession,

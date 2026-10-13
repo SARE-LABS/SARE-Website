@@ -5,7 +5,11 @@ import Image, { StaticImageData } from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { flyer } from "../../../../../public/images/images";
+import {
+  callForVolunters,
+  flyer,
+  Neutra,
+} from "../../../../../public/images/images";
 
 export interface CarouselItem {
   id: string;
@@ -31,12 +35,20 @@ const DEFAULT_FLYERS: CarouselItem[] = [
     alt: "CTRL LABS Session Teaser",
   },
   {
-    id: "whats-next",
-    title: "What's Next Series",
+    id: "neutra",
+    title: "Meet Neutra",
     badge: "Highlights",
-    subtitle: "The Future of Agricultural Robotics",
-    image: flyer,
-    alt: "What's Next - Robotics Series Flyer",
+    subtitle: "The Future of Robotics",
+    image: Neutra,
+    alt: "Meet Neutra",
+  },
+  {
+    id: "volunters",
+    title: "VOlunters",
+    badge: "Highlights",
+    subtitle: "The Future of SARE",
+    image: callForVolunters,
+    alt: "Meet Neutra",
   },
 ];
 
