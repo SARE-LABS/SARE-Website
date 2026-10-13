@@ -7,7 +7,7 @@ import SARE from "../../assets/images/SARE - Lost & Found - Teaser_120754.png";
 import SARE_2 from "../../assets/images/SARE - Lost & Found - General Flyer_120826.png";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
-import { flyer } from "../../../../../public/images/images";
+import { flyer, Neutra } from "../../../../../public/images/images";
 
 export const Belt = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,7 +52,7 @@ export const Belt = () => {
             className="object-cover w-full h-full absolute top-0 rounded-lg rotate-[-8deg] shadow-2xl"
           />
           <Image
-            src={flyer}
+            src={Neutra}
             alt="S.A.R.E. is Cooking"
             className="object-cover w-full h-full absolute top-0 rounded-lg"
           />
