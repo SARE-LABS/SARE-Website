@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Bot,
   Key,
@@ -5,12 +6,12 @@ import {
   Gamepad2,
   Trophy,
   Users,
-  CheckCircle2,
   Cpu,
   Radio,
 } from "lucide-react";
 import { Carousel } from "../carousel/Index";
 import { Tags } from "./Tags";
+import { bombDefuser } from "../../../../../public/images/images";
 
 interface EventFeature {
   title: string;
@@ -88,29 +89,75 @@ export const About = () => {
       </div>
 
       {/*  Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#4B5563] text-[15px] md:text-[17px] leading-relaxed">
-        <div className="bg-white/80 p-5 md:p-6 rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between">
-          <p>
-            The Grand Finale is the culmination of our hands-on robotics,
-            embedded systems, automation, and 3D design activities. It brings
-            together students, young innovators, and technology enthusiasts to
-            celebrate what we have built, learned, and explored throughout the
-            session.
-          </p>
-          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#67B5DC]">
-            <span>Culmination of Hands-on Learning</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#4B5563] text-[15px] md:text-[17px] leading-relaxed items-stretch">
+        <div className="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-sm transition-shadow duration-300 flex flex-col justify-between">
+          <div className="flex flex-col gap-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#67B5DC]/15 text-[#1F2937] font-semibold text-xs tracking-wider uppercase w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#67B5DC]" />
+              Event Overview
+            </span>
+            <p className="text-[#374151]">
+              The Grand Finale is the culmination of our hands-on robotics,
+              embedded systems, automation, and 3D design activities. It brings
+              together students, young innovators, and technology enthusiasts to
+              celebrate what we have built, learned, and explored throughout the
+              session.
+            </p>
+            <p className="text-[#4B5563]">
+              Over the course of CTRL LABS, students have moved beyond theory to
+              design, build, test, break, fix, and build again. The Grand Finale
+              is where all of that comes together, with an exciting day of
+              practical building, learning, interaction, and celebration.
+            </p>
+          </div>
+          <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-[#67B5DC]">
+            <span className="uppercase tracking-wider">
+              Culmination of Hands-on Learning
+            </span>
+            <span className="text-gray-400 font-normal">CTRL LABS</span>
           </div>
         </div>
 
-        <div className="bg-white/80 p-5 md:p-6 rounded-2xl border border-gray-200/80 shadow-xs flex flex-col justify-between">
-          <p>
-            Over the course of CTRL LABS, students have moved beyond theory to
-            design, build, test, break, fix, and build again. The Grand Finale
-            is where all of that comes together, with an exciting day of
-            practical building, learning, interaction, and celebration.
-          </p>
-          <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0FC99F]">
-            <span>Design • Build • Test • Iterate</span>
+        {/* Robot Spotlight Card */}
+        <div className="group relative overflow-hidden bg-gradient-to-br from-white via-slate-50/80 to-[#67B5DC]/15 p-6 md:p-8 rounded-2xl border border-[#67B5DC]/40 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between items-center">
+          <div className="absolute -top-10 -right-10 w-44 h-44 bg-[#67B5DC]/20 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#0FC99F]/10 rounded-full blur-2xl pointer-events-none" />
+
+          <div className="w-full flex items-center justify-between z-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-[#67B5DC]/30 text-[#1F2937] text-xs font-semibold shadow-xs">
+              <Bot className="w-3.5 h-3.5 text-[#67B5DC]" />
+              Featured Prototype
+            </span>
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0a8c6e] bg-[#0FC99F]/15 px-2.5 py-0.5 rounded-full">
+              Live Showcase
+            </span>
+          </div>
+
+          <div className="relative my-4 flex flex-col items-center justify-center w-full max-w-[260px] sm:max-w-[300px] md:max-w-[320px]">
+            <div className="transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
+              <Image
+                src={bombDefuser}
+                alt="Remote Controlled Bomb-Disposal Robot Prototype - SARE Grand Finale"
+                className="w-full h-auto object-contain drop-shadow-[0_16px_28px_rgba(31,41,55,0.2)]"
+                priority
+                sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 320px"
+              />
+            </div>
+            <div className="w-[75%] h-3 bg-[#1F2937]/15 rounded-full blur-md -mt-1 group-hover:scale-95 transition-transform duration-500" />
+          </div>
+
+          <div className="w-full pt-4 border-t border-gray-100/90 z-10 flex items-center justify-between text-xs">
+            <div className="flex flex-col">
+              <span className="font-semibold text-[#1F2937]">
+                Remote-Controlled Bomb-Disposal Robot
+              </span>
+              <span className="text-[#6B7280] text-[11px]">
+                Precision Robotic Arm & Teleoperation
+              </span>
+            </div>
+            <span className="px-2.5 py-1 rounded-md bg-[#67B5DC]/15 text-[#1F2937] text-xs font-medium shrink-0 ml-2">
+              Grand Build
+            </span>
           </div>
         </div>
       </div>
@@ -208,7 +255,7 @@ export const About = () => {
       </div>
 
       {/* Why Attend / Key Opportunities */}
-      <div className="flex flex-col gap-5">
+      {/* <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-1">
           <h3 className="text-xl md:text-2xl font-semibold text-[#1F2937]">
             Don&apos;t Miss This Opportunity To:
@@ -234,7 +281,7 @@ export const About = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* Flyers */}
       <div className="flex flex-col gap-4 mt-2">
